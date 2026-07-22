@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Product - Krishi Market</title>
+  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/farmer.css"><link rel="stylesheet" href="../css/responsive.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header><nav class="navbar"><div class="container">
+    <a href="../index.html" class="logo"><i class="fas fa-leaf"></i><span>Krishi Market</span></a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a><a href="dashboard.html">Dashboard</a><a href="products.html">My Products</a>
+      <a href="edit-product.html" class="active">Edit Product</a><a href="orders.html">Orders</a><a href="profile.html">Profile</a>
+      <a href="#" onclick="auth.logout()">Logout</a>
+    </div>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </div></nav></header>
+  <section class="farmer-dashboard">
+    <div class="container">
+      <div class="product-form">
+        <h2>Edit Product</h2>
+        <form id="editProductForm" enctype="multipart/form-data">
+          <div class="form-group"><label>Product Name</label><input type="text" id="editName" required></div>
+          <div class="form-group"><label>Description</label><textarea id="editDescription" rows="4" required></textarea></div>
+          <div class="form-row-3">
+            <div class="form-group"><label>Category</label><select id="editCategory"><option value="vegetables">Vegetables</option><option value="fruits">Fruits</option><option value="grains">Grains</option><option value="dairy">Dairy</option><option value="poultry">Poultry</option><option value="seeds">Seeds</option><option value="fertilizers">Fertilizers</option><option value="equipment">Equipment</option><option value="other">Other</option></select></div>
+            <div class="form-group"><label>Price (₹)</label><input type="number" id="editPrice" step="0.01" min="0" required></div>
+            <div class="form-group"><label>Unit</label><select id="editUnit"><option value="kg">Kg</option><option value="gram">Gram</option><option value="litre">Litre</option><option value="piece">Piece</option><option value="dozen">Dozen</option><option value="bag">Bag</option><option value="quintal">Quintal</option><option value="ton">Ton</option></select></div>
+          </div>
+          <div class="form-row-3">
+            <div class="form-group"><label>Quantity</label><input type="number" id="editQuantity" min="0" required></div>
+            <div class="form-group"><label>New Images</label><input type="file" id="editImages" multiple accept="image/*"></div>
+            <div class="checkbox-group"><label><input type="checkbox" id="editOrganic"> Organic Product</label></div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg">Update Product</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  <script src="../js/config.js"></script><script src="../js/auth.js"></script><script src="edit-product.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+/* Responsive Design */
+
+@media (max-width: 1200px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .dashboard-grid,
+  .farmer-stats,
+  .admin-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero h1 { font-size: 2.5rem; }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .categories-grid { grid-template-columns: repeat(3, 1fr); }
+  .products-layout { grid-template-columns: 240px 1fr; }
+  .product-details-layout { grid-template-columns: 1fr; }
+  .dashboard-grid,
+  .wishlist-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-content { grid-template-columns: repeat(2, 1fr); }
+  .admin-layout { grid-template-columns: 200px 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+  
+  .hero { padding: 60px 20px; }
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1rem; }
+  .hero-buttons { flex-direction: column; align-items: stretch; }
+  
+  .features { padding: 50px 0; }
+  .features-grid { grid-template-columns: 1fr; }
+  .categories { padding: 50px 0; }
+  .categories-grid { grid-template-columns: repeat(2, 1fr); }
+  
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .products-layout { grid-template-columns: 1fr; }
+  .products-header { flex-direction: column; gap: 10px; }
+  
+  .product-details-layout { padding: 20px; }
+  .product-gallery .main-image { height: 250px; }
+  .product-info-section h1 { font-size: 1.5rem; }
+  .product-actions-lg { flex-direction: column; }
+  
+  .cart-item { flex-wrap: wrap; }
+  .cart-item-image { width: 80px; height: 80px; }
+  .cart-item-price { min-width: auto; }
+  
+  .checkout-layout { grid-template-columns: 1fr; }
+  .payment-methods { grid-template-columns: 1fr; }
+  
+  .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+  .dashboard-header { flex-direction: column; gap: 15px; }
+  
+  .farmer-stats { grid-template-columns: repeat(2, 1fr); }
+  .form-row-3 { grid-template-columns: 1fr; }
+  
+  .admin-layout { grid-template-columns: 1fr; }
+  .admin-sidebar { display: none; }
+  .admin-stats { grid-template-columns: repeat(2, 1fr); }
+  .reports-grid { grid-template-columns: 1fr; }
+  
+  .footer-content { grid-template-columns: 1fr; }
+  .footer-section { text-align: center; }
+  
+  .orders-table { overflow-x: auto; }
+  .inventory-table { overflow-x: auto; }
+  .admin-table { overflow-x: auto; }
+  
+  .wishlist-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .products-grid { grid-template-columns: 1fr; }
+  .categories-grid { grid-template-columns: 1fr; }
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .farmer-stats { grid-template-columns: 1fr; }
+  .admin-stats { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .wishlist-grid { grid-template-columns: 1fr; }
+  .admin-content { padding: 20px 15px; }
+  .auth-card { padding: 25px; }
+  .product-form { padding: 25px; }
+}
