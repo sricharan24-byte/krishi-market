@@ -1,36 +1,1528 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Wishlist - Krishi Market</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/customer.css">
-  <link rel="stylesheet" href="../css/responsive.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Your Krishi Market Wishlist">
+
+    <title>My Wishlist | Krishi Market</title>
+
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- Wishlist CSS -->
+
+    <link rel="stylesheet"
+          href="wishlist.css">
+
 </head>
+
+
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="container">
-        <a href="../index.html" class="logo"><i class="fas fa-leaf"></i><span>Krishi Market</span></a>
-        <div class="nav-links">
-          <a href="../index.html">Home</a><a href="../products.html">Products</a><a href="../cart.html">Cart <span id="cartCount">0</span></a>
-          <a href="dashboard.html">Dashboard</a><a href="wishlist.html" class="active">Wishlist</a><a href="#" onclick="auth.logout()">Logout</a>
+
+
+<div class="dashboard-container">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="brand-section">
+
+            <div class="brand-logo">
+                🌱
+            </div>
+
+            <h2>
+                Krishi Market
+            </h2>
+
+            <p>
+                Customer Panel
+            </p>
+
         </div>
-        <div class="hamburger"><span></span><span></span><span></span></div>
-      </div>
-    </nav>
-  </header>
-  <section class="wishlist-section">
-    <div class="container">
-      <h1>My Wishlist</h1>
-      <div class="wishlist-grid" id="wishlistContainer"></div>
-    </div>
-  </section>
-  <script src="../js/config.js"></script>
-  <script src="../js/auth.js"></script>
-  <script src="wishlist.js"></script>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+
+
+            <!-- Dashboard -->
+
+            <a href="customer.html"
+               class="nav-item">
+
+                <i class="fas fa-home"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <!-- Browse Products -->
+
+            <a href="products.html"
+               class="nav-item">
+
+                <i class="fas fa-store"></i>
+
+                <span>
+                    Browse Products
+                </span>
+
+            </a>
+
+
+            <!-- Cart -->
+
+            <a href="cart.html"
+               class="nav-item">
+
+                <i class="fas fa-shopping-cart"></i>
+
+                <span>
+                    My Cart
+                </span>
+
+                <span class="nav-badge"
+                      id="cartBadge">
+                    0
+                </span>
+
+            </a>
+
+
+            <!-- Orders -->
+
+            <a href="myorders.html"
+               class="nav-item">
+
+                <i class="fas fa-box"></i>
+
+                <span>
+                    My Orders
+                </span>
+
+            </a>
+
+
+            <!-- Wishlist -->
+
+            <a href="wishlist.html"
+               class="nav-item active">
+
+                <i class="fas fa-heart"></i>
+
+                <span>
+                    Wishlist
+                </span>
+
+                <span class="nav-badge"
+                      id="wishlistBadge">
+                    0
+                </span>
+
+            </a>
+
+
+            <!-- Profile -->
+
+            <a href="profile.html"
+               class="nav-item">
+
+                <i class="fas fa-user-circle"></i>
+
+                <span>
+                    My Profile
+                </span>
+
+            </a>
+
+
+            <!-- Logout -->
+
+            <a href="logout.html"
+               class="nav-item logout">
+
+                <i class="fas fa-sign-out-alt"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =====================================================
+             HEADER
+        ====================================================== -->
+
+        <header class="page-header">
+
+
+            <div class="header-left">
+
+                <h1>
+                    My Wishlist
+                </h1>
+
+                <p>
+                    Save your favourite farm products for later.
+                </p>
+
+            </div>
+
+
+            <div class="header-right">
+
+
+                <!-- Search -->
+
+                <div class="header-search">
+
+                    <i class="fas fa-search"></i>
+
+                    <input
+                        type="text"
+                        id="wishlistSearch"
+                        placeholder="Search wishlist...">
+
+                </div>
+
+
+                <!-- Cart -->
+
+                <a href="cart.html"
+                   class="header-cart">
+
+                    <i class="fas fa-shopping-cart"></i>
+
+                    <span id="headerCartCount">
+                        0
+                    </span>
+
+                </a>
+
+
+                <!-- User -->
+
+                <div class="header-user">
+
+                    <div class="user-avatar">
+
+                        <i class="fas fa-user"></i>
+
+                    </div>
+
+                    <div class="user-info">
+
+                        <strong>
+                            Customer
+                        </strong>
+
+                        <span>
+                            Customer Account
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================================
+             WISHLIST BANNER
+        ====================================================== -->
+
+        <section class="wishlist-banner">
+
+
+            <div class="banner-content">
+
+                <span>
+                    ❤️ Your Favourite Products
+                </span>
+
+                <h2>
+                    Products You Love
+                </h2>
+
+                <p>
+                    Keep your favourite farm-fresh products
+                    saved in one place.
+                </p>
+
+            </div>
+
+
+            <div class="banner-icon">
+                ❤️
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             WISHLIST HEADER
+        ====================================================== -->
+
+        <section class="wishlist-heading">
+
+
+            <div>
+
+                <h2>
+                    Saved Products
+                </h2>
+
+                <p id="wishlistCountText">
+                    0 products saved
+                </p>
+
+            </div>
+
+
+            <a href="products.html"
+               class="browse-btn">
+
+                <i class="fas fa-store"></i>
+
+                Browse Products
+
+            </a>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             WISHLIST PRODUCTS
+        ====================================================== -->
+
+        <section class="wishlist-grid"
+                 id="wishlistGrid">
+
+
+            <!-- =================================================
+                 PRODUCT 1
+            ================================================== -->
+
+            <div class="wishlist-card"
+                 data-product-name="Organic Tomatoes">
+
+
+                <button
+                    class="remove-wishlist"
+                    onclick="removeFromWishlist('Organic Tomatoes')">
+
+                    <i class="fas fa-heart"></i>
+
+                </button>
+
+
+                <div class="wishlist-image">
+
+                    <span>
+                        🍅
+                    </span>
+
+                    <div class="fresh-badge">
+                        Fresh
+                    </div>
+
+                </div>
+
+
+                <div class="wishlist-content">
+
+
+                    <span class="category">
+                        Vegetables
+                    </span>
+
+
+                    <h3>
+                        Organic Tomatoes
+                    </h3>
+
+
+                    <p class="farmer-name">
+
+                        <i class="fas fa-user"></i>
+
+                        Green Valley Farm
+
+                    </p>
+
+
+                    <div class="rating">
+
+                        <span>
+                            ★★★★★
+                        </span>
+
+                        <small>
+                            4.8
+                        </small>
+
+                    </div>
+
+
+                    <div class="product-bottom">
+
+
+                        <div class="price">
+
+                            <strong>
+                                ₹60
+                            </strong>
+
+                            <span>
+                                / kg
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Organic Tomatoes',
+                                60
+                            )">
+
+                            <i class="fas fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRODUCT 2
+            ================================================== -->
+
+            <div class="wishlist-card"
+                 data-product-name="Fresh Mangoes">
+
+
+                <button
+                    class="remove-wishlist"
+                    onclick="removeFromWishlist('Fresh Mangoes')">
+
+                    <i class="fas fa-heart"></i>
+
+                </button>
+
+
+                <div class="wishlist-image">
+
+                    <span>
+                        🥭
+                    </span>
+
+                    <div class="fresh-badge">
+                        Organic
+                    </div>
+
+                </div>
+
+
+                <div class="wishlist-content">
+
+
+                    <span class="category">
+                        Fruits
+                    </span>
+
+
+                    <h3>
+                        Fresh Mangoes
+                    </h3>
+
+
+                    <p class="farmer-name">
+
+                        <i class="fas fa-user"></i>
+
+                        Sunshine Farm
+
+                    </p>
+
+
+                    <div class="rating">
+
+                        <span>
+                            ★★★★★
+                        </span>
+
+                        <small>
+                            4.9
+                        </small>
+
+                    </div>
+
+
+                    <div class="product-bottom">
+
+
+                        <div class="price">
+
+                            <strong>
+                                ₹180
+                            </strong>
+
+                            <span>
+                                / kg
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Fresh Mangoes',
+                                180
+                            )">
+
+                            <i class="fas fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRODUCT 3
+            ================================================== -->
+
+            <div class="wishlist-card"
+                 data-product-name="Organic Carrots">
+
+
+                <button
+                    class="remove-wishlist"
+                    onclick="removeFromWishlist('Organic Carrots')">
+
+                    <i class="fas fa-heart"></i>
+
+                </button>
+
+
+                <div class="wishlist-image">
+
+                    <span>
+                        🥕
+                    </span>
+
+                    <div class="fresh-badge">
+                        Fresh
+                    </div>
+
+                </div>
+
+
+                <div class="wishlist-content">
+
+
+                    <span class="category">
+                        Vegetables
+                    </span>
+
+
+                    <h3>
+                        Organic Carrots
+                    </h3>
+
+
+                    <p class="farmer-name">
+
+                        <i class="fas fa-user"></i>
+
+                        Nature Fresh Farm
+
+                    </p>
+
+
+                    <div class="rating">
+
+                        <span>
+                            ★★★★☆
+                        </span>
+
+                        <small>
+                            4.6
+                        </small>
+
+                    </div>
+
+
+                    <div class="product-bottom">
+
+
+                        <div class="price">
+
+                            <strong>
+                                ₹80
+                            </strong>
+
+                            <span>
+                                / kg
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Organic Carrots',
+                                80
+                            )">
+
+                            <i class="fas fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRODUCT 4
+            ================================================== -->
+
+            <div class="wishlist-card"
+                 data-product-name="Organic Spinach">
+
+
+                <button
+                    class="remove-wishlist"
+                    onclick="removeFromWishlist('Organic Spinach')">
+
+                    <i class="fas fa-heart"></i>
+
+                </button>
+
+
+                <div class="wishlist-image">
+
+                    <span>
+                        🥬
+                    </span>
+
+                    <div class="fresh-badge">
+                        Organic
+                    </div>
+
+                </div>
+
+
+                <div class="wishlist-content">
+
+
+                    <span class="category">
+                        Leafy Vegetables
+                    </span>
+
+
+                    <h3>
+                        Organic Spinach
+                    </h3>
+
+
+                    <p class="farmer-name">
+
+                        <i class="fas fa-user"></i>
+
+                        Green Leaf Farm
+
+                    </p>
+
+
+                    <div class="rating">
+
+                        <span>
+                            ★★★★★
+                        </span>
+
+                        <small>
+                            4.7
+                        </small>
+
+                    </div>
+
+
+                    <div class="product-bottom">
+
+
+                        <div class="price">
+
+                            <strong>
+                                ₹40
+                            </strong>
+
+                            <span>
+                                / bunch
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Organic Spinach',
+                                40
+                            )">
+
+                            <i class="fas fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRODUCT 5
+            ================================================== -->
+
+            <div class="wishlist-card"
+                 data-product-name="Organic Potatoes">
+
+
+                <button
+                    class="remove-wishlist"
+                    onclick="removeFromWishlist('Organic Potatoes')">
+
+                    <i class="fas fa-heart"></i>
+
+                </button>
+
+
+                <div class="wishlist-image">
+
+                    <span>
+                        🥔
+                    </span>
+
+                    <div class="fresh-badge">
+                        Fresh
+                    </div>
+
+                </div>
+
+
+                <div class="wishlist-content">
+
+
+                    <span class="category">
+                        Vegetables
+                    </span>
+
+
+                    <h3>
+                        Organic Potatoes
+                    </h3>
+
+
+                    <p class="farmer-name">
+
+                        <i class="fas fa-user"></i>
+
+                        Nature Fresh Farm
+
+                    </p>
+
+
+                    <div class="rating">
+
+                        <span>
+                            ★★★★★
+                        </span>
+
+                        <small>
+                            4.8
+                        </small>
+
+                    </div>
+
+
+                    <div class="product-bottom">
+
+
+                        <div class="price">
+
+                            <strong>
+                                ₹45
+                            </strong>
+
+                            <span>
+                                / kg
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Organic Potatoes',
+                                45
+                            )">
+
+                            <i class="fas fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PRODUCT 6
+            ================================================== -->
+
+            <div class="wishlist-card"
+                 data-product-name="Premium Organic Rice">
+
+
+                <button
+                    class="remove-wishlist"
+                    onclick="removeFromWishlist('Premium Organic Rice')">
+
+                    <i class="fas fa-heart"></i>
+
+                </button>
+
+
+                <div class="wishlist-image">
+
+                    <span>
+                        🌾
+                    </span>
+
+                    <div class="fresh-badge">
+                        Premium
+                    </div>
+
+                </div>
+
+
+                <div class="wishlist-content">
+
+
+                    <span class="category">
+                        Grains
+                    </span>
+
+
+                    <h3>
+                        Premium Organic Rice
+                    </h3>
+
+
+                    <p class="farmer-name">
+
+                        <i class="fas fa-user"></i>
+
+                        Krishna Farms
+
+                    </p>
+
+
+                    <div class="rating">
+
+                        <span>
+                            ★★★★★
+                        </span>
+
+                        <small>
+                            4.9
+                        </small>
+
+                    </div>
+
+
+                    <div class="product-bottom">
+
+
+                        <div class="price">
+
+                            <strong>
+                                ₹120
+                            </strong>
+
+                            <span>
+                                / kg
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Premium Organic Rice',
+                                120
+                            )">
+
+                            <i class="fas fa-cart-plus"></i>
+
+                            Add
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             EMPTY WISHLIST
+        ====================================================== -->
+
+        <section class="empty-wishlist"
+                 id="emptyWishlist">
+
+
+            <div class="empty-icon">
+
+                <i class="far fa-heart"></i>
+
+            </div>
+
+
+            <h2>
+                Your Wishlist is Empty
+            </h2>
+
+
+            <p>
+                Save your favourite farm products here
+                and easily find them later.
+            </p>
+
+
+            <a href="products.html"
+               class="shop-btn">
+
+                <i class="fas fa-store"></i>
+
+                Browse Products
+
+            </a>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             FOOTER
+        ====================================================== -->
+
+        <footer class="dashboard-footer">
+
+            <p>
+                © 2026 Krishi Market.
+                Connecting Farmers Directly With Consumers.
+            </p>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   LOAD CART
+===================================================== */
+
+let cart =
+    JSON.parse(
+        localStorage.getItem("cart")
+    ) || [];
+
+
+/* =====================================================
+   LOAD WISHLIST
+===================================================== */
+
+let wishlist =
+    JSON.parse(
+        localStorage.getItem("wishlist")
+    ) || [];
+
+
+/*
+   If wishlist is empty, the sample products
+   will initially be displayed.
+
+   Once the user removes/adds products,
+   localStorage will be used.
+*/
+
+
+/* =====================================================
+   UPDATE CART COUNT
+===================================================== */
+
+function updateCartCount() {
+
+    const cartBadge =
+        document.getElementById(
+            "cartBadge"
+        );
+
+    const headerCartCount =
+        document.getElementById(
+            "headerCartCount"
+        );
+
+
+    let totalItems = 0;
+
+
+    cart.forEach(
+        function(item) {
+
+            totalItems +=
+                Number(item.quantity) || 1;
+
+        }
+    );
+
+
+    if (cartBadge) {
+
+        cartBadge.textContent =
+            totalItems;
+
+    }
+
+
+    if (headerCartCount) {
+
+        headerCartCount.textContent =
+            totalItems;
+
+    }
+
+}
+
+
+/* =====================================================
+   UPDATE WISHLIST COUNT
+===================================================== */
+
+function updateWishlistCount() {
+
+    const cards =
+        document.querySelectorAll(
+            ".wishlist-card"
+        );
+
+
+    const visibleCards =
+        Array.from(cards)
+        .filter(
+            card =>
+            card.style.display !== "none"
+        );
+
+
+    const countText =
+        document.getElementById(
+            "wishlistCountText"
+        );
+
+
+    const badge =
+        document.getElementById(
+            "wishlistBadge"
+        );
+
+
+    const count =
+        visibleCards.length;
+
+
+    if (countText) {
+
+        if (count === 1) {
+
+            countText.textContent =
+                "1 product saved";
+
+        }
+        else {
+
+            countText.textContent =
+                count +
+                " products saved";
+
+        }
+
+    }
+
+
+    if (badge) {
+
+        badge.textContent =
+            count;
+
+    }
+
+
+    const emptyWishlist =
+        document.getElementById(
+            "emptyWishlist"
+        );
+
+
+    const wishlistGrid =
+        document.getElementById(
+            "wishlistGrid"
+        );
+
+
+    if (count === 0) {
+
+        emptyWishlist.style.display =
+            "block";
+
+        wishlistGrid.style.display =
+            "none";
+
+    }
+    else {
+
+        emptyWishlist.style.display =
+            "none";
+
+        wishlistGrid.style.display =
+            "grid";
+
+    }
+
+}
+
+
+/* =====================================================
+   REMOVE FROM WISHLIST
+===================================================== */
+
+function removeFromWishlist(
+    productName
+) {
+
+
+    const card =
+        document.querySelector(
+            '[data-product-name="' +
+            productName +
+            '"]'
+        );
+
+
+    if (!card) {
+
+        return;
+
+    }
+
+
+    card.style.animation =
+        "removeCard 0.3s ease forwards";
+
+
+    setTimeout(
+        function() {
+
+            card.remove();
+
+
+            /*
+              Remove product from
+              localStorage wishlist
+            */
+
+            wishlist =
+                wishlist.filter(
+                    function(item) {
+
+                        if (
+                            typeof item ===
+                            "string"
+                        ) {
+
+                            return item !==
+                                productName;
+
+                        }
+
+
+                        return item.name !==
+                            productName;
+
+                    }
+                );
+
+
+            localStorage.setItem(
+                "wishlist",
+                JSON.stringify(wishlist)
+            );
+
+
+            updateWishlistCount();
+
+        },
+        300
+    );
+
+
+}
+
+
+/* =====================================================
+   ADD TO CART
+===================================================== */
+
+function addToCart(
+    productName,
+    productPrice
+) {
+
+
+    const existingProduct =
+        cart.find(
+            function(item) {
+
+                return item.name ===
+                    productName;
+
+            }
+        );
+
+
+    if (existingProduct) {
+
+        existingProduct.quantity =
+            (existingProduct.quantity || 1) + 1;
+
+    }
+    else {
+
+        cart.push({
+
+            name: productName,
+
+            price: productPrice,
+
+            quantity: 1
+
+        });
+
+    }
+
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+
+    updateCartCount();
+
+
+    showNotification(
+        productName +
+        " added to cart!"
+    );
+
+}
+
+
+/* =====================================================
+   SEARCH WISHLIST
+===================================================== */
+
+const wishlistSearch =
+    document.getElementById(
+        "wishlistSearch"
+    );
+
+
+if (wishlistSearch) {
+
+    wishlistSearch.addEventListener(
+        "input",
+        function() {
+
+
+            const search =
+                this.value
+                .toLowerCase()
+                .trim();
+
+
+            const cards =
+                document.querySelectorAll(
+                    ".wishlist-card"
+                );
+
+
+            cards.forEach(
+                function(card) {
+
+
+                    const text =
+                        card.innerText
+                        .toLowerCase();
+
+
+                    if (
+                        text.includes(search)
+                    ) {
+
+                        card.style.display =
+                            "block";
+
+                    }
+                    else {
+
+                        card.style.display =
+                            "none";
+
+                    }
+
+                }
+            );
+
+
+            /*
+              Do not show the global empty
+              wishlist state for search results.
+            */
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   NOTIFICATION
+===================================================== */
+
+function showNotification(
+    message
+) {
+
+
+    const existing =
+        document.querySelector(
+            ".notification"
+        );
+
+
+    if (existing) {
+
+        existing.remove();
+
+    }
+
+
+    const notification =
+        document.createElement(
+            "div"
+        );
+
+
+    notification.className =
+        "notification";
+
+
+    notification.innerHTML = `
+
+        <i class="fas fa-check-circle"></i>
+
+        <span>${message}</span>
+
+    `;
+
+
+    document.body.appendChild(
+        notification
+    );
+
+
+    setTimeout(
+        function() {
+
+            notification.classList.add(
+                "show"
+            );
+
+        },
+        50
+    );
+
+
+    setTimeout(
+        function() {
+
+            notification.classList.remove(
+                "show"
+            );
+
+
+            setTimeout(
+                function() {
+
+                    notification.remove();
+
+                },
+                300
+            );
+
+        },
+        2500
+    );
+
+}
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+updateCartCount();
+
+updateWishlistCount();
+
+
+</script>
+
+
 </body>
+
 </html>

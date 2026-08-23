@@ -1,0 +1,631 @@
+/* =========================================================
+   KRISHI MARKET - REGISTER PAGE CSS
+   ========================================================= */
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    background: #f7faf8;
+    color: #1f2937;
+}
+
+
+/* =========================================================
+   MAIN REGISTER PAGE
+   ========================================================= */
+
+.register-page {
+    min-height: 100vh;
+    display: flex;
+    width: 100%;
+}
+
+
+/* =========================================================
+   LEFT SIDE
+   ========================================================= */
+
+.register-left {
+    width: 50%;
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #056b35,
+        #0b8f48
+    );
+    color: white;
+    padding: 55px 7%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Decorative circle */
+
+.register-left::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    top: -100px;
+    right: -80px;
+}
+
+
+/* Decorative circle */
+
+.register-left::after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    bottom: -100px;
+    left: -100px;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    z-index: 2;
+}
+
+
+.brand-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+
+.brand h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   WELCOME SECTION
+   ========================================================= */
+
+.welcome-section {
+    margin-top: auto;
+    margin-bottom: auto;
+    max-width: 550px;
+    position: relative;
+    z-index: 2;
+}
+
+
+.welcome-section h1 {
+    font-size: 48px;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    font-weight: 700;
+}
+
+
+.welcome-section p {
+    font-size: 17px;
+    line-height: 1.8;
+    max-width: 500px;
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+
+/* =========================================================
+   BENEFITS
+   ========================================================= */
+
+.benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+.check-icon {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+   ========================================================= */
+
+.register-right {
+    width: 50%;
+    min-height: 100vh;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 30px;
+}
+
+
+/* =========================================================
+   REGISTER CARD
+   ========================================================= */
+
+.register-card {
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
+    background: #ffffff;
+    border: 1px solid #e2e8e5;
+    border-radius: 20px;
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   FORM HEADER
+   ========================================================= */
+
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+.form-header h1 {
+    color: #075d35;
+    font-size: 32px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+
+.form-header p {
+    color: #6b7280;
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.message {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+
+.form-group > label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    height: 48px;
+    border: 1px solid #d1d9d5;
+    border-radius: 9px;
+    padding: 0 15px;
+    font-size: 14px;
+    color: #1f2937;
+    background: #ffffff;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.form-group input::placeholder {
+    color: #9ca3af;
+}
+
+
+.form-group input:focus {
+    border-color: #0b8f48;
+    box-shadow:
+        0 0 0 3px rgba(11, 143, 72, 0.12);
+}
+
+
+/* =========================================================
+   PASSWORD WRAPPER
+   ========================================================= */
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+
+.password-wrapper input {
+    padding-right: 70px !important;
+}
+
+
+/* =========================================================
+   PASSWORD TOGGLE
+   ========================================================= */
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: #078441;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 5px;
+}
+
+
+.password-toggle:hover {
+    color: #056b35;
+}
+
+
+/* =========================================================
+   ROLE SECTION
+   ========================================================= */
+
+.role-group {
+    margin-top: 5px;
+}
+
+
+.role-options {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+
+.role-option {
+    flex: 1;
+    min-height: 48px;
+    border: 1px solid #d1d9d5;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 0 15px;
+    cursor: pointer;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.role-option:hover {
+    border-color: #0b8f48;
+    background: #f4fbf7;
+}
+
+
+.role-option input[type="radio"] {
+    width: 17px;
+    height: 17px;
+    accent-color: #0b8f48;
+    cursor: pointer;
+}
+
+
+.role-option span {
+    color: #374151;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   TERMS
+   ========================================================= */
+
+.terms-group {
+    margin-top: 5px;
+    margin-bottom: 22px;
+}
+
+
+.terms-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    cursor: pointer;
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+.terms-label input {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: #0b8f48;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   REGISTER BUTTON
+   ========================================================= */
+
+.register-button {
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 9px;
+    background: #0b9748;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.register-button:hover {
+    background: #078441;
+    transform: translateY(-1px);
+    box-shadow:
+        0 6px 18px rgba(11, 151, 72, 0.22);
+}
+
+
+.register-button:active {
+    transform: translateY(0);
+}
+
+
+.register-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   LOGIN LINK
+   ========================================================= */
+
+.login-link {
+    margin-top: 25px;
+    padding-top: 22px;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+}
+
+
+.login-link p {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+
+.login-link a {
+    color: #078441;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 4px;
+}
+
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media screen and (max-width: 1000px) {
+
+    .register-page {
+        flex-direction: column;
+    }
+
+
+    .register-left {
+        width: 100%;
+        min-height: auto;
+        padding: 40px 7%;
+    }
+
+
+    .register-right {
+        width: 100%;
+        min-height: auto;
+        padding: 50px 25px;
+    }
+
+
+    .welcome-section {
+        margin-top: 60px;
+        margin-bottom: 20px;
+    }
+
+
+    .welcome-section h1 {
+        font-size: 40px;
+    }
+
+
+    .welcome-section p {
+        max-width: 700px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 600px) {
+
+    .register-left {
+        padding: 30px 20px;
+    }
+
+
+    .brand h2 {
+        font-size: 21px;
+    }
+
+
+    .welcome-section {
+        margin-top: 45px;
+    }
+
+
+    .welcome-section h1 {
+        font-size: 34px;
+    }
+
+
+    .welcome-section p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+
+    .benefits {
+        gap: 16px;
+    }
+
+
+    .register-right {
+        padding: 30px 15px;
+    }
+
+
+    .register-card {
+        padding: 28px 20px;
+        border-radius: 15px;
+    }
+
+
+    .form-header h1 {
+        font-size: 28px;
+    }
+
+
+    .role-options {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+
+    .role-option {
+        min-height: 46px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 400px) {
+
+    .welcome-section h1 {
+        font-size: 30px;
+    }
+
+
+    .register-card {
+        padding: 25px 17px;
+    }
+
+
+    .form-header h1 {
+        font-size: 25px;
+    }
+
+}

@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Products | Krishi Market</title>
+
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- My Products CSS -->
+
+    <link rel="stylesheet"
+          href="my-products.css">
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard-container">
+
+
+    <!-- ==================================================
+         SIDEBAR
+    =================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="brand-section">
+
+            <div class="brand-logo">
+
+                <span class="plant-icon">🌱</span>
+
+            </div>
+
+            <h1>Krishi Market</h1>
+
+        </div>
+
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+
+
+            <a href="farmer.html"
+               class="nav-item">
+
+                <i class="fas fa-home"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+
+            <a href="add-products.html"
+               class="nav-item">
+
+                <i class="fas fa-plus-circle"></i>
+
+                <span>Add Product</span>
+
+            </a>
+
+
+
+            <a href="my-products.html"
+               class="nav-item active">
+
+                <i class="fas fa-box"></i>
+
+                <span>My Products</span>
+
+            </a>
+
+
+
+            <a href="inventory.html"
+               class="nav-item">
+
+                <i class="fas fa-warehouse"></i>
+
+                <span>Inventory</span>
+
+            </a>
+
+
+
+            <a href="orders.html"
+               class="nav-item">
+
+                <i class="fas fa-shopping-cart"></i>
+
+                <span>Orders</span>
+
+            </a>
+
+
+
+            <a href="profile.html"
+               class="nav-item">
+
+                <i class="fas fa-user"></i>
+
+                <span>Profile</span>
+
+            </a>
+
+
+
+            <a href="logout.html"
+               class="nav-item logout-link">
+
+                <i class="fas fa-sign-out-alt"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+
+        </nav>
+
+
+    </aside>
+
+
+
+    <!-- ==================================================
+         MAIN CONTENT
+    =================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ==================================================
+             PAGE HEADER
+        =================================================== -->
+
+        <header class="page-header">
+
+
+            <div class="header-left">
+
+
+                <a href="farmer.html"
+                   class="back-button">
+
+                    <i class="fas fa-arrow-left"></i>
+
+                </a>
+
+
+                <div>
+
+                    <h1>My Products</h1>
+
+                    <p>
+                        Manage and monitor your farm products
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- PROFILE -->
+
+            <div class="profile-area">
+
+
+                <div class="profile-avatar">
+
+                    FA
+
+                </div>
+
+
+                <div class="profile-name">
+
+                    <span>Farmer</span>
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- ==================================================
+             STATISTICS
+        =================================================== -->
+
+        <section class="product-statistics">
+
+
+            <!-- TOTAL PRODUCTS -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-icon products-icon">
+
+                    <i class="fas fa-box"></i>
+
+                </div>
+
+
+                <div class="stat-info">
+
+                    <h3 id="totalProducts">
+                        12
+                    </h3>
+
+                    <p>Total Products</p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ACTIVE PRODUCTS -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-icon active-icon">
+
+                    <i class="fas fa-circle-check"></i>
+
+                </div>
+
+
+                <div class="stat-info">
+
+                    <h3 id="activeProducts">
+                        10
+                    </h3>
+
+                    <p>Active Products</p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- LOW STOCK -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-icon low-stock-icon">
+
+                    <i class="fas fa-triangle-exclamation"></i>
+
+                </div>
+
+
+                <div class="stat-info">
+
+                    <h3 id="lowStockProducts">
+                        2
+                    </h3>
+
+                    <p>Low Stock</p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- OUT OF STOCK -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-icon out-stock-icon">
+
+                    <i class="fas fa-circle-xmark"></i>
+
+                </div>
+
+
+                <div class="stat-info">
+
+                    <h3 id="outOfStockProducts">
+                        0
+                    </h3>
+
+                    <p>Out of Stock</p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+             PRODUCT TOOLBAR
+        =================================================== -->
+
+        <section class="products-section">
+
+
+            <div class="products-header">
+
+
+                <div>
+
+                    <h2>All Products</h2>
+
+                    <p>
+                        View and manage products listed by you
+                    </p>
+
+                </div>
+
+
+
+                <a href="add-products.html"
+                   class="add-product-button">
+
+                    <i class="fas fa-plus"></i>
+
+                    Add Product
+
+                </a>
+
+
+            </div>
+
+
+
+            <!-- SEARCH & FILTER -->
+
+            <div class="product-toolbar">
+
+
+                <!-- SEARCH -->
+
+                <div class="search-box">
+
+                    <i class="fas fa-search"></i>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search products..."
+                    >
+
+                </div>
+
+
+
+                <!-- CATEGORY -->
+
+                <div class="filter-box">
+
+                    <i class="fas fa-filter"></i>
+
+                    <select id="categoryFilter">
+
+                        <option value="all">
+                            All Categories
+                        </option>
+
+                        <option value="vegetables">
+                            Vegetables
+                        </option>
+
+                        <option value="fruits">
+                            Fruits
+                        </option>
+
+                        <option value="grains">
+                            Grains
+                        </option>
+
+                        <option value="pulses">
+                            Pulses
+                        </option>
+
+                        <option value="spices">
+                            Spices
+                        </option>
+
+                        <option value="dairy">
+                            Dairy
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- STATUS -->
+
+                <div class="filter-box">
+
+                    <i class="fas fa-chart-simple"></i>
+
+                    <select id="statusFilter">
+
+                        <option value="all">
+                            All Status
+                        </option>
+
+                        <option value="active">
+                            Active
+                        </option>
+
+                        <option value="low">
+                            Low Stock
+                        </option>
+
+                        <option value="out">
+                            Out of Stock
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 PRODUCT GRID
+            =================================================== -->
+
+            <div class="products-grid"
+                 id="productsGrid">
+
+
+
+                <!-- ==========================================
+                     PRODUCT 1
+                =========================================== -->
+
+                <div class="product-card"
+                     data-name="Organic Tomatoes"
+                     data-category="vegetables"
+                     data-status="active">
+
+
+                    <div class="product-image-container">
+
+
+                        <img
+                            src="https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=800&q=80"
+                            alt="Organic Tomatoes"
+                        >
+
+
+                        <span class="organic-badge">
+
+                            <i class="fas fa-leaf"></i>
+
+                            Organic
+
+                        </span>
+
+
+                        <span class="stock-badge in-stock">
+
+                            In Stock
+
+                        </span>
+
+
+                    </div>
+
+
+
+                    <div class="product-content">
+
+
+                        <div class="product-category">
+
+                            Vegetables
+
+                        </div>
+
+
+                        <h3>
+                            Organic Tomatoes
+                        </h3>
+
+
+                        <p class="product-description">
+
+                            Fresh farm-grown organic tomatoes
+                            harvested with care.
+
+                        </p>
+
+
+
+                        <div class="product-details">
+
+
+                            <div>
+
+                                <span class="detail-label">
+                                    Price
+                                </span>
+
+                                <strong>
+                                    ₹50/kg
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span class="detail-label">
+                                    Stock
+                                </span>
+
+                                <strong>
+                                    120 kg
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="product-actions">
+
+
+                            <button
+                                class="edit-button"
+                                onclick="editProduct('Organic Tomatoes')"
+                            >
+
+                                <i class="fas fa-pen"></i>
+
+                                Edit
+
+                            </button>
+
+
+                            <button
+                                class="delete-button"
+                                onclick="deleteProduct(this, 'Organic Tomatoes')"
+                            >
+
+                                <i class="fas fa-trash"></i>
+
+                                Delete
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ==========================================
+                     PRODUCT 2
+                =========================================== -->
+
+                <div class="product-card"
+                     data-name="Fresh Mangoes"
+                     data-category="fruits"
+                     data-status="active">
+
+
+                    <div class="product-image-container">
+
+
+                        <img
+                            src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=800&q=80"
+                            alt="Fresh Mangoes"
+                        >
+
+
+                        <span class="organic-badge">
+
+                            <i class="fas fa-leaf"></i>
+
+                            Organic
+
+                        </span>
+
+
+                        <span class="stock-badge in-stock">
+
+                            In Stock
+
+                        </span>
+
+
+                    </div>
+
+
+
+                    <div class="product-content">
+
+
+                        <div class="product-category">
+
+                            Fruits
+
+                        </div>
+
+
+                        <h3>
+                            Fresh Mangoes
+                        </h3>
+
+
+                        <p class="product-description">
+
+                            Sweet and naturally ripened
+                            farm-fresh mangoes.
+
+                        </p>
+
+
+
+                        <div class="product-details">
+
+
+                            <div>
+
+                                <span class="detail-label">
+                                    Price
+                                </span>
+
+                                <strong>
+                                    ₹120/kg
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span class="detail-label">
+                                    Stock
+                                </span>
+
+                                <strong>
+                                    85 kg
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="product-actions">
+
+
+                            <button
+                                class="edit-button"
+                                onclick="editProduct('Fresh Mangoes')"
+                            >
+
+                                <i class="fas fa-pen"></i>
+
+                                Edit
+
+                            </button>
+
+
+                            <button
+                                class="delete-button"
+                                onclick="deleteProduct(this, 'Fresh Mangoes')"
+                            >
+
+                                <i class="fas fa-trash"></i>
+
+                                Delete
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ==========================================
+                     PRODUCT 3
+                =========================================== -->
+
+                <div class="product-card"
+                     data-name="Fresh Spinach"
+                     data-category="vegetables"
+                     data-status="active">
+
+
+                    <div class="product-image-container">
+
+
+                        <img
+                            src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=800&q=80"
+                            alt="Fresh Spinach"
+                        >
+
+
+                        <span class="organic-badge">
+
+                            <i class="fas fa-leaf"></i>
+
+                            Organic
+
+                        </span>
+
+
+                        <span class="stock-badge in-stock">
+
+                            In Stock
+
+                        </span>
+
+
+                    </div>
+
+
+
+                    <div class="product-content">
+
+
+                        <div class="product-category">
+
+                            Vegetables
+
+                        </div>
+
+
+                        <h3>
+                            Fresh Spinach
+                        </h3>
+
+
+                        <p class="product-description">
+
+                            Fresh green spinach harvested
+                            directly from the farm.
+
+                        </p>
+
+
+
+                        <div class="product-details">
+
+
+                            <div>
+
+                                <span class="detail-label">
+                                    Price
+                                </span>
+
+                                <strong>
+                                    ₹40/kg
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span class="detail-label">
+                                    Stock
+                                </span>
+
+                                <strong>
+                                    65 kg
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="product-actions">
+
+
+                            <button
+                                class="edit-button"
+                                onclick="editProduct('Fresh Spinach')"
+                            >
+
+                                <i class="fas fa-pen"></i>
+
+                                Edit
+
+                            </button>
+
+
+                            <button
+                                class="delete-button"
+                                onclick="deleteProduct(this, 'Fresh Spinach')"
+                            >
+
+                                <i class="fas fa-trash"></i>
+
+                                Delete
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ==========================================
+                     PRODUCT 4
+                =========================================== -->
+
+                <div class="product-card"
+                     data-name="Organic Carrots"
+                     data-category="vegetables"
+                     data-status="low">
+
+
+                    <div class="product-image-container">
+
+
+                        <img
+                            src="https://images.unsplash.com/photo-1445282768818-728615cc910a?auto=format&fit=crop&w=800&q=80"
+                            alt="Organic Carrots"
+                        >
+
+
+                        <span class="organic-badge">
+
+                            <i class="fas fa-leaf"></i>
+
+                            Organic
+
+                        </span>
+
+
+                        <span class="stock-badge low-stock">
+
+                            Low Stock
+
+                        </span>
+
+
+                    </div>
+
+
+
+                    <div class="product-content">
+
+
+                        <div class="product-category">
+
+                            Vegetables
+
+                        </div>
+
+
+                        <h3>
+                            Organic Carrots
+                        </h3>
+
+
+                        <p class="product-description">
+
+                            Crunchy and nutritious organic
+                            carrots from our farm.
+
+                        </p>
+
+
+
+                        <div class="product-details">
+
+
+                            <div>
+
+                                <span class="detail-label">
+                                    Price
+                                </span>
+
+                                <strong>
+                                    ₹60/kg
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span class="detail-label">
+                                    Stock
+                                </span>
+
+                                <strong class="low-stock-text">
+                                    8 kg
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="product-actions">
+
+
+                            <button
+                                class="edit-button"
+                                onclick="editProduct('Organic Carrots')"
+                            >
+
+                                <i class="fas fa-pen"></i>
+
+                                Edit
+
+                            </button>
+
+
+                            <button
+                                class="delete-button"
+                                onclick="deleteProduct(this, 'Organic Carrots')"
+                            >
+
+                                <i class="fas fa-trash"></i>
+
+                                Delete
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ==========================================
+                     PRODUCT 5
+                =========================================== -->
+
+                <div class="product-card"
+                     data-name="Basmati Rice"
+                     data-category="grains"
+                     data-status="active">
+
+
+                    <div class="product-image-container">
+
+
+                        <img
+                            src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80"
+                            alt="Basmati Rice"
+                        >
+
+
+                        <span class="stock-badge in-stock">
+
+                            In Stock
+
+                        </span>
+
+
+                    </div>
+
+
+
+                    <div class="product-content">
+
+
+                        <div class="product-category">
+
+                            Grains
+
+                        </div>
+
+
+                        <h3>
+                            Basmati Rice
+                        </h3>
+
+
+                        <p class="product-description">
+
+                            Premium quality naturally grown
+                            basmati rice.
+
+                        </p>
+
+
+
+                        <div class="product-details">
+
+
+                            <div>
+
+                                <span class="detail-label">
+                                    Price
+                                </span>
+
+                                <strong>
+                                    ₹90/kg
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span class="detail-label">
+                                    Stock
+                                </span>
+
+                                <strong>
+                                    250 kg
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="product-actions">
+
+
+                            <button
+                                class="edit-button"
+                                onclick="editProduct('Basmati Rice')"
+                            >
+
+                                <i class="fas fa-pen"></i>
+
+                                Edit
+
+                            </button>
+
+
+                            <button
+                                class="delete-button"
+                                onclick="deleteProduct(this, 'Basmati Rice')"
+                            >
+
+                                <i class="fas fa-trash"></i>
+
+                                Delete
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ==========================================
+                     PRODUCT 6
+                =========================================== -->
+
+                <div class="product-card"
+                     data-name="Fresh Bananas"
+                     data-category="fruits"
+                     data-status="low">
+
+
+                    <div class="product-image-container">
+
+
+                        <img
+                            src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=800&q=80"
+                            alt="Fresh Bananas"
+                        >
+
+
+                        <span class="stock-badge low-stock">
+
+                            Low Stock
+
+                        </span>
+
+
+                    </div>
+
+
+
+                    <div class="product-content">
+
+
+                        <div class="product-category">
+
+                            Fruits
+
+                        </div>
+
+
+                        <h3>
+                            Fresh Bananas
+                        </h3>
+
+
+                        <p class="product-description">
+
+                            Naturally ripened fresh bananas
+                            from our local farm.
+
+                        </p>
+
+
+
+                        <div class="product-details">
+
+
+                            <div>
+
+                                <span class="detail-label">
+                                    Price
+                                </span>
+
+                                <strong>
+                                    ₹45/kg
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span class="detail-label">
+                                    Stock
+                                </span>
+
+                                <strong class="low-stock-text">
+                                    12 kg
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="product-actions">
+
+
+                            <button
+                                class="edit-button"
+                                onclick="editProduct('Fresh Bananas')"
+                            >
+
+                                <i class="fas fa-pen"></i>
+
+                                Edit
+
+                            </button>
+
+
+                            <button
+                                class="delete-button"
+                                onclick="deleteProduct(this, 'Fresh Bananas')"
+                            >
+
+                                <i class="fas fa-trash"></i>
+
+                                Delete
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 NO RESULTS
+            =================================================== -->
+
+            <div class="no-products"
+                 id="noProducts"
+                 style="display: none;">
+
+                <div class="no-products-icon">
+
+                    <i class="fas fa-box-open"></i>
+
+                </div>
+
+                <h3>
+                    No Products Found
+                </h3>
+
+                <p>
+                    Try changing your search or filter.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+=================================================== -->
+
+<script>
+
+
+/* ==================================================
+   SEARCH PRODUCTS
+================================================== */
+
+const searchInput =
+    document.getElementById("searchInput");
+
+
+const categoryFilter =
+    document.getElementById("categoryFilter");
+
+
+const statusFilter =
+    document.getElementById("statusFilter");
+
+
+const productCards =
+    document.querySelectorAll(".product-card");
+
+
+const noProducts =
+    document.getElementById("noProducts");
+
+
+
+function filterProducts() {
+
+
+    const searchValue =
+        searchInput.value
+        .toLowerCase()
+        .trim();
+
+
+    const categoryValue =
+        categoryFilter.value;
+
+
+    const statusValue =
+        statusFilter.value;
+
+
+    let visibleProducts = 0;
+
+
+
+    productCards.forEach(card => {
+
+
+        const productName =
+            card.dataset.name.toLowerCase();
+
+
+        const productCategory =
+            card.dataset.category;
+
+
+        const productStatus =
+            card.dataset.status;
+
+
+
+        const matchesSearch =
+            productName.includes(searchValue);
+
+
+        const matchesCategory =
+            categoryValue === "all" ||
+            productCategory === categoryValue;
+
+
+        const matchesStatus =
+            statusValue === "all" ||
+            productStatus === statusValue;
+
+
+
+        if (
+            matchesSearch &&
+            matchesCategory &&
+            matchesStatus
+        ) {
+
+            card.style.display = "flex";
+
+            visibleProducts++;
+
+        }
+
+        else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+
+
+    if (visibleProducts === 0) {
+
+        noProducts.style.display = "flex";
+
+    }
+
+    else {
+
+        noProducts.style.display = "none";
+
+    }
+
+}
+
+
+
+searchInput.addEventListener(
+    "input",
+    filterProducts
+);
+
+
+categoryFilter.addEventListener(
+    "change",
+    filterProducts
+);
+
+
+statusFilter.addEventListener(
+    "change",
+    filterProducts
+);
+
+
+
+/* ==================================================
+   EDIT PRODUCT
+================================================== */
+
+function editProduct(productName) {
+
+
+    /*
+       Later you can create:
+       edit-product.html
+
+       and pass the product ID through URL.
+    */
+
+
+    alert(
+        "Edit product: " +
+        productName
+    );
+
+}
+
+
+
+/* ==================================================
+   DELETE PRODUCT
+================================================== */
+
+function deleteProduct(button, productName) {
+
+
+    const confirmation =
+        confirm(
+            "Are you sure you want to delete " +
+            productName +
+            "?"
+        );
+
+
+    if (!confirmation) {
+
+        return;
+
+    }
+
+
+    const productCard =
+        button.closest(".product-card");
+
+
+    productCard.remove();
+
+
+
+    updateProductStatistics();
+
+
+
+    filterProducts();
+
+
+
+    alert(
+        productName +
+        " has been deleted."
+    );
+
+}
+
+
+
+/* ==================================================
+   UPDATE STATISTICS
+================================================== */
+
+function updateProductStatistics() {
+
+
+    const remainingCards =
+        document.querySelectorAll(
+            ".product-card"
+        );
+
+
+    let total = remainingCards.length;
+
+    let active = 0;
+
+    let low = 0;
+
+    let out = 0;
+
+
+
+    remainingCards.forEach(card => {
+
+
+        const status =
+            card.dataset.status;
+
+
+        if (status === "active") {
+
+            active++;
+
+        }
+
+
+        if (status === "low") {
+
+            low++;
+
+        }
+
+
+        if (status === "out") {
+
+            out++;
+
+        }
+
+    });
+
+
+
+    document.getElementById(
+        "totalProducts"
+    ).textContent = total;
+
+
+    document.getElementById(
+        "activeProducts"
+    ).textContent = active;
+
+
+    document.getElementById(
+        "lowStockProducts"
+    ).textContent = low;
+
+
+    document.getElementById(
+        "outOfStockProducts"
+    ).textContent = out;
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

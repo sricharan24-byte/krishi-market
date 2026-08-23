@@ -1,0 +1,117 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+
+    background:linear-gradient(135deg,#2E8B57,#4CAF50);
+
+}
+
+.logout-container{
+
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.logout-card{
+
+    width:420px;
+    background:#fff;
+    padding:40px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+}
+
+.icon{
+
+    font-size:70px;
+
+    margin-bottom:20px;
+
+}
+
+.logout-card h1{
+
+    color:#2E8B57;
+
+    margin-bottom:15px;
+
+}
+
+.logout-card p{
+
+    color:#666;
+
+    margin:10px 0;
+
+}
+
+.loader{
+
+    width:45px;
+    height:45px;
+
+    border:5px solid #ddd;
+
+    border-top:5px solid #2E8B57;
+
+    border-radius:50%;
+
+    margin:25px auto;
+
+    animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+    100%{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+.login-btn{
+
+    display:inline-block;
+
+    margin-top:15px;
+
+    padding:12px 25px;
+
+    background:#2E8B57;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    border-radius:8px;
+
+    transition:.3s;
+
+}
+
+.login-btn:hover{
+
+    background:#1f6b43;
+
+}

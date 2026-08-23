@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Krishi Market Customer Dashboard">
+
+    <title>Customer Dashboard | Krishi Market</title>
+
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- Customer CSS -->
+
+    <link rel="stylesheet"
+          href="customer.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     DASHBOARD CONTAINER
+===================================================== -->
+
+<div class="dashboard-container">
+
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="brand-section">
+
+            <div class="brand-logo">
+                🌱
+            </div>
+
+            <h2>
+                Krishi Market
+            </h2>
+
+            <p>
+                Customer Panel
+            </p>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+
+
+            <!-- Dashboard -->
+
+            <a href="customer.html"
+               class="nav-item active">
+
+                <i class="fas fa-home"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <!-- Products -->
+
+            <a href="products.html"
+               class="nav-item">
+
+                <i class="fas fa-store"></i>
+
+                <span>
+                    Browse Products
+                </span>
+
+            </a>
+
+
+            <!-- Cart -->
+
+            <a href="cart.html"
+               class="nav-item">
+
+                <i class="fas fa-shopping-cart"></i>
+
+                <span>
+                    My Cart
+                </span>
+
+                <span class="nav-badge">
+                    3
+                </span>
+
+            </a>
+
+
+            <!-- Orders -->
+
+            <a href="orders.html"
+               class="nav-item">
+
+                <i class="fas fa-box"></i>
+
+                <span>
+                    My Orders
+                </span>
+
+            </a>
+
+
+            <!-- Wishlist -->
+
+            <a href="wishlist.html"
+               class="nav-item">
+
+                <i class="fas fa-heart"></i>
+
+                <span>
+                    Wishlist
+                </span>
+
+            </a>
+
+
+            <!-- Profile -->
+
+            <a href="profile.html"
+               class="nav-item">
+
+                <i class="fas fa-user-circle"></i>
+
+                <span>
+                    My Profile
+                </span>
+
+            </a>
+
+
+            <!-- Logout -->
+
+            <a href="logout.html"
+               class="nav-item logout">
+
+                <i class="fas fa-sign-out-alt"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOP HEADER
+        ================================================== -->
+
+        <header class="page-header">
+
+
+            <div class="header-left">
+
+                <h1>
+                    Customer Dashboard
+                </h1>
+
+                <p>
+                    Welcome back! Discover fresh products directly from farmers.
+                </p>
+
+            </div>
+
+
+            <div class="header-right">
+
+
+                <!-- SEARCH -->
+
+                <div class="header-search">
+
+                    <i class="fas fa-search"></i>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search products...">
+
+                </div>
+
+
+                <!-- NOTIFICATION -->
+
+                <button
+                    class="notification-btn"
+                    onclick="showNotifications()">
+
+                    <i class="fas fa-bell"></i>
+
+                    <span class="notification-count">
+                        3
+                    </span>
+
+                </button>
+
+
+                <!-- USER -->
+
+                <div class="header-user">
+
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+
+                    <div class="user-info">
+
+                        <strong>
+                            Customer
+                        </strong>
+
+                        <span>
+                            Customer Account
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             WELCOME BANNER
+        ================================================== -->
+
+        <section class="welcome-banner">
+
+
+            <div class="welcome-content">
+
+                <span class="welcome-label">
+                    🌾 Welcome to Krishi Market
+                </span>
+
+                <h2>
+                    Fresh From Farmers,
+                    <br>
+                    Directly To You!
+                </h2>
+
+                <p>
+                    Buy fresh, locally grown and quality agricultural
+                    products directly from trusted farmers.
+                </p>
+
+                <a href="products.html"
+                   class="shop-btn">
+
+                    <i class="fas fa-shopping-bag"></i>
+
+                    Shop Now
+
+                </a>
+
+            </div>
+
+
+            <div class="welcome-illustration">
+
+                <div class="illustration-circle">
+
+                    🌱
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <section class="stats-grid">
+
+
+            <!-- Orders -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon orders-icon">
+
+                    <i class="fas fa-box"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <h3>
+                        12
+                    </h3>
+
+                    <p>
+                        Total Orders
+                    </p>
+
+                    <span class="stat-positive">
+                        <i class="fas fa-arrow-up"></i>
+                        8% this month
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Cart -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon cart-icon">
+
+                    <i class="fas fa-shopping-cart"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <h3>
+                        3
+                    </h3>
+
+                    <p>
+                        Items in Cart
+                    </p>
+
+                    <span class="stat-info-text">
+                        Ready to checkout
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Wishlist -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon wishlist-icon">
+
+                    <i class="fas fa-heart"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <h3>
+                        8
+                    </h3>
+
+                    <p>
+                        Wishlist Items
+                    </p>
+
+                    <span class="stat-info-text">
+                        Saved products
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Savings -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon savings-icon">
+
+                    <i class="fas fa-wallet"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <h3>
+                        ₹4,250
+                    </h3>
+
+                    <p>
+                        Total Savings
+                    </p>
+
+                    <span class="stat-positive">
+                        <i class="fas fa-arrow-up"></i>
+                        Great savings
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             QUICK ACTIONS
+        ================================================== -->
+
+        <section class="section-container">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        Quick Actions
+                    </h2>
+
+                    <p>
+                        Manage your shopping easily
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+
+                <a href="products.html"
+                   class="quick-action">
+
+                    <div class="quick-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Browse Products
+                        </h3>
+
+                        <p>
+                            Explore fresh produce
+                        </p>
+
+                    </div>
+
+                    <i class="fas fa-chevron-right arrow"></i>
+
+                </a>
+
+
+                <a href="cart.html"
+                   class="quick-action">
+
+                    <div class="quick-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            View Cart
+                        </h3>
+
+                        <p>
+                            3 items waiting
+                        </p>
+
+                    </div>
+
+                    <i class="fas fa-chevron-right arrow"></i>
+
+                </a>
+
+
+                <a href="myorders.html"
+                   class="quick-action">
+
+                    <div class="quick-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Track Orders
+                        </h3>
+
+                        <p>
+                            Check your deliveries
+                        </p>
+
+                    </div>
+
+                    <i class="fas fa-chevron-right arrow"></i>
+
+                </a>
+
+
+                <a href="wishlist.html"
+                   class="quick-action">
+
+                    <div class="quick-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Wishlist
+                        </h3>
+
+                        <p>
+                            Your saved products
+                        </p>
+
+                    </div>
+
+                    <i class="fas fa-chevron-right arrow"></i>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MAIN DASHBOARD GRID
+        ================================================== -->
+
+        <div class="dashboard-grid">
+
+
+            <!-- =================================================
+                 RECENT ORDERS
+            ================================================== -->
+
+            <section class="dashboard-card">
+
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            Recent Orders
+                        </h2>
+
+                        <p>
+                            Your latest purchases
+                        </p>
+
+                    </div>
+
+                    <a href="myorders.html"
+                       class="view-all">
+
+                        View All
+
+                        <i class="fas fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+
+                <div class="orders-list">
+
+
+                    <!-- ORDER 1 -->
+
+                    <div class="order-item">
+
+                        <div class="order-product-icon">
+
+                            <i class="fas fa-carrot"></i>
+
+                        </div>
+
+                        <div class="order-details">
+
+                            <h4>
+                                Fresh Organic Carrots
+                            </h4>
+
+                            <p>
+                                Order #KM10245
+                            </p>
+
+                        </div>
+
+                        <div class="order-price">
+
+                            <strong>
+                                ₹240
+                            </strong>
+
+                            <span class="status delivered">
+                                Delivered
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ORDER 2 -->
+
+                    <div class="order-item">
+
+                        <div class="order-product-icon">
+
+                            <i class="fas fa-apple-alt"></i>
+
+                        </div>
+
+                        <div class="order-details">
+
+                            <h4>
+                                Fresh Red Apples
+                            </h4>
+
+                            <p>
+                                Order #KM10239
+                            </p>
+
+                        </div>
+
+                        <div class="order-price">
+
+                            <strong>
+                                ₹480
+                            </strong>
+
+                            <span class="status shipped">
+                                Shipped
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ORDER 3 -->
+
+                    <div class="order-item">
+
+                        <div class="order-product-icon">
+
+                            <i class="fas fa-seedling"></i>
+
+                        </div>
+
+                        <div class="order-details">
+
+                            <h4>
+                                Organic Tomatoes
+                            </h4>
+
+                            <p>
+                                Order #KM10231
+                            </p>
+
+                        </div>
+
+                        <div class="order-price">
+
+                            <strong>
+                                ₹180
+                            </strong>
+
+                            <span class="status processing">
+                                Processing
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ACCOUNT SUMMARY
+            ================================================== -->
+
+            <section class="dashboard-card account-card">
+
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            My Account
+                        </h2>
+
+                        <p>
+                            Account overview
+                        </p>
+
+                    </div>
+
+                    <i class="fas fa-user-circle account-title-icon"></i>
+
+                </div>
+
+
+                <div class="account-profile">
+
+                    <div class="large-avatar">
+
+                        <i class="fas fa-user"></i>
+
+                    </div>
+
+                    <h3>
+                        Welcome, Customer!
+                    </h3>
+
+                    <p>
+                        customer@example.com
+                    </p>
+
+                </div>
+
+
+                <div class="account-info">
+
+
+                    <div class="account-info-row">
+
+                        <span>
+                            <i class="fas fa-shopping-bag"></i>
+                            Total Purchases
+                        </span>
+
+                        <strong>
+                            ₹12,850
+                        </strong>
+
+                    </div>
+
+
+                    <div class="account-info-row">
+
+                        <span>
+                            <i class="fas fa-box"></i>
+                            Orders
+                        </span>
+
+                        <strong>
+                            12
+                        </strong>
+
+                    </div>
+
+
+                    <div class="account-info-row">
+
+                        <span>
+                            <i class="fas fa-heart"></i>
+                            Wishlist
+                        </span>
+
+                        <strong>
+                            8
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <a href="profile.html"
+                   class="profile-btn">
+
+                    <i class="fas fa-user-edit"></i>
+
+                    Manage Profile
+
+                </a>
+
+
+            </section>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             RECOMMENDED PRODUCTS
+        ================================================== -->
+
+        <section class="section-container recommended-section">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        Recommended For You
+                    </h2>
+
+                    <p>
+                        Fresh products selected for you
+                    </p>
+
+                </div>
+
+                <a href="products.html"
+                   class="view-all">
+
+                    View All
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="products-grid">
+
+
+                <!-- PRODUCT 1 -->
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <span class="organic-tag">
+                            Organic
+                        </span>
+
+                        <button
+                            class="heart-btn"
+                            onclick="toggleWishlist(this)">
+
+                            <i class="far fa-heart"></i>
+
+                        </button>
+
+                        <div class="product-emoji">
+                            🍅
+                        </div>
+
+                    </div>
+
+                    <div class="product-content">
+
+                        <span class="product-category">
+                            Vegetables
+                        </span>
+
+                        <h3>
+                            Fresh Organic Tomatoes
+                        </h3>
+
+                        <p class="farmer-name">
+
+                            <i class="fas fa-user"></i>
+
+                            Green Valley Farm
+
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <div>
+
+                                <strong>
+                                    ₹60
+                                </strong>
+
+                                <span>
+                                    / kg
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Fresh Organic Tomatoes')">
+
+                                <i class="fas fa-cart-plus"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 2 -->
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <span class="organic-tag">
+                            Organic
+                        </span>
+
+                        <button
+                            class="heart-btn"
+                            onclick="toggleWishlist(this)">
+
+                            <i class="far fa-heart"></i>
+
+                        </button>
+
+                        <div class="product-emoji">
+                            🥭
+                        </div>
+
+                    </div>
+
+                    <div class="product-content">
+
+                        <span class="product-category">
+                            Fruits
+                        </span>
+
+                        <h3>
+                            Fresh Alphonso Mangoes
+                        </h3>
+
+                        <p class="farmer-name">
+
+                            <i class="fas fa-user"></i>
+
+                            Sunshine Farm
+
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <div>
+
+                                <strong>
+                                    ₹180
+                                </strong>
+
+                                <span>
+                                    / kg
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Fresh Alphonso Mangoes')">
+
+                                <i class="fas fa-cart-plus"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 3 -->
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <span class="organic-tag">
+                            Organic
+                        </span>
+
+                        <button
+                            class="heart-btn"
+                            onclick="toggleWishlist(this)">
+
+                            <i class="far fa-heart"></i>
+
+                        </button>
+
+                        <div class="product-emoji">
+                            🥕
+                        </div>
+
+                    </div>
+
+                    <div class="product-content">
+
+                        <span class="product-category">
+                            Vegetables
+                        </span>
+
+                        <h3>
+                            Organic Carrots
+                        </h3>
+
+                        <p class="farmer-name">
+
+                            <i class="fas fa-user"></i>
+
+                            Nature Fresh Farm
+
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <div>
+
+                                <strong>
+                                    ₹80
+                                </strong>
+
+                                <span>
+                                    / kg
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Organic Carrots')">
+
+                                <i class="fas fa-cart-plus"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 4 -->
+
+                <div class="product-card">
+
+                    <div class="product-image">
+
+                        <span class="organic-tag">
+                            Fresh
+                        </span>
+
+                        <button
+                            class="heart-btn"
+                            onclick="toggleWishlist(this)">
+
+                            <i class="far fa-heart"></i>
+
+                        </button>
+
+                        <div class="product-emoji">
+                            🌾
+                        </div>
+
+                    </div>
+
+                    <div class="product-content">
+
+                        <span class="product-category">
+                            Grains
+                        </span>
+
+                        <h3>
+                            Premium Organic Rice
+                        </h3>
+
+                        <p class="farmer-name">
+
+                            <i class="fas fa-user"></i>
+
+                            Krishna Farms
+
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <div>
+
+                                <strong>
+                                    ₹120
+                                </strong>
+
+                                <span>
+                                    / kg
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="add-cart-btn"
+                                onclick="addToCart('Premium Organic Rice')">
+
+                                <i class="fas fa-cart-plus"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="dashboard-footer">
+
+            <p>
+                © 2026 Krishi Market. Connecting Farmers Directly With Consumers.
+            </p>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+const searchInput =
+    document.getElementById("searchInput");
+
+if(searchInput){
+
+    searchInput.addEventListener(
+        "keyup",
+        function(){
+
+            const searchValue =
+                this.value.toLowerCase();
+
+            const products =
+                document.querySelectorAll(
+                    ".product-card"
+                );
+
+            products.forEach(
+                function(product){
+
+                    const productName =
+                        product
+                        .querySelector("h3")
+                        .textContent
+                        .toLowerCase();
+
+                    if(
+                        productName.includes(searchValue)
+                    ){
+
+                        product.style.display =
+                            "block";
+
+                    }
+                    else{
+
+                        product.style.display =
+                            "none";
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   WISHLIST
+===================================================== */
+
+function toggleWishlist(button){
+
+    const icon =
+        button.querySelector("i");
+
+    if(
+        icon.classList.contains("far")
+    ){
+
+        icon.classList.remove("far");
+
+        icon.classList.add("fas");
+
+        button.classList.add("liked");
+
+        alert("Product added to wishlist!");
+
+    }
+    else{
+
+        icon.classList.remove("fas");
+
+        icon.classList.add("far");
+
+        button.classList.remove("liked");
+
+        alert("Product removed from wishlist!");
+
+    }
+
+}
+
+
+
+/* =====================================================
+   ADD TO CART
+===================================================== */
+
+function addToCart(productName){
+
+    alert(
+        productName +
+        " has been added to your cart!"
+    );
+
+}
+
+
+
+/* =====================================================
+   NOTIFICATIONS
+===================================================== */
+
+function showNotifications(){
+
+    alert(
+        "You have 3 new notifications."
+    );
+
+}
+
+
+
+/* =====================================================
+   PROTECT DASHBOARD
+===================================================== */
+
+/*
+   If you store your login token in localStorage,
+   you can uncomment the code below.
+
+   Example:
+
+   const token = localStorage.getItem("token");
+
+   if(!token){
+       window.location.replace("../login.html");
+   }
+*/
+
+
+</script>
+
+
+</body>
+
+</html>

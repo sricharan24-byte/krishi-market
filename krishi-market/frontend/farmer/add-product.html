@@ -1,44 +1,1043 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Product - Krishi Market</title>
-  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/farmer.css"><link rel="stylesheet" href="../css/responsive.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Product | Krishi Market</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Add Product CSS -->
+    <link rel="stylesheet" href="add-products.css">
 </head>
+
 <body>
-  <header><nav class="navbar"><div class="container">
-    <a href="../index.html" class="logo"><i class="fas fa-leaf"></i><span>Krishi Market</span></a>
-    <div class="nav-links">
-      <a href="../index.html">Home</a><a href="dashboard.html">Dashboard</a><a href="products.html">My Products</a>
-      <a href="add-product.html" class="active">Add Product</a><a href="orders.html">Orders</a><a href="profile.html">Profile</a>
-      <a href="#" onclick="auth.logout()">Logout</a>
-    </div>
-    <div class="hamburger"><span></span><span></span><span></span></div>
-  </div></nav></header>
-  <section class="farmer-dashboard">
-    <div class="container">
-      <div class="product-form">
-        <h2>Add New Product</h2>
-        <form id="addProductForm" enctype="multipart/form-data">
-          <div class="form-group"><label>Product Name</label><input type="text" id="productName" required></div>
-          <div class="form-group"><label>Description</label><textarea id="productDescription" rows="4" required></textarea></div>
-          <div class="form-row-3">
-            <div class="form-group"><label>Category</label><select id="productCategory"><option value="vegetables">Vegetables</option><option value="fruits">Fruits</option><option value="grains">Grains</option><option value="dairy">Dairy</option><option value="poultry">Poultry</option><option value="seeds">Seeds</option><option value="fertilizers">Fertilizers</option><option value="equipment">Equipment</option><option value="other">Other</option></select></div>
-            <div class="form-group"><label>Price (₹)</label><input type="number" id="productPrice" step="0.01" min="0" required></div>
-            <div class="form-group"><label>Unit</label><select id="productUnit"><option value="kg">Kg</option><option value="gram">Gram</option><option value="litre">Litre</option><option value="piece">Piece</option><option value="dozen">Dozen</option><option value="bag">Bag</option><option value="quintal">Quintal</option><option value="ton">Ton</option></select></div>
-          </div>
-          <div class="form-row-3">
-            <div class="form-group"><label>Quantity</label><input type="number" id="productQuantity" min="0" required></div>
-            <div class="form-group"><label>Product Images</label><input type="file" id="productImages" multiple accept="image/*"></div>
-            <div class="checkbox-group"><label><input type="checkbox" id="productOrganic"> Organic Product</label></div>
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg">Add Product</button>
-        </form>
-      </div>
-    </div>
-  </section>
-  <script src="../js/config.js"></script><script src="../js/auth.js"></script><script src="add-product.js"></script>
+
+<div class="dashboard-container">
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand-section">
+
+            <div class="brand-logo">
+                <span class="plant-icon">🌱</span>
+            </div>
+
+            <h1>Krishi Market</h1>
+
+        </div>
+
+
+        <!-- Navigation -->
+
+        <nav class="sidebar-nav">
+
+            <a href="farmer.html" class="nav-item">
+
+                <i class="fas fa-home"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="add-products.html" class="nav-item active">
+
+                <i class="fas fa-plus-circle"></i>
+
+                <span>Add Product</span>
+
+            </a>
+
+
+            <a href="my-products.html" class="nav-item">
+
+                <i class="fas fa-box"></i>
+
+                <span>My Products</span>
+
+            </a>
+
+
+            <a href="inventory.html" class="nav-item">
+
+                <i class="fas fa-warehouse"></i>
+
+                <span>Inventory</span>
+
+            </a>
+
+
+            <a href="orders.html" class="nav-item">
+
+                <i class="fas fa-shopping-cart"></i>
+
+                <span>Orders</span>
+
+            </a>
+
+
+            <a href="profile.html" class="nav-item">
+
+                <i class="fas fa-user"></i>
+
+                <span>Profile</span>
+
+            </a>
+
+
+            <a href="logout.html" class="nav-item logout-link">
+
+                <i class="fas fa-sign-out-alt"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ======================================
+             HEADER
+        ======================================= -->
+
+        <header class="page-header">
+
+            <div class="header-left">
+
+                <a href="farmer.html" class="back-button">
+
+                    <i class="fas fa-arrow-left"></i>
+
+                </a>
+
+                <div>
+
+                    <h1>Add New Product</h1>
+
+                    <p>Add your fresh farm products to Krishi Market</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-area">
+
+                <div class="profile-avatar">
+                    FA
+                </div>
+
+                <div class="profile-name">
+                    <span>Farmer</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ======================================
+             FORM CONTAINER
+        ======================================= -->
+
+        <section class="form-section">
+
+
+            <!-- FORM -->
+
+            <form id="productForm">
+
+
+                <!-- ==================================
+                     BASIC INFORMATION
+                =================================== -->
+
+                <div class="form-card">
+
+                    <div class="card-heading">
+
+                        <div class="heading-icon">
+
+                            <i class="fas fa-leaf"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h2>Product Information</h2>
+
+                            <p>Enter the basic details of your product</p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- Product Name -->
+
+                        <div class="form-group full-width">
+
+                            <label for="productName">
+
+                                Product Name
+
+                                <span>*</span>
+
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-seedling"></i>
+
+                                <input
+                                    type="text"
+                                    id="productName"
+                                    name="productName"
+                                    placeholder="e.g. Organic Tomatoes"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Category -->
+
+                        <div class="form-group">
+
+                            <label for="category">
+
+                                Category
+
+                                <span>*</span>
+
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-list"></i>
+
+                                <select id="category" name="category" required>
+
+                                    <option value="">Select Category</option>
+
+                                    <option value="vegetables">
+                                        Vegetables
+                                    </option>
+
+                                    <option value="fruits">
+                                        Fruits
+                                    </option>
+
+                                    <option value="grains">
+                                        Grains
+                                    </option>
+
+                                    <option value="pulses">
+                                        Pulses
+                                    </option>
+
+                                    <option value="spices">
+                                        Spices
+                                    </option>
+
+                                    <option value="dairy">
+                                        Dairy Products
+                                    </option>
+
+                                    <option value="organic">
+                                        Organic Products
+                                    </option>
+
+                                    <option value="other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Product Unit -->
+
+                        <div class="form-group">
+
+                            <label for="unit">
+
+                                Selling Unit
+
+                                <span>*</span>
+
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-weight-hanging"></i>
+
+                                <select id="unit" name="unit" required>
+
+                                    <option value="">Select Unit</option>
+
+                                    <option value="kg">
+                                        Kilogram (kg)
+                                    </option>
+
+                                    <option value="gram">
+                                        Gram (g)
+                                    </option>
+
+                                    <option value="quintal">
+                                        Quintal
+                                    </option>
+
+                                    <option value="ton">
+                                        Ton
+                                    </option>
+
+                                    <option value="piece">
+                                        Piece
+                                    </option>
+
+                                    <option value="litre">
+                                        Litre
+                                    </option>
+
+                                    <option value="dozen">
+                                        Dozen
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Description -->
+
+                        <div class="form-group full-width">
+
+                            <label for="description">
+
+                                Product Description
+
+                                <span>*</span>
+
+                            </label>
+
+                            <textarea
+                                id="description"
+                                name="description"
+                                rows="5"
+                                placeholder="Describe your product, quality, farming method, freshness, etc."
+                                required
+                            ></textarea>
+
+                            <small>
+                                Give customers useful information about your product.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     PRICE & STOCK
+                =================================== -->
+
+                <div class="form-card">
+
+                    <div class="card-heading">
+
+                        <div class="heading-icon">
+
+                            <i class="fas fa-indian-rupee-sign"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h2>Price & Stock</h2>
+
+                            <p>Set your product price and available quantity</p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- Price -->
+
+                        <div class="form-group">
+
+                            <label for="price">
+
+                                Price per Unit
+
+                                <span>*</span>
+
+                            </label>
+
+                            <div class="input-wrapper price-input">
+
+                                <span class="currency">₹</span>
+
+                                <input
+                                    type="number"
+                                    id="price"
+                                    name="price"
+                                    placeholder="0.00"
+                                    min="0"
+                                    step="0.01"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Quantity -->
+
+                        <div class="form-group">
+
+                            <label for="quantity">
+
+                                Available Quantity
+
+                                <span>*</span>
+
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-boxes-stacked"></i>
+
+                                <input
+                                    type="number"
+                                    id="quantity"
+                                    name="quantity"
+                                    placeholder="Enter quantity"
+                                    min="0"
+                                    step="0.01"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Minimum Order -->
+
+                        <div class="form-group">
+
+                            <label for="minimumOrder">
+
+                                Minimum Order Quantity
+
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-cart-shopping"></i>
+
+                                <input
+                                    type="number"
+                                    id="minimumOrder"
+                                    name="minimumOrder"
+                                    placeholder="e.g. 1"
+                                    min="1"
+                                    value="1"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Maximum Order -->
+
+                        <div class="form-group">
+
+                            <label for="maximumOrder">
+
+                                Maximum Order Quantity
+
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-cart-plus"></i>
+
+                                <input
+                                    type="number"
+                                    id="maximumOrder"
+                                    name="maximumOrder"
+                                    placeholder="Optional"
+                                    min="1"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     PRODUCT DETAILS
+                =================================== -->
+
+                <div class="form-card">
+
+                    <div class="card-heading">
+
+                        <div class="heading-icon">
+
+                            <i class="fas fa-circle-info"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h2>Additional Details</h2>
+
+                            <p>Provide more information about your product</p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- Harvest Date -->
+
+                        <div class="form-group">
+
+                            <label for="harvestDate">
+
+                                Harvest Date
+
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-calendar-days"></i>
+
+                                <input
+                                    type="date"
+                                    id="harvestDate"
+                                    name="harvestDate"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Location -->
+
+                        <div class="form-group">
+
+                            <label for="location">
+
+                                Farm Location
+
+                                <span>*</span>
+
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <i class="fas fa-location-dot"></i>
+
+                                <input
+                                    type="text"
+                                    id="location"
+                                    name="location"
+                                    placeholder="e.g. Vellore, Tamil Nadu"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Organic -->
+
+                        <div class="form-group full-width">
+
+                            <div class="organic-option">
+
+                                <label class="checkbox-container">
+
+                                    <input
+                                        type="checkbox"
+                                        id="organic"
+                                        name="organic"
+                                    >
+
+                                    <span class="checkmark"></span>
+
+                                    <span class="checkbox-text">
+
+                                        <strong>
+                                            This is an Organic Product
+                                        </strong>
+
+                                        <small>
+                                            Mark this if your product is organically grown.
+                                        </small>
+
+                                    </span>
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     PRODUCT IMAGE
+                =================================== -->
+
+                <div class="form-card">
+
+                    <div class="card-heading">
+
+                        <div class="heading-icon">
+
+                            <i class="fas fa-image"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h2>Product Image</h2>
+
+                            <p>Upload a clear image of your product</p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="upload-area" id="uploadArea">
+
+                        <input
+                            type="file"
+                            id="productImage"
+                            name="productImage"
+                            accept="image/png, image/jpeg, image/jpg, image/webp"
+                            hidden
+                        >
+
+
+                        <div class="upload-content" id="uploadContent">
+
+                            <div class="upload-icon">
+
+                                <i class="fas fa-cloud-arrow-up"></i>
+
+                            </div>
+
+                            <h3>Upload Product Image</h3>
+
+                            <p>
+                                Drag & drop your image here or click to browse
+                            </p>
+
+                            <span>
+                                JPG, JPEG, PNG or WEBP • Maximum 5MB
+                            </span>
+
+                            <button
+                                type="button"
+                                class="browse-button"
+                                id="browseButton"
+                            >
+                                Choose Image
+                            </button>
+
+                        </div>
+
+
+                        <!-- Image Preview -->
+
+                        <div
+                            class="image-preview"
+                            id="imagePreview"
+                            style="display: none;"
+                        >
+
+                            <img
+                                id="previewImage"
+                                src=""
+                                alt="Product Preview"
+                            >
+
+                            <button
+                                type="button"
+                                class="remove-image"
+                                id="removeImage"
+                            >
+                                <i class="fas fa-xmark"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     FORM BUTTONS
+                =================================== -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        onclick="window.location.href='farmer.html'"
+                    >
+
+                        <i class="fas fa-xmark"></i>
+
+                        Cancel
+
+                    </button>
+
+
+                    <button
+                        type="reset"
+                        class="reset-button"
+                        id="resetButton"
+                    >
+
+                        <i class="fas fa-rotate-left"></i>
+
+                        Reset
+
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                    >
+
+                        <i class="fas fa-plus"></i>
+
+                        Add Product
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<!-- ==========================================
+     JAVASCRIPT
+=========================================== -->
+
+<script>
+
+    // ==========================================
+    // IMAGE UPLOAD
+    // ==========================================
+
+    const productImage = document.getElementById("productImage");
+
+    const browseButton = document.getElementById("browseButton");
+
+    const uploadArea = document.getElementById("uploadArea");
+
+    const uploadContent = document.getElementById("uploadContent");
+
+    const imagePreview = document.getElementById("imagePreview");
+
+    const previewImage = document.getElementById("previewImage");
+
+    const removeImage = document.getElementById("removeImage");
+
+
+    // Browse button
+
+    browseButton.addEventListener("click", function () {
+
+        productImage.click();
+
+    });
+
+
+    // File selected
+
+    productImage.addEventListener("change", function () {
+
+        const file = this.files[0];
+
+        if (file) {
+
+            showPreview(file);
+
+        }
+
+    });
+
+
+    // Show image preview
+
+    function showPreview(file) {
+
+        // Check file size
+
+        if (file.size > 5 * 1024 * 1024) {
+
+            alert("Image size must be less than 5MB.");
+
+            productImage.value = "";
+
+            return;
+
+        }
+
+
+        // Check image type
+
+        if (!file.type.startsWith("image/")) {
+
+            alert("Please select a valid image file.");
+
+            productImage.value = "";
+
+            return;
+
+        }
+
+
+        const reader = new FileReader();
+
+
+        reader.onload = function (event) {
+
+            previewImage.src = event.target.result;
+
+            uploadContent.style.display = "none";
+
+            imagePreview.style.display = "block";
+
+        };
+
+
+        reader.readAsDataURL(file);
+
+    }
+
+
+
+    // Remove image
+
+    removeImage.addEventListener("click", function () {
+
+        productImage.value = "";
+
+        previewImage.src = "";
+
+        imagePreview.style.display = "none";
+
+        uploadContent.style.display = "flex";
+
+    });
+
+
+
+    // ==========================================
+    // DRAG & DROP
+    // ==========================================
+
+    uploadArea.addEventListener("dragover", function (event) {
+
+        event.preventDefault();
+
+        uploadArea.classList.add("dragging");
+
+    });
+
+
+    uploadArea.addEventListener("dragleave", function () {
+
+        uploadArea.classList.remove("dragging");
+
+    });
+
+
+    uploadArea.addEventListener("drop", function (event) {
+
+        event.preventDefault();
+
+        uploadArea.classList.remove("dragging");
+
+
+        const files = event.dataTransfer.files;
+
+
+        if (files.length > 0) {
+
+            productImage.files = files;
+
+            showPreview(files[0]);
+
+        }
+
+    });
+
+
+
+    // ==========================================
+    // FORM SUBMISSION
+    // ==========================================
+
+    const productForm = document.getElementById("productForm");
+
+
+    productForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+
+        const productName =
+            document.getElementById("productName").value.trim();
+
+        const category =
+            document.getElementById("category").value;
+
+        const price =
+            document.getElementById("price").value;
+
+        const quantity =
+            document.getElementById("quantity").value;
+
+
+        if (!productName || !category || !price || !quantity) {
+
+            alert("Please fill all required fields.");
+
+            return;
+
+        }
+
+
+        /*
+         * FRONTEND DEMO
+         *
+         * Later, this section can be replaced with
+         * fetch() to your Node.js / Express API.
+         */
+
+
+        alert("Product added successfully!");
+
+
+        // Redirect to My Products
+
+        window.location.href = "my-products.html";
+
+    });
+
+
+
+    // ==========================================
+    // RESET FORM
+    // ==========================================
+
+    productForm.addEventListener("reset", function () {
+
+        setTimeout(function () {
+
+            productImage.value = "";
+
+            previewImage.src = "";
+
+            imagePreview.style.display = "none";
+
+            uploadContent.style.display = "flex";
+
+        }, 50);
+
+    });
+
+
+</script>
+
 </body>
 </html>

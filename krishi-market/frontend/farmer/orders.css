@@ -1,0 +1,483 @@
+/* ==========================================
+   GLOBAL
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f4f8f5;
+    color: #172b1a;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+
+/* ==========================================
+   DASHBOARD CONTAINER
+========================================== */
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* ==========================================
+   SIDEBAR
+========================================== */
+
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    color: white;
+    background: linear-gradient(
+        180deg,
+        #176522 0%,
+        #2d8737 100%
+    );
+}
+
+.brand-section {
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.brand-logo {
+    font-size: 42px;
+    margin-bottom: 7px;
+}
+
+.brand-section h2 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.sidebar-nav {
+    padding: 25px 13px;
+}
+
+.nav-item {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 18px;
+    margin-bottom: 8px;
+    border-radius: 11px;
+    color: rgba(255,255,255,0.95);
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.nav-item i {
+    width: 20px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.13);
+    transform: translateX(3px);
+}
+
+.nav-item.active {
+    background: white;
+    color: #267c31;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.logout {
+    margin-top: 20px;
+}
+
+
+/* ==========================================
+   MAIN CONTENT
+========================================== */
+
+.main-content {
+    margin-left: 240px;
+    width: calc(100% - 240px);
+    min-height: 100vh;
+    padding: 30px;
+}
+
+
+/* ==========================================
+   PAGE HEADER
+========================================== */
+
+.page-header {
+    background: white;
+    min-height: 110px;
+    border-radius: 20px;
+    padding: 22px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 7px 25px rgba(31,80,40,0.07);
+    margin-bottom: 25px;
+}
+
+.page-header h1 {
+    font-size: 27px;
+    color: #237a30;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.page-header p {
+    font-size: 13px;
+    color: #77827a;
+}
+
+.header-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #2b8a39;
+    border: 2px solid #54ad60;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.header-profile h3 {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.header-profile span {
+    font-size: 11px;
+    color: #7a867d;
+}
+
+
+/* ==========================================
+   ORDER STATISTICS
+========================================== */
+
+.order-stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 16px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 7px 20px rgba(31,80,40,0.06);
+    transition: 0.25s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(31,80,40,0.10);
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.icon.blue {
+    background: #e8f1ff;
+    color: #2563eb;
+}
+
+.icon.orange {
+    background: #fff4e6;
+    color: #ea8a1b;
+}
+
+.icon.purple {
+    background: #f3e8ff;
+    color: #9333ea;
+}
+
+.icon.green {
+    background: #e9f7ef;
+    color: #16a34a;
+}
+
+.icon.red {
+    background: #fdeaea;
+    color: #dc2626;
+}
+
+.stat-card h2 {
+    font-size: 22px;
+    color: #206c2b;
+    font-weight: 700;
+}
+
+.stat-card p {
+    font-size: 11px;
+    color: #7d887f;
+    margin-top: 2px;
+}
+
+
+/* ==========================================
+   TOOLBAR
+========================================== */
+
+.toolbar {
+    background: white;
+    padding: 18px;
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: 1fr 200px 170px;
+    gap: 12px;
+    margin-bottom: 22px;
+    box-shadow: 0 6px 20px rgba(31,80,40,0.05);
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #62936a;
+    font-size: 14px;
+}
+
+.search-box input,
+.toolbar select,
+.toolbar input[type="date"] {
+    width: 100%;
+    height: 44px;
+    border: 1px solid #dce5dd;
+    border-radius: 10px;
+    outline: none;
+    background: #fcfdfc;
+    font-size: 12px;
+    color: #2b362d;
+    transition: 0.25s ease;
+}
+
+.search-box input {
+    padding: 0 15px 0 42px;
+}
+
+.toolbar select,
+.toolbar input[type="date"] {
+    padding: 0 12px;
+}
+
+.search-box input:focus,
+.toolbar select:focus,
+.toolbar input[type="date"]:focus {
+    border-color: #43a04e;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(55,151,66,0.08);
+}
+
+
+/* ==========================================
+   ORDERS TABLE
+========================================== */
+
+.orders-table {
+    background: white;
+    border-radius: 18px;
+    overflow-x: auto;
+    box-shadow: 0 7px 23px rgba(31,80,40,0.07);
+}
+
+.orders-table table {
+    width: 100%;
+    min-width: 950px;
+    border-collapse: collapse;
+}
+
+.orders-table thead {
+    background: #f5faf5;
+}
+
+.orders-table th {
+    padding: 16px 18px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    color: #6c786f;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    border-bottom: 1px solid #e7eee8;
+}
+
+.orders-table td {
+    padding: 16px 18px;
+    border-bottom: 1px solid #edf1ed;
+    font-size: 12px;
+    color: #2a362d;
+    vertical-align: middle;
+}
+
+.orders-table tbody tr:hover {
+    background: #fbfdfb;
+}
+
+.orders-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ==========================================
+   STATUS BADGES
+========================================== */
+
+.paid,
+.cod,
+.pending,
+.shipped,
+.delivered,
+.cancelled {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.paid {
+    background: #e8f7eb;
+    color: #1f8a36;
+}
+
+.cod {
+    background: #eef2ff;
+    color: #4338ca;
+}
+
+.pending {
+    background: #fff4df;
+    color: #d48a12;
+}
+
+.shipped {
+    background: #ede9fe;
+    color: #7c3aed;
+}
+
+.delivered {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.cancelled {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+
+/* ==========================================
+   ACTION BUTTONS
+========================================== */
+
+.orders-table td button {
+    height: 34px;
+    padding: 0 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+    margin-right: 6px;
+}
+
+.view-btn {
+    background: #edf7ef;
+    color: #247b31;
+}
+
+.view-btn:hover {
+    background: #dff1e2;
+}
+
+.accept-btn {
+    background: #e8f7eb;
+    color: #1f8a36;
+}
+
+.accept-btn:hover {
+    background: #ccefd5;
+}
+
+.ship-btn {
+    background: #ede9fe;
+    color: #7c3aed;
+}
+
+.ship-btn:hover {
+    background: #ddd6fe;
+}
+
+.completed-btn {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.completed-btn:hover {
+    background: #bbf7d0;
+}
+
+.cancel-btn {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.cancel-btn:hover {
+    background: #fecaca;
+}

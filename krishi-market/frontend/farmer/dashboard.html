@@ -1,38 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Farmer Dashboard - Krishi Market</title>
-  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/farmer.css"><link rel="stylesheet" href="../css/responsive.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Farmer Dashboard | Krishi Market
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
 </head>
-<body>
-  <header>
-    <nav class="navbar">
-      <div class="container">
-        <a href="../index.html" class="logo"><i class="fas fa-leaf"></i><span>Krishi Market</span></a>
-        <div class="nav-links">
-          <a href="../index.html">Home</a><a href="../products.html">Products</a>
-          <a href="dashboard.html" class="active">Dashboard</a><a href="products.html">My Products</a><a href="orders.html">Orders</a><a href="inventory.html">Inventory</a><a href="profile.html">Profile</a>
-          <a href="#" onclick="auth.logout()">Logout</a>
-        </div>
-        <div class="hamburger"><span></span><span></span><span></span></div>
-      </div>
-    </nav>
-  </header>
-  <section class="farmer-dashboard">
-    <div class="container">
-      <h1>Farmer Dashboard</h1>
-      <div class="farmer-stats" id="farmerStats">
-        <div class="stat-card"><i class="fas fa-box"></i><h3 id="totalProducts">0</h3><p>Total Products</p></div>
-        <div class="stat-card"><i class="fas fa-shopping-cart"></i><h3 id="totalOrders">0</h3><p>Orders Received</p></div>
-        <div class="stat-card"><i class="fas fa-check-circle"></i><h3 id="deliveredOrders">0</h3><p>Delivered</p></div>
-        <div class="stat-card"><i class="fas fa-rupee-sign"></i><h3 id="totalRevenue">₹0</h3><p>Total Revenue</p></div>
-      </div>
-      <a href="add-product.html" class="btn btn-primary"><i class="fas fa-plus"></i> Add New Product</a>
+
+
+<body class="dashboard-body">
+
+
+<nav class="navbar">
+
+
+    <div class="navbar-brand">
+
+        <span>
+            🌾
+        </span>
+
+        Krishi Market
+
     </div>
-  </section>
-  <script src="../js/config.js"></script><script src="../js/auth.js"></script><script src="dashboard.js"></script>
+
+
+    <div class="navbar-user">
+
+        <div class="user-avatar">
+            F
+        </div>
+
+        <button
+            class="btn-logout"
+            id="logoutButton"
+        >
+            Logout
+        </button>
+
+    </div>
+
+
+</nav>
+
+
+<main class="dashboard-container">
+
+
+    <section class="dashboard-hero">
+
+        <h1>
+            Welcome, Farmer 🌱
+        </h1>
+
+        <p>
+            Manage your products,
+            orders and grow your
+            agricultural business.
+        </p>
+
+    </section>
+
+
+    <section class="dashboard-grid">
+
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                ➕
+            </div>
+
+            <h3>
+                Add Products
+            </h3>
+
+            <p>
+                Add your fresh agricultural
+                products and make them
+                available to customers.
+            </p>
+
+            <button>
+                Add Product
+            </button>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                📦
+            </div>
+
+            <h3>
+                Manage Orders
+            </h3>
+
+            <p>
+                View and manage customer
+                orders for your products.
+            </p>
+
+            <button>
+                View Orders
+            </button>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                📊
+            </div>
+
+            <h3>
+                Sales Overview
+            </h3>
+
+            <p>
+                Track your sales,
+                earnings and product
+                performance.
+            </p>
+
+            <button>
+                View Sales
+            </button>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<script>
+
+const user =
+    JSON.parse(
+        localStorage.getItem("user")
+    );
+
+
+if (!user) {
+
+    window.location.href =
+        "../login.html";
+
+}
+
+
+document
+    .getElementById("logoutButton")
+    .addEventListener(
+        "click",
+        function() {
+
+            localStorage.removeItem(
+                "token"
+            );
+
+            localStorage.removeItem(
+                "user"
+            );
+
+            window.location.href =
+                "../login.html";
+
+        }
+    );
+
+</script>
+
+
 </body>
+
 </html>

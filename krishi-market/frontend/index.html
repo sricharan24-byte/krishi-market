@@ -1,156 +1,742 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Krishi Market - Fresh from Farm to Table</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Krishi Market | Connecting Farmers & Customers
+    </title>
+
+    <meta
+        name="description"
+        content="Krishi Market connects farmers directly with customers to buy and sell fresh agricultural products."
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 </head>
+
+
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="container">
-        <a href="index.html" class="logo">
-          <i class="fas fa-leaf"></i>
-          <span>Krishi Market</span>
-        </a>
-        <div class="nav-links">
-          <a href="index.html" class="active">Home</a>
-          <a href="products.html">Products</a>
-          <a href="cart.html">Cart <span id="cartCount">0</span></a>
-          <a href="login.html" class="btn btn-primary">Login</a>
-          <a href="register.html" class="btn btn-secondary">Register</a>
-        </div>
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1>Fresh from Farm to Your Table</h1>
-        <p>Connect directly with local farmers and get the freshest produce delivered to your doorstep.</p>
+
+<!-- ======================================
+     NAVBAR
+======================================= -->
+
+<nav class="home-navbar">
+
+
+    <a
+        href="index.html"
+        class="home-logo"
+    >
+
+        <div class="home-logo-icon">
+            🌾
+        </div>
+
+        Krishi Market
+
+    </a>
+
+
+    <ul class="home-nav-links">
+
+        <li>
+            <a href="#home">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="#how-it-works">
+                How It Works
+            </a>
+        </li>
+
+        <li>
+            <a href="#features">
+                Features
+            </a>
+        </li>
+
+        <li>
+            <a href="#about">
+                About
+            </a>
+        </li>
+
+    </ul>
+
+
+    <div class="home-nav-buttons">
+
+        <a
+            href="login.html"
+            class="btn-login"
+        >
+            Login
+        </a>
+
+        <a
+            href="register.html"
+            class="btn-register"
+        >
+            Get Started
+        </a>
+
+    </div>
+
+
+</nav>
+
+
+
+<!-- ======================================
+     HERO SECTION
+======================================= -->
+
+<section
+    class="home-hero"
+    id="home"
+>
+
+
+    <div class="hero-content">
+
+
+        <div class="hero-badge">
+
+            🌱
+
+            India's Digital
+            Agricultural Marketplace
+
+        </div>
+
+
+        <h1>
+
+            From the
+
+            <span>
+                Farm
+            </span>
+
+            Directly to Your
+
+            <span>
+                Table
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            Krishi Market connects farmers
+            and customers directly. Buy
+            fresh agricultural products,
+            discover local farmers, and
+            help build a smarter and more
+            sustainable agricultural
+            marketplace.
+
+        </p>
+
+
         <div class="hero-buttons">
-          <a href="products.html" class="btn btn-primary btn-lg">Browse Products</a>
-          <a href="register.html" class="btn btn-outline btn-lg">Start Selling</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="features">
-    <div class="container">
-      <h2 class="section-title">Why Choose Krishi Market?</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <i class="fas fa-tractor"></i>
-          <h3>Direct from Farmers</h3>
-          <p>Source fresh produce directly from local farmers with no middlemen.</p>
-        </div>
-        <div class="feature-card">
-          <i class="fas fa-leaf"></i>
-          <h3>100% Organic</h3>
-          <p>Certified organic products grown with natural farming methods.</p>
-        </div>
-        <div class="feature-card">
-          <i class="fas fa-truck"></i>
-          <h3>Fast Delivery</h3>
-          <p>Get your order delivered within 24-48 hours from the farm.</p>
-        </div>
-        <div class="feature-card">
-          <i class="fas fa-hand-holding-usd"></i>
-          <h3>Best Prices</h3>
-          <p>Fair prices for both farmers and customers with transparent pricing.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="categories">
-    <div class="container">
-      <h2 class="section-title">Shop by Category</h2>
-      <div class="categories-grid">
-        <a href="products.html?category=vegetables" class="category-card">
-          <i class="fas fa-carrot"></i>
-          <h3>Vegetables</h3>
-        </a>
-        <a href="products.html?category=fruits" class="category-card">
-          <i class="fas fa-apple-alt"></i>
-          <h3>Fruits</h3>
-        </a>
-        <a href="products.html?category=grains" class="category-card">
-          <i class="fas fa-wheat-alt"></i>
-          <h3>Grains</h3>
-        </a>
-        <a href="products.html?category=dairy" class="category-card">
-          <i class="fas fa-cheese"></i>
-          <h3>Dairy</h3>
-        </a>
-        <a href="products.html?category=poultry" class="category-card">
-          <i class="fas fa-drumstick-bite"></i>
-          <h3>Poultry</h3>
-        </a>
-        <a href="products.html?category=seeds" class="category-card">
-          <i class="fas fa-seedling"></i>
-          <h3>Seeds</h3>
-        </a>
-      </div>
-    </div>
-  </section>
+            <a
+                href="register.html"
+                class="hero-primary-btn"
+            >
 
-  <section class="featured-products">
-    <div class="container">
-      <h2 class="section-title">Featured Products</h2>
-      <div class="products-grid" id="featuredProducts">
-        <!-- Products will be loaded by JS -->
-      </div>
-      <div class="text-center">
-        <a href="products.html" class="btn btn-primary">View All Products</a>
-      </div>
-    </div>
-  </section>
+                Join Krishi Market
+                →
+                
+            </a>
 
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h4>Krishi Market</h4>
-          <p>Connecting farmers directly with consumers for fresh, organic produce.</p>
-        </div>
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <a href="index.html">Home</a>
-          <a href="products.html">Products</a>
-          <a href="cart.html">Cart</a>
-        </div>
-        <div class="footer-section">
-          <h4>Support</h4>
-          <a href="#">Help Center</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-        </div>
-        <div class="footer-section">
-          <h4>Contact</h4>
-          <p><i class="fas fa-envelope"></i> support@krishimarket.com</p>
-          <p><i class="fas fa-phone"></i> +91 1234567890</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2024 Krishi Market. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
 
-  <script src="js/config.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/products.js"></script>
+            <a
+                href="#how-it-works"
+                class="hero-secondary-btn"
+            >
+
+                Explore Platform
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="hero-visual">
+
+
+        <div class="hero-main-card">
+
+            <div class="hero-farm-icon">
+
+                🌾
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="floating-card card-one"
+        >
+
+            <div class="floating-card-icon">
+                🥕
+            </div>
+
+            <div>
+
+                <strong>
+                    Fresh Products
+                </strong>
+
+                <small>
+                    Direct from farms
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="floating-card card-two"
+        >
+
+            <div class="floating-card-icon">
+                🚜
+            </div>
+
+            <div>
+
+                <strong>
+                    Trusted Farmers
+                </strong>
+
+                <small>
+                    Local & verified
+                </small>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ======================================
+     STATS
+======================================= -->
+
+<section class="home-stats">
+
+
+    <div class="stat-item">
+
+        <h3>
+            100+
+        </h3>
+
+        <p>
+            Local Farmers
+        </p>
+
+    </div>
+
+
+    <div class="stat-item">
+
+        <h3>
+            500+
+        </h3>
+
+        <p>
+            Fresh Products
+        </p>
+
+    </div>
+
+
+    <div class="stat-item">
+
+        <h3>
+            1000+
+        </h3>
+
+        <p>
+            Happy Customers
+        </p>
+
+    </div>
+
+
+    <div class="stat-item">
+
+        <h3>
+            24/7
+        </h3>
+
+        <p>
+            Platform Access
+        </p>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ======================================
+     HOW IT WORKS
+======================================= -->
+
+<section
+    class="home-section how-it-works"
+    id="how-it-works"
+>
+
+
+    <div class="section-heading">
+
+
+        <div class="section-label">
+
+            Simple & Easy
+
+        </div>
+
+
+        <h2>
+
+            How Krishi Market Works
+
+        </h2>
+
+
+        <p>
+
+            Our platform makes it easy
+            for farmers to sell their
+            products and customers to
+            discover fresh agricultural
+            products.
+
+        </p>
+
+
+    </div>
+
+
+
+    <div class="steps-grid">
+
+
+        <div class="step-card">
+
+
+            <div class="step-number">
+                1
+            </div>
+
+
+            <h3>
+
+                Create Your Account
+
+            </h3>
+
+
+            <p>
+
+                Register as a farmer or
+                customer and create your
+                secure Krishi Market account.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="step-card">
+
+
+            <div class="step-number">
+                2
+            </div>
+
+
+            <h3>
+
+                Connect & Explore
+
+            </h3>
+
+
+            <p>
+
+                Customers can explore
+                agricultural products while
+                farmers can list their fresh
+                produce.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="step-card">
+
+
+            <div class="step-number">
+                3
+            </div>
+
+
+            <h3>
+
+                Buy & Sell
+
+            </h3>
+
+
+            <p>
+
+                Customers purchase fresh
+                products and farmers grow
+                their businesses through
+                direct sales.
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ======================================
+     CUSTOMER / FARMER
+======================================= -->
+
+<section
+    class="home-section"
+    id="features"
+>
+
+
+    <div class="section-heading">
+
+
+        <div class="section-label">
+
+            One Platform
+
+        </div>
+
+
+        <h2>
+
+            Built for Farmers
+            and Customers
+
+        </h2>
+
+
+        <p>
+
+            Whether you are growing
+            agricultural products or
+            looking for fresh produce,
+            Krishi Market is built for you.
+
+        </p>
+
+
+    </div>
+
+
+
+    <div class="user-type-grid">
+
+
+        <!-- CUSTOMER -->
+
+        <div
+            class="user-type-card customer"
+        >
+
+
+            <div class="user-type-icon">
+                🛒
+            </div>
+
+
+            <h3>
+
+                For Customers
+
+            </h3>
+
+
+            <p>
+
+                Discover fresh agricultural
+                products directly from local
+                farmers. Browse products,
+                place orders and support
+                local agriculture.
+
+            </p>
+
+
+            <a href="register.html">
+
+                Shop Fresh Products →
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- FARMER -->
+
+        <div
+            class="user-type-card farmer"
+        >
+
+
+            <div class="user-type-icon">
+                🚜
+            </div>
+
+
+            <h3>
+
+                For Farmers
+
+            </h3>
+
+
+            <p>
+
+                Showcase your agricultural
+                products, connect directly
+                with customers and grow your
+                farming business.
+
+            </p>
+
+
+            <a href="register.html">
+
+                Start Selling →
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ======================================
+     ABOUT
+======================================= -->
+
+<section
+    class="home-section how-it-works"
+    id="about"
+>
+
+
+    <div class="section-heading">
+
+
+        <div class="section-label">
+
+            About Krishi Market
+
+        </div>
+
+
+        <h2>
+
+            Building a Better
+            Agricultural Future
+
+        </h2>
+
+
+        <p>
+
+            Krishi Market is designed
+            to reduce the gap between
+            farmers and customers by
+            creating a simple digital
+            marketplace where agricultural
+            products can be discovered,
+            bought and sold directly.
+
+        </p>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ======================================
+     FOOTER
+======================================= -->
+
+<footer class="home-footer">
+
+
+    <div class="footer-content">
+
+
+        <div class="footer-brand">
+
+
+            <h3>
+
+                🌾 Krishi Market
+
+            </h3>
+
+
+            <p>
+
+                Connecting farmers and
+                customers to create a
+                smarter, fresher and more
+                sustainable agricultural
+                marketplace.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+
+            <h4>
+                Quick Links
+            </h4>
+
+
+            <a href="#home">
+                Home
+            </a>
+
+
+            <a href="#how-it-works">
+                How It Works
+            </a>
+
+
+            <a href="#features">
+                Features
+            </a>
+
+
+            <a href="#about">
+                About
+            </a>
+
+
+        </div>
+
+
+
+        <div class="footer-column">
+
+
+            <h4>
+                Account
+            </h4>
+
+
+            <a href="login.html">
+                Login
+            </a>
+
+
+            <a href="register.html">
+                Create Account
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        © 2026 Krishi Market.
+        All rights reserved.
+
+    </div>
+
+
+</footer>
+
+
 </body>
+
 </html>

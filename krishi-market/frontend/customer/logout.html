@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Logging Out | Krishi Market</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-family: 'Poppins', sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eaf7ed,
+                    #f7fbf8
+                );
+
+            color: #333;
+        }
+
+        .logout-container {
+            width: 90%;
+            max-width: 450px;
+
+            padding: 45px 35px;
+
+            text-align: center;
+
+            background: #ffffff;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.10);
+        }
+
+        .logout-icon {
+            width: 85px;
+            height: 85px;
+
+            margin: 0 auto 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #e8f5eb;
+
+            color: #1f7a3f;
+
+            font-size: 35px;
+        }
+
+        .logout-container h1 {
+            margin-bottom: 10px;
+
+            color: #1f7a3f;
+
+            font-size: 25px;
+        }
+
+        .logout-container p {
+            margin-bottom: 25px;
+
+            color: #888;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+        .loader {
+            width: 35px;
+            height: 35px;
+
+            margin: 0 auto 15px;
+
+            border: 4px solid #e5eee7;
+
+            border-top-color: #1f7a3f;
+
+            border-radius: 50%;
+
+            animation:
+                spin 0.8s linear infinite;
+        }
+
+        .redirect-text {
+            color: #999;
+
+            font-size: 11px;
+        }
+
+        @keyframes spin {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+        @media (max-width: 500px) {
+
+            .logout-container {
+                width: 92%;
+
+                padding: 35px 25px;
+            }
+
+            .logout-container h1 {
+                font-size: 21px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="logout-container">
+
+
+        <div class="logout-icon">
+
+            <i class="fas fa-sign-out-alt"></i>
+
+        </div>
+
+
+        <h1>
+            Logging Out...
+        </h1>
+
+
+        <p>
+            Thank you for using
+            <strong>Krishi Market</strong>.
+            <br>
+            You are being redirected to the login page.
+        </p>
+
+
+        <div class="loader"></div>
+
+
+        <div class="redirect-text">
+            Please wait...
+        </div>
+
+
+    </div>
+
+
+
+    <script>
+
+        /*
+         * ==========================================
+         * CLEAR CUSTOMER SESSION
+         * ==========================================
+         */
+
+        localStorage.removeItem("token");
+
+        localStorage.removeItem("user");
+
+        localStorage.removeItem("customer");
+
+        localStorage.removeItem("customerProfile");
+
+        localStorage.removeItem("userData");
+
+        sessionStorage.clear();
+
+
+        /*
+         * ==========================================
+         * REDIRECT TO LOGIN PAGE
+         * ==========================================
+         *
+         * logout.html is inside:
+         *
+         * frontend/customer/
+         *
+         * login.html is inside:
+         *
+         * frontend/
+         *
+         * Therefore:
+         *
+         * ../login.html
+         *
+         */
+
+        setTimeout(function () {
+
+            window.location.replace("../login.html");
+
+        }, 1200);
+
+    </script>
+
+
+</body>
+
+</html>

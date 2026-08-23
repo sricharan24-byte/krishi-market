@@ -1,0 +1,905 @@
+/* ===========================================================
+   KRISHI MARKET - FARMER DASHBOARD
+   PART 2A
+   =========================================================== */
+
+
+/* =========================
+   GOOGLE FONT
+   ========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* =========================
+   RESET
+   ========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#f4f8f5;
+
+    color:#333;
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+
+/* =========================
+   SIDEBAR
+   ========================= */
+
+.sidebar{
+
+    width:270px;
+
+    background:linear-gradient(
+    180deg,
+    #1b5e20,
+    #2e7d32,
+    #388e3c
+    );
+
+    color:white;
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    bottom:0;
+
+    overflow:auto;
+
+    box-shadow:5px 0 20px rgba(0,0,0,.15);
+
+    z-index:1000;
+
+}
+
+
+/* Logo */
+
+.logo{
+
+    text-align:center;
+
+    padding:35px 20px;
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+
+.logo h2{
+
+    margin-top:12px;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+
+.logo{
+
+    font-size:45px;
+
+}
+
+
+/* Menu */
+
+.sidebar ul{
+
+    list-style:none;
+
+    padding:25px 0;
+
+}
+
+
+.sidebar ul li{
+
+    margin:8px 15px;
+
+}
+
+
+.sidebar ul li a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:16px 20px;
+
+    border-radius:12px;
+
+    transition:.35s;
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+
+
+.sidebar ul li a i{
+
+    width:22px;
+
+    text-align:center;
+
+    font-size:18px;
+
+}
+
+
+/* Hover */
+
+.sidebar ul li a:hover{
+
+    background:rgba(255,255,255,.15);
+
+    transform:translateX(8px);
+
+}
+
+
+/* Active */
+
+.sidebar ul li.active a{
+
+    background:white;
+
+    color:#2e7d32;
+
+    font-weight:700;
+
+}
+
+
+/* =========================
+   MAIN CONTENT
+   ========================= */
+
+.main-content{
+
+    margin-left:270px;
+
+    width:calc(100% - 270px);
+
+    padding:35px;
+
+}
+
+
+/* =========================
+   TOP BAR
+   ========================= */
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:white;
+
+    padding:25px 30px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    margin-bottom:35px;
+
+}
+
+
+.topbar h1{
+
+    font-size:30px;
+
+    color:#2e7d32;
+
+    font-weight:700;
+
+}
+
+
+.topbar p{
+
+    margin-top:6px;
+
+    color:#777;
+
+    font-size:15px;
+
+}
+
+
+/* Profile */
+
+.profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+
+.profile img{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    border:3px solid #4CAF50;
+
+}
+
+
+.profile span{
+
+    font-size:17px;
+
+    font-weight:600;
+
+}
+
+
+/* =========================
+   DASHBOARD CARDS
+   ========================= */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+
+    gap:25px;
+
+}
+
+
+/* Individual Card */
+
+.card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+    cursor:pointer;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* Decorative Top Line */
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:5px;
+
+    background:#43a047;
+
+}
+
+
+/* Hover */
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+
+/* Icon */
+
+.card i{
+
+    font-size:42px;
+
+    color:#2e7d32;
+
+    margin-bottom:18px;
+
+}
+
+
+/* Number */
+
+.card h2{
+
+    font-size:34px;
+
+    color:#1b5e20;
+
+    margin-bottom:8px;
+
+}
+
+
+/* Label */
+
+.card p{
+
+    color:#666;
+
+    font-size:16px;
+
+}
+
+
+/* =========================
+   SECTION TITLES
+   ========================= */
+
+section{
+
+    margin-top:40px;
+
+}
+
+
+section h2{
+
+    font-size:25px;
+
+    color:#2e7d32;
+
+    margin-bottom:25px;
+
+    font-weight:700;
+
+}
+
+
+/* =========================
+   SCROLLBAR
+   ========================= */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+
+::-webkit-scrollbar-thumb{
+
+    background:#43a047;
+
+    border-radius:50px;
+
+}
+
+
+::-webkit-scrollbar-track{
+
+    background:#f0f0f0;
+
+}
+
+
+/* =========================
+   RESPONSIVE TABLET
+   ========================= */
+
+@media(max-width:991px){
+
+.sidebar{
+
+width:90px;
+
+}
+
+.logo h2{
+
+display:none;
+
+}
+
+.sidebar ul li a span{
+
+display:none;
+
+}
+
+.sidebar ul li a{
+
+justify-content:center;
+
+padding:18px;
+
+}
+
+.main-content{
+
+margin-left:90px;
+
+width:calc(100% - 90px);
+
+}
+
+}
+
+
+/* =========================
+   RESPONSIVE MOBILE
+   ========================= */
+
+@media(max-width:768px){
+
+.main-content{
+
+padding:20px;
+
+}
+
+.topbar{
+
+flex-direction:column;
+
+gap:20px;
+
+text-align:center;
+
+}
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+}
+/* ===========================================================
+   QUICK ACTIONS
+   =========================================================== */
+
+.action-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+.action-card{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    color:#333;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+    border:2px solid transparent;
+
+}
+
+.action-card i{
+
+    font-size:45px;
+
+    color:#2e7d32;
+
+    margin-bottom:18px;
+
+}
+
+.action-card span{
+
+    display:block;
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+.action-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#4CAF50;
+
+    background:#f5fff5;
+
+    box-shadow:0 18px 35px rgba(46,125,50,.18);
+
+}
+
+
+/* ===========================================================
+   TABLE SECTION
+   =========================================================== */
+
+.table-section{
+
+    margin-top:45px;
+
+}
+
+.table-section table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.table-section thead{
+
+    background:#2e7d32;
+
+    color:#ffffff;
+
+}
+
+.table-section th{
+
+    padding:18px;
+
+    text-align:left;
+
+    font-size:15px;
+
+}
+
+.table-section td{
+
+    padding:18px;
+
+    border-bottom:1px solid #eeeeee;
+
+    font-size:15px;
+
+}
+
+.table-section tbody tr{
+
+    transition:.3s;
+
+}
+
+.table-section tbody tr:hover{
+
+    background:#f5fff5;
+
+}
+
+
+/* ===========================================================
+   ORDER STATUS
+   =========================================================== */
+
+.status{
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    color:#ffffff;
+
+}
+
+.status.delivered{
+
+    background:#28a745;
+
+}
+
+.status.pending{
+
+    background:#ff9800;
+
+}
+
+.status.cancelled{
+
+    background:#dc3545;
+
+}
+
+
+/* ===========================================================
+   PRODUCT GRID
+   =========================================================== */
+
+.product-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+
+}
+
+.product-card{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.product-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+.product-card img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+}
+
+.product-card h3{
+
+    margin:18px;
+
+    color:#2e7d32;
+
+    font-size:22px;
+
+}
+
+.product-card p{
+
+    margin:0 18px 20px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    color:#444;
+
+}
+
+
+/* ===========================================================
+   BUTTONS
+   =========================================================== */
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    border-radius:10px;
+
+    transition:.3s;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+.btn-primary{
+
+    background:#2e7d32;
+
+    color:#ffffff;
+
+    padding:12px 22px;
+
+}
+
+.btn-primary:hover{
+
+    background:#1b5e20;
+
+}
+
+
+/* ===========================================================
+   ANIMATIONS
+   =========================================================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.cards,
+.action-grid,
+.table-section,
+.products{
+
+    animation:fadeUp .8s ease;
+
+}
+
+
+/* ===========================================================
+   FOOTER
+   =========================================================== */
+
+.footer{
+
+    margin-top:50px;
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:14px;
+
+    padding:25px 0;
+
+}
+
+
+/* ===========================================================
+   RESPONSIVE
+   =========================================================== */
+
+@media(max-width:768px){
+
+    .table-section{
+
+        overflow-x:auto;
+
+    }
+
+    .table-section table{
+
+        min-width:700px;
+
+    }
+
+    .product-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .action-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:500px){
+
+    .profile span{
+
+        display:none;
+
+    }
+
+    .topbar h1{
+
+        font-size:24px;
+
+    }
+
+    section h2{
+
+        font-size:22px;
+
+    }
+
+    .card h2{
+
+        font-size:28px;
+
+    }
+
+}

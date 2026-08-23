@@ -1,66 +1,42 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, 'Name is required'],
-    trim: true
-  },
-  email: {
-    type: String,
-    required: [true, 'Email is required'],
-    unique: true,
-    lowercase: true,
-    trim: true
-  },
-  password: {
-    type: String,
-    required: [true, 'Password is required'],
-    minlength: 6,
-    select: false
-  },
-  role: {
-    type: String,
-    enum: ['customer', 'farmer', 'admin'],
-    default: 'customer'
-  },
-  phone: {
-    type: String,
-    trim: true
-  },
-  address: {
-    street: String,
-    city: String,
-    state: String,
-    zipCode: String,
-    country: { type: String, default: 'India' }
-  },
-  profileImage: {
-    type: String,
-    default: 'default.jpg'
-  },
-  isVerified: {
-    type: Boolean,
-    default: false
-  },
-  isActive: {
-    type: Boolean,
-    default: true
-  }
-}, {
-  timestamps: true
-});
+const userSchema = new mongoose.Schema(
+    {
+        fullName: {
+            type: String,
+            required: [true, "Full name is required"],
+            trim: true
+        },
 
-userSchema.pre('save', async function(next) {
-  if (!this.isModified('password')) return next();
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
-  next();
-});
+        email: {
+            type: String,
+            required: [true, "Email is required"],
+            unique: true,
+            lowercase: true,
+            trim: true
+        },
 
-userSchema.methods.matchPassword = async function(enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password);
-};
+        phone: {
+            type: String,
+            required: [true, "Phone number is required"],
+            trim: true
+        },
 
-module.exports = mongoose.model('User', userSchema);
+        password: {
+            type: String,
+            required: [true, "Password is required"]
+        },
+
+        role: {
+            type: String,
+            required: [true, "Role is required"],
+            enum: ["customer", "farmer", "admin"],
+            default: "customer"
+        }
+    },
+    {
+        timestamps: true
+    }
+);
+
+module.exports = mongoose.model("User", userSchema);

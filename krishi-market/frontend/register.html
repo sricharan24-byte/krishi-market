@@ -1,71 +1,662 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register - Krishi Market</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/auth.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Create Account | Krishi Market</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 </head>
+
+
 <body>
-  <div class="auth-container">
-    <div class="auth-card">
-      <div class="auth-header">
-        <a href="index.html" class="logo">
-          <i class="fas fa-leaf"></i>
-          <span>Krishi Market</span>
-        </a>
-        <h2>Create Account</h2>
-        <p>Join Krishi Market today</p>
-      </div>
-      <form id="registerForm" class="auth-form">
-        <div class="form-group">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+
+<div class="auth-page">
+
+
+    <div class="auth-container">
+
+
+        <!-- ================================= -->
+        <!-- LEFT SIDE -->
+        <!-- ================================= -->
+
+        <div class="auth-info">
+
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    🌾
+                </div>
+
+                <h1>
+                    Krishi Market
+                </h1>
+
+            </div>
+
+
+            <h2>
+                Grow Together.
+                <br>
+                Trade Smarter.
+            </h2>
+
+
+            <p>
+
+                Join India's digital
+                agricultural marketplace
+                and connect farmers with
+                customers directly.
+
+            </p>
+
+
+            <div class="auth-features">
+
+
+                <div class="feature-item">
+
+                    <div class="feature-icon">
+                        ✓
+                    </div>
+
+                    <span>
+                        Direct farmer-to-customer
+                        marketplace
+                    </span>
+
+                </div>
+
+
+                <div class="feature-item">
+
+                    <div class="feature-icon">
+                        ✓
+                    </div>
+
+                    <span>
+                        Fresh agricultural products
+                    </span>
+
+                </div>
+
+
+                <div class="feature-item">
+
+                    <div class="feature-icon">
+                        ✓
+                    </div>
+
+                    <span>
+                        Secure and trusted platform
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+
+        <!-- ================================= -->
+        <!-- RIGHT SIDE -->
+        <!-- ================================= -->
+
+        <div class="auth-form-section">
+
+
+            <h2>
+                Create Account
+            </h2>
+
+
+            <p class="auth-subtitle">
+
+                Create your Krishi Market
+                account to get started.
+
+            </p>
+
+
+            <!-- Error / Success Message -->
+
+            <div
+                id="message"
+                class="message"
+                style="display: none;"
+            ></div>
+
+
+            <!-- ================================= -->
+            <!-- REGISTER FORM -->
+            <!-- ================================= -->
+
+            <form
+                id="registerForm"
+                class="auth-form"
+            >
+
+
+                <!-- FULL NAME -->
+
+                <div class="form-group">
+
+                    <label for="fullName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Enter your phone number"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Create a password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm your password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- ================================= -->
+                <!-- ROLE SELECTION -->
+                <!-- ================================= -->
+
+                <div class="role-title">
+
+                    I want to register as:
+
+                </div>
+
+
+                <div class="role-options">
+
+
+                    <!-- CUSTOMER -->
+
+                    <div class="role-option">
+
+                        <input
+                            type="radio"
+                            name="role"
+                            id="customer"
+                            value="customer"
+                            required
+                        >
+
+                        <label for="customer">
+
+                            🛒 Customer
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- FARMER -->
+
+                    <div class="role-option">
+
+                        <input
+                            type="radio"
+                            name="role"
+                            id="farmer"
+                            value="farmer"
+                        >
+
+                        <label for="farmer">
+
+                            🌱 Farmer
+
+                        </label>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- ================================= -->
+                <!-- SUBMIT BUTTON -->
+                <!-- ================================= -->
+
+                <button
+                    type="submit"
+                    id="registerButton"
+                    class="btn-primary"
+                >
+
+                    Create Account
+
+                </button>
+
+
+            </form>
+
+
+            <!-- ================================= -->
+            <!-- LOGIN LINK -->
+            <!-- ================================= -->
+
+            <div class="auth-footer">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login here
+                </a>
+
+            </div>
+
+
         </div>
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Create a password" required>
-        </div>
-        <div class="form-group">
-          <label for="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
-        </div>
-        <div class="form-group">
-          <label>I want to</label>
-          <div class="role-selection">
-            <label class="role-option">
-              <input type="radio" name="role" value="customer" checked>
-              <span>Buy Products</span>
-            </label>
-            <label class="role-option">
-              <input type="radio" name="role" value="farmer">
-              <span>Sell Products</span>
-            </label>
-          </div>
-        </div>
-        <div class="form-group">
-          <label><input type="checkbox" name="terms" required> I agree to the <a href="#">Terms & Conditions</a></label>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
-      </form>
-      <div class="auth-footer">
-        <p>Already have an account? <a href="login.html">Sign In</a></p>
-      </div>
+
+
     </div>
-  </div>
-  <script src="js/config.js"></script>
-  <script src="js/register.js"></script>
+
+
+</div>
+
+
+<!-- ================================= -->
+<!-- REGISTER JAVASCRIPT -->
+<!-- ================================= -->
+
+<script>
+
+const registerForm =
+    document.getElementById("registerForm");
+
+const registerButton =
+    document.getElementById("registerButton");
+
+const messageBox =
+    document.getElementById("message");
+
+
+/*
+    Show message
+*/
+
+function showMessage(
+    message,
+    type
+) {
+
+    messageBox.textContent =
+        message;
+
+    messageBox.style.display =
+        "block";
+
+    messageBox.className =
+        "message " + type;
+
+}
+
+
+/*
+    Register User
+*/
+
+registerForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        /*
+            Get form values
+        */
+
+        const fullName =
+            document
+                .getElementById("fullName")
+                .value
+                .trim();
+
+
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+        const phone =
+            document
+                .getElementById("phone")
+                .value
+                .trim();
+
+
+        const password =
+            document
+                .getElementById("password")
+                .value;
+
+
+        const confirmPassword =
+            document
+                .getElementById("confirmPassword")
+                .value;
+
+
+        /*
+            Get selected role
+        */
+
+        const roleElement =
+            document.querySelector(
+                'input[name="role"]:checked'
+            );
+
+
+        /*
+            Validate role
+        */
+
+        if (!roleElement) {
+
+            showMessage(
+                "Please select Customer or Farmer.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        const role =
+            roleElement.value;
+
+
+        /*
+            Validate passwords
+        */
+
+        if (
+            password !==
+            confirmPassword
+        ) {
+
+            showMessage(
+                "Passwords do not match.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        /*
+            Password length
+        */
+
+        if (
+            password.length < 6
+        ) {
+
+            showMessage(
+                "Password must be at least 6 characters long.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        /*
+            Disable button
+        */
+
+        registerButton.disabled =
+            true;
+
+        registerButton.textContent =
+            "Creating Account...";
+
+
+        try {
+
+
+            /*
+                Send registration request
+                to Node.js backend
+            */
+
+            const response =
+                await fetch(
+                    "http://127.0.0.1:5000/api/auth/register",
+                    {
+
+                        method: "POST",
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                fullName:
+                                    fullName,
+
+                                email:
+                                    email,
+
+                                phone:
+                                    phone,
+
+                                password:
+                                    password,
+
+                                confirmPassword:
+                                    confirmPassword,
+
+                                role:
+                                    role
+
+                            })
+
+                    }
+                );
+
+
+            /*
+                Convert response to JSON
+            */
+
+            const data =
+                await response.json();
+
+
+            /*
+                Registration successful
+            */
+
+            if (
+                response.ok &&
+                data.success
+            ) {
+
+
+                showMessage(
+                    "Account created successfully! Redirecting to login...",
+                    "success"
+                );
+
+
+                /*
+                    Redirect to login page
+                    after 1.5 seconds
+                */
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            "login.html";
+
+                    },
+                    1500
+                );
+
+
+            }
+
+            else {
+
+
+                /*
+                    Backend returned error
+                */
+
+                showMessage(
+                    data.message ||
+                    "Registration failed. Please try again.",
+                    "error"
+                );
+
+
+                registerButton.disabled =
+                    false;
+
+                registerButton.textContent =
+                    "Create Account";
+
+            }
+
+
+        }
+
+        catch (error) {
+
+
+            console.error(
+                "Registration Error:",
+                error
+            );
+
+
+            showMessage(
+
+                "Unable to connect to the server. Please make sure your backend is running on port 5000.",
+
+                "error"
+
+            );
+
+
+            registerButton.disabled =
+                false;
+
+            registerButton.textContent =
+                "Create Account";
+
+
+        }
+
+    }
+
+);
+
+</script>
+
+
 </body>
+
 </html>

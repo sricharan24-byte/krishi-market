@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="View and manage your Krishi Market orders">
+
+    <title>My Orders | Krishi Market</title>
+
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="myorders.css">
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard-container">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="brand-section">
+
+            <div class="brand-logo">
+                🌱
+            </div>
+
+            <h2>
+                Krishi Market
+            </h2>
+
+            <p>
+                Customer Panel
+            </p>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+
+
+            <a href="customer.html"
+               class="nav-item">
+
+                <i class="fas fa-home"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a href="products.html"
+               class="nav-item">
+
+                <i class="fas fa-store"></i>
+
+                <span>
+                    Browse Products
+                </span>
+
+            </a>
+
+
+            <a href="cart.html"
+               class="nav-item">
+
+                <i class="fas fa-shopping-cart"></i>
+
+                <span>
+                    My Cart
+                </span>
+
+                <span class="nav-badge"
+                      id="cartBadge">
+                    0
+                </span>
+
+            </a>
+
+
+            <a href="myorders.html"
+               class="nav-item active">
+
+                <i class="fas fa-box"></i>
+
+                <span>
+                    My Orders
+                </span>
+
+            </a>
+
+
+            <a href="wishlist.html"
+               class="nav-item">
+
+                <i class="fas fa-heart"></i>
+
+                <span>
+                    Wishlist
+                </span>
+
+                <span class="nav-badge"
+                      id="wishlistBadge">
+                    0
+                </span>
+
+            </a>
+
+
+            <a href="profile.html"
+               class="nav-item">
+
+                <i class="fas fa-user-circle"></i>
+
+                <span>
+                    My Profile
+                </span>
+
+            </a>
+
+
+            <a href="logout.html"
+               class="nav-item logout">
+
+                <i class="fas fa-sign-out-alt"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =====================================================
+             HEADER
+        ====================================================== -->
+
+        <header class="page-header">
+
+
+            <div class="header-left">
+
+                <h1>
+                    My Orders
+                </h1>
+
+                <p>
+                    Track and manage all your purchases.
+                </p>
+
+            </div>
+
+
+            <div class="header-right">
+
+
+                <!-- SEARCH -->
+
+                <div class="header-search">
+
+                    <i class="fas fa-search"></i>
+
+                    <input
+                        type="text"
+                        id="orderSearch"
+                        placeholder="Search orders...">
+
+                </div>
+
+
+                <!-- CART -->
+
+                <a href="cart.html"
+                   class="header-cart">
+
+                    <i class="fas fa-shopping-cart"></i>
+
+                    <span id="headerCartCount">
+                        0
+                    </span>
+
+                </a>
+
+
+                <!-- USER -->
+
+                <div class="header-user">
+
+                    <div class="user-avatar">
+
+                        <i class="fas fa-user"></i>
+
+                    </div>
+
+                    <div class="user-info">
+
+                        <strong>
+                            Customer
+                        </strong>
+
+                        <span>
+                            Customer Account
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================================
+             ORDER SUMMARY
+        ====================================================== -->
+
+        <section class="order-summary">
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon">
+                    <i class="fas fa-box"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Orders
+                    </span>
+
+                    <strong id="totalOrders">
+                        4
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon pending-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Pending
+                    </span>
+
+                    <strong id="pendingOrders">
+                        1
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon shipped-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Shipped
+                    </span>
+
+                    <strong id="shippedOrders">
+                        1
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon delivered-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Delivered
+                    </span>
+
+                    <strong id="deliveredOrders">
+                        2
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PAGE INTRO
+        ====================================================== -->
+
+        <section class="orders-banner">
+
+
+            <div class="banner-content">
+
+                <span>
+                    🛍️ Your Shopping Journey
+                </span>
+
+                <h2>
+                    Track Your Fresh Farm Orders
+                </h2>
+
+                <p>
+                    Stay updated with your orders and receive
+                    fresh products directly from farmers.
+                </p>
+
+            </div>
+
+
+            <div class="banner-icon">
+                📦
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             ORDER FILTER
+        ====================================================== -->
+
+        <section class="order-filter">
+
+
+            <div class="filter-title">
+
+                <h2>
+                    Recent Orders
+                </h2>
+
+                <p id="orderCount">
+                    Showing 4 orders
+                </p>
+
+            </div>
+
+
+            <div class="filter-buttons">
+
+
+                <button
+                    class="filter-btn active"
+                    data-status="all">
+
+                    All Orders
+
+                </button>
+
+
+                <button
+                    class="filter-btn"
+                    data-status="pending">
+
+                    Pending
+
+                </button>
+
+
+                <button
+                    class="filter-btn"
+                    data-status="confirmed">
+
+                    Confirmed
+
+                </button>
+
+
+                <button
+                    class="filter-btn"
+                    data-status="shipped">
+
+                    Shipped
+
+                </button>
+
+
+                <button
+                    class="filter-btn"
+                    data-status="delivered">
+
+                    Delivered
+
+                </button>
+
+
+                <button
+                    class="filter-btn"
+                    data-status="cancelled">
+
+                    Cancelled
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             ORDERS LIST
+        ====================================================== -->
+
+        <section class="orders-list"
+                 id="ordersList">
+
+
+
+            <!-- =================================================
+                 ORDER 1
+            ================================================== -->
+
+            <article class="order-card"
+                     data-status="delivered"
+                     data-order="KM1001">
+
+
+                <!-- ORDER HEADER -->
+
+                <div class="order-header">
+
+
+                    <div class="order-id">
+
+                        <div class="order-icon">
+
+                            <i class="fas fa-receipt"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Order ID
+                            </span>
+
+                            <strong>
+                                #KM1001
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-date">
+
+                        <span>
+                            Order Date
+                        </span>
+
+                        <strong>
+                            02 Aug 2026
+                        </strong>
+
+                    </div>
+
+
+                    <span class="status delivered">
+
+                        <i class="fas fa-check-circle"></i>
+
+                        Delivered
+
+                    </span>
+
+
+                </div>
+
+
+
+                <!-- ORDER BODY -->
+
+                <div class="order-body">
+
+
+                    <!-- PRODUCTS -->
+
+                    <div class="order-products">
+
+
+                        <div class="order-product">
+
+                            <div class="product-image">
+                                🍅
+                            </div>
+
+                            <div class="product-info">
+
+                                <h3>
+                                    Organic Tomatoes
+                                </h3>
+
+                                <p>
+                                    Green Valley Farm
+                                </p>
+
+                                <span>
+                                    Quantity: 2 kg
+                                </span>
+
+                            </div>
+
+                            <strong class="product-price">
+                                ₹120
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-product">
+
+                            <div class="product-image">
+                                🥕
+                            </div>
+
+                            <div class="product-info">
+
+                                <h3>
+                                    Fresh Carrots
+                                </h3>
+
+                                <p>
+                                    Nature Fresh Farm
+                                </p>
+
+                                <span>
+                                    Quantity: 1 kg
+                                </span>
+
+                            </div>
+
+                            <strong class="product-price">
+                                ₹80
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- ORDER TOTAL -->
+
+                    <div class="order-total">
+
+                        <span>
+                            Total Amount
+                        </span>
+
+                        <strong>
+                            ₹200
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ORDER FOOTER -->
+
+                <div class="order-footer">
+
+
+                    <div class="delivery-info">
+
+                        <i class="fas fa-map-marker-alt"></i>
+
+                        <span>
+                            Delivered to your saved address
+                        </span>
+
+                    </div>
+
+
+                    <div class="order-actions">
+
+                        <button
+                            class="outline-btn"
+                            onclick="viewOrder('KM1001')">
+
+                            <i class="fas fa-eye"></i>
+
+                            View Details
+
+                        </button>
+
+
+                        <button
+                            class="green-btn"
+                            onclick="reorder('Organic Tomatoes')">
+
+                            <i class="fas fa-redo"></i>
+
+                            Reorder
+
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- =================================================
+                 ORDER 2
+            ================================================== -->
+
+            <article class="order-card"
+                     data-status="shipped"
+                     data-order="KM1002">
+
+
+                <div class="order-header">
+
+
+                    <div class="order-id">
+
+                        <div class="order-icon">
+
+                            <i class="fas fa-receipt"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Order ID
+                            </span>
+
+                            <strong>
+                                #KM1002
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-date">
+
+                        <span>
+                            Order Date
+                        </span>
+
+                        <strong>
+                            04 Aug 2026
+                        </strong>
+
+                    </div>
+
+
+                    <span class="status shipped">
+
+                        <i class="fas fa-truck"></i>
+
+                        Shipped
+
+                    </span>
+
+
+                </div>
+
+
+
+                <div class="order-body">
+
+
+                    <div class="order-products">
+
+
+                        <div class="order-product">
+
+                            <div class="product-image">
+                                🥭
+                            </div>
+
+                            <div class="product-info">
+
+                                <h3>
+                                    Alphonso Mangoes
+                                </h3>
+
+                                <p>
+                                    Sunshine Farm
+                                </p>
+
+                                <span>
+                                    Quantity: 2 kg
+                                </span>
+
+                            </div>
+
+                            <strong class="product-price">
+                                ₹360
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-product">
+
+                            <div class="product-image">
+                                🍌
+                            </div>
+
+                            <div class="product-info">
+
+                                <h3>
+                                    Organic Bananas
+                                </h3>
+
+                                <p>
+                                    Green Valley Farm
+                                </p>
+
+                                <span>
+                                    Quantity: 1 dozen
+                                </span>
+
+                            </div>
+
+                            <strong class="product-price">
+                                ₹60
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="order-total">
+
+                        <span>
+                            Total Amount
+                        </span>
+
+                        <strong>
+                            ₹420
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="order-footer">
+
+
+                    <div class="delivery-info">
+
+                        <i class="fas fa-truck"></i>
+
+                        <span>
+                            Expected delivery: 07 Aug 2026
+                        </span>
+
+                    </div>
+
+
+                    <div class="order-actions">
+
+                        <button
+                            class="outline-btn"
+                            onclick="viewOrder('KM1002')">
+
+                            <i class="fas fa-eye"></i>
+
+                            View Details
+
+                        </button>
+
+
+                        <button
+                            class="green-btn"
+                            onclick="trackOrder('KM1002')">
+
+                            <i class="fas fa-location-arrow"></i>
+
+                            Track Order
+
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- =================================================
+                 ORDER 3
+            ================================================== -->
+
+            <article class="order-card"
+                     data-status="pending"
+                     data-order="KM1003">
+
+
+                <div class="order-header">
+
+
+                    <div class="order-id">
+
+                        <div class="order-icon">
+
+                            <i class="fas fa-receipt"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Order ID
+                            </span>
+
+                            <strong>
+                                #KM1003
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-date">
+
+                        <span>
+                            Order Date
+                        </span>
+
+                        <strong>
+                            06 Aug 2026
+                        </strong>
+
+                    </div>
+
+
+                    <span class="status pending">
+
+                        <i class="fas fa-clock"></i>
+
+                        Pending
+
+                    </span>
+
+
+                </div>
+
+
+
+                <div class="order-body">
+
+
+                    <div class="order-products">
+
+
+                        <div class="order-product">
+
+                            <div class="product-image">
+                                🥬
+                            </div>
+
+                            <div class="product-info">
+
+                                <h3>
+                                    Fresh Green Spinach
+                                </h3>
+
+                                <p>
+                                    Green Leaf Farm
+                                </p>
+
+                                <span>
+                                    Quantity: 3 bunches
+                                </span>
+
+                            </div>
+
+                            <strong class="product-price">
+                                ₹120
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-product">
+
+                            <div class="product-image">
+                                🥔
+                            </div>
+
+                            <div class="product-info">
+
+                                <h3>
+                                    Organic Potatoes
+                                </h3>
+
+                                <p>
+                                    Nature Fresh Farm
+                                </p>
+
+                                <span>
+                                    Quantity: 2 kg
+                                </span>
+
+                            </div>
+
+                            <strong class="product-price">
+                                ₹90
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="order-total">
+
+                        <span>
+                            Total Amount
+                        </span>
+
+                        <strong>
+                            ₹210
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="order-footer">
+
+
+                    <div class="delivery-info">
+
+                        <i class="fas fa-hourglass-half"></i>
+
+                        <span>
+                            Waiting for farmer confirmation
+                        </span>
+
+                    </div>
+
+
+                    <div class="order-actions">
+
+                        <button
+                            class="outline-btn"
+                            onclick="viewOrder('KM1003')">
+
+                            <i class="fas fa-eye"></i>
+
+                            View Details
+
+                        </button>
+
+
+                        <button
+                            class="cancel-btn"
+                            onclick="cancelOrder('KM1003')">
+
+                            <i class="fas fa-times"></i>
+
+                            Cancel
+
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- =================================================
+                 ORDER 4
+            ================================================== -->
+
+            <article class="order-card"
+                     data-status="delivered"
+                     data-order="KM1004">
+
+
+                <div class="order-header">
+
+
+                    <div class="order-id">
+
+                        <div class="order-icon">
+
+                            <i class="fas fa-receipt"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Order ID
+                            </span>
+
+                            <strong>
+                                #KM1004
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-date">
+
+                        <span>
+                            Order Date
+                        </span>
+
+                        <strong>
+                            29 Jul 2026
+                        </strong>
+
+                    </div>
+
+
+                    <span class="status delivered">
+
+                        <i class="fas fa-check-circle"></i>
+
+                        Delivered
+
+                    </span>
+
+
+                </div>
+
+
+
+                <div class="order-body">
+
+
+                    <div class="order-products">
+
+
+                        <div class="order-product">
+
+                            <div class="product-image">
+                                🌾
+                            </div>
+
+                            <div class="product-info">
+
+                                <h3>
+                                    Premium Organic Rice
+                                </h3>
+
+                                <p>
+                                    Krishna Farms
+                                </p>
+
+                                <span>
+                                    Quantity: 5 kg
+                                </span>
+
+                            </div>
+
+                            <strong class="product-price">
+                                ₹600
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="order-total">
+
+                        <span>
+                            Total Amount
+                        </span>
+
+                        <strong>
+                            ₹600
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="order-footer">
+
+
+                    <div class="delivery-info">
+
+                        <i class="fas fa-check-circle"></i>
+
+                        <span>
+                            Delivered successfully
+                        </span>
+
+                    </div>
+
+
+                    <div class="order-actions">
+
+                        <button
+                            class="outline-btn"
+                            onclick="viewOrder('KM1004')">
+
+                            <i class="fas fa-eye"></i>
+
+                            View Details
+
+                        </button>
+
+
+                        <button
+                            class="green-btn"
+                            onclick="reorder('Premium Organic Rice')">
+
+                            <i class="fas fa-redo"></i>
+
+                            Reorder
+
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+
+            </article>
+
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             EMPTY STATE
+        ====================================================== -->
+
+        <section class="empty-orders"
+                 id="emptyOrders">
+
+
+            <div class="empty-icon">
+
+                <i class="fas fa-box-open"></i>
+
+            </div>
+
+            <h2>
+                No Orders Found
+            </h2>
+
+            <p>
+                We couldn't find any orders matching your search.
+            </p>
+
+            <a href="products.html"
+               class="shop-btn">
+
+                <i class="fas fa-store"></i>
+
+                Browse Products
+
+            </a>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             FOOTER
+        ====================================================== -->
+
+        <footer class="dashboard-footer">
+
+            <p>
+                © 2026 Krishi Market.
+                Connecting Farmers Directly With Consumers.
+            </p>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   CART
+===================================================== */
+
+let cart =
+    JSON.parse(
+        localStorage.getItem("cart")
+    ) || [];
+
+
+function updateCartCount() {
+
+    const count = cart.length;
+
+    const cartBadge =
+        document.getElementById("cartBadge");
+
+    const headerCartCount =
+        document.getElementById("headerCartCount");
+
+
+    if (cartBadge) {
+
+        cartBadge.textContent =
+            count;
+
+    }
+
+
+    if (headerCartCount) {
+
+        headerCartCount.textContent =
+            count;
+
+    }
+
+}
+
+
+/* =====================================================
+   WISHLIST
+===================================================== */
+
+let wishlist =
+    JSON.parse(
+        localStorage.getItem("wishlist")
+    ) || [];
+
+
+function updateWishlistCount() {
+
+    const badge =
+        document.getElementById(
+            "wishlistBadge"
+        );
+
+
+    if (badge) {
+
+        badge.textContent =
+            wishlist.length;
+
+    }
+
+}
+
+
+/* =====================================================
+   ORDER FILTER
+===================================================== */
+
+const filterButtons =
+    document.querySelectorAll(
+        ".filter-btn"
+    );
+
+
+const orderCards =
+    document.querySelectorAll(
+        ".order-card"
+    );
+
+
+filterButtons.forEach(
+    function(button) {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+
+                filterButtons.forEach(
+                    function(btn) {
+
+                        btn.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                this.classList.add(
+                    "active"
+                );
+
+
+                const selectedStatus =
+                    this.dataset.status;
+
+
+                let visibleOrders = 0;
+
+
+                orderCards.forEach(
+                    function(order) {
+
+
+                        const orderStatus =
+                            order.dataset.status;
+
+
+                        if (
+                            selectedStatus === "all" ||
+                            orderStatus === selectedStatus
+                        ) {
+
+                            order.style.display =
+                                "block";
+
+                            visibleOrders++;
+
+                        }
+                        else {
+
+                            order.style.display =
+                                "none";
+
+                        }
+
+                    }
+                );
+
+
+                updateOrderCount(
+                    visibleOrders
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   SEARCH ORDERS
+===================================================== */
+
+const orderSearch =
+    document.getElementById(
+        "orderSearch"
+    );
+
+
+if (orderSearch) {
+
+    orderSearch.addEventListener(
+        "input",
+        function() {
+
+
+            const search =
+                this.value
+                .toLowerCase()
+                .trim();
+
+
+            let visibleOrders = 0;
+
+
+            orderCards.forEach(
+                function(order) {
+
+
+                    const orderText =
+                        order.innerText
+                        .toLowerCase();
+
+
+                    if (
+                        orderText.includes(search)
+                    ) {
+
+                        order.style.display =
+                            "block";
+
+                        visibleOrders++;
+
+                    }
+                    else {
+
+                        order.style.display =
+                            "none";
+
+                    }
+
+                }
+            );
+
+
+            updateOrderCount(
+                visibleOrders
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   UPDATE ORDER COUNT
+===================================================== */
+
+function updateOrderCount(
+    count
+) {
+
+
+    const orderCount =
+        document.getElementById(
+            "orderCount"
+        );
+
+
+    if (orderCount) {
+
+        orderCount.textContent =
+            "Showing " +
+            count +
+            " orders";
+
+    }
+
+
+    const emptyOrders =
+        document.getElementById(
+            "emptyOrders"
+        );
+
+
+    if (emptyOrders) {
+
+        if (count === 0) {
+
+            emptyOrders.style.display =
+                "block";
+
+        }
+        else {
+
+            emptyOrders.style.display =
+                "none";
+
+        }
+
+    }
+
+}
+
+
+/* =====================================================
+   VIEW ORDER
+===================================================== */
+
+function viewOrder(
+    orderId
+) {
+
+    alert(
+        "Order Details\n\n" +
+        "Order ID: #" +
+        orderId +
+        "\n\n" +
+        "Detailed order information will be displayed here."
+    );
+
+}
+
+
+/* =====================================================
+   TRACK ORDER
+===================================================== */
+
+function trackOrder(
+    orderId
+) {
+
+    alert(
+        "Tracking Order #" +
+        orderId +
+        "\n\n" +
+        "Your order is currently on the way."
+    );
+
+}
+
+
+/* =====================================================
+   REORDER
+===================================================== */
+
+function reorder(
+    productName
+) {
+
+
+    let existingProduct =
+        cart.find(
+            item =>
+            item.name === productName
+        );
+
+
+    if (existingProduct) {
+
+        existingProduct.quantity++;
+
+    }
+    else {
+
+        cart.push({
+
+            name: productName,
+
+            price: 0,
+
+            quantity: 1
+
+        });
+
+    }
+
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+
+    updateCartCount();
+
+
+    alert(
+        productName +
+        " has been added to your cart."
+    );
+
+
+}
+
+
+/* =====================================================
+   CANCEL ORDER
+===================================================== */
+
+function cancelOrder(
+    orderId
+) {
+
+
+    const confirmCancel =
+        confirm(
+            "Are you sure you want to cancel Order #" +
+            orderId +
+            "?"
+        );
+
+
+    if (!confirmCancel) {
+
+        return;
+
+    }
+
+
+    const order =
+        document.querySelector(
+            '[data-order="' +
+            orderId +
+            '"]'
+        );
+
+
+    if (order) {
+
+        order.dataset.status =
+            "cancelled";
+
+
+        const status =
+            order.querySelector(
+                ".status"
+            );
+
+
+        if (status) {
+
+            status.className =
+                "status cancelled";
+
+            status.innerHTML =
+                '<i class="fas fa-times-circle"></i> Cancelled';
+
+        }
+
+
+        const cancelButton =
+            order.querySelector(
+                ".cancel-btn"
+            );
+
+
+        if (cancelButton) {
+
+            cancelButton.remove();
+
+        }
+
+
+        const deliveryInfo =
+            order.querySelector(
+                ".delivery-info"
+            );
+
+
+        if (deliveryInfo) {
+
+            deliveryInfo.innerHTML =
+                '<i class="fas fa-times-circle"></i>' +
+                '<span>Order cancelled</span>';
+
+        }
+
+    }
+
+
+    alert(
+        "Order #" +
+        orderId +
+        " has been cancelled."
+    );
+
+
+}
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+updateCartCount();
+
+updateWishlistCount();
+
+updateOrderCount(
+    orderCards.length
+);
+
+
+</script>
+
+
+</body>
+
+</html>

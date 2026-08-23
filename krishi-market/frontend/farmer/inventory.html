@@ -1,30 +1,2123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inventory - Krishi Market</title>
-  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/farmer.css"><link rel="stylesheet" href="../css/responsive.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Inventory | Krishi Market</title>
+
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- Inventory CSS -->
+
+    <link rel="stylesheet"
+          href="inventory.css">
+
 </head>
+
+
 <body>
-  <header><nav class="navbar"><div class="container">
-    <a href="../index.html" class="logo"><i class="fas fa-leaf"></i><span>Krishi Market</span></a>
-    <div class="nav-links">
-      <a href="../index.html">Home</a><a href="dashboard.html">Dashboard</a><a href="products.html">My Products</a>
-      <a href="orders.html">Orders</a><a href="inventory.html" class="active">Inventory</a><a href="profile.html">Profile</a>
-      <a href="#" onclick="auth.logout()">Logout</a>
-    </div>
-    <div class="hamburger"><span></span><span></span><span></span></div>
-  </div></nav></header>
-  <section class="inventory-section">
-    <div class="container">
-      <div class="inventory-controls"><h1>Inventory Management</h1><a href="add-product.html" class="btn btn-primary"><i class="fas fa-plus"></i> Add Product</a></div>
-      <div class="inventory-table">
-        <table><thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Status</th><th>Actions</th></tr></thead><tbody id="inventoryBody"></tbody></table>
-      </div>
-    </div>
-  </section>
-  <script src="../js/config.js"></script><script src="../js/auth.js"></script><script src="inventory.js"></script>
+
+
+<div class="dashboard-container">
+
+
+    <!-- ==================================================
+         SIDEBAR
+    =================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="brand-section">
+
+            <div class="brand-logo">
+
+                <span class="plant-icon">🌱</span>
+
+            </div>
+
+            <h1>Krishi Market</h1>
+
+        </div>
+
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+
+
+            <a href="farmer.html"
+               class="nav-item">
+
+                <i class="fas fa-home"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+
+            <a href="add-products.html"
+               class="nav-item">
+
+                <i class="fas fa-plus-circle"></i>
+
+                <span>Add Product</span>
+
+            </a>
+
+
+
+            <a href="my-products.html"
+               class="nav-item">
+
+                <i class="fas fa-box"></i>
+
+                <span>My Products</span>
+
+            </a>
+
+
+
+            <a href="inventory.html"
+               class="nav-item active">
+
+                <i class="fas fa-warehouse"></i>
+
+                <span>Inventory</span>
+
+            </a>
+
+
+
+            <a href="orders.html"
+               class="nav-item">
+
+                <i class="fas fa-shopping-cart"></i>
+
+                <span>Orders</span>
+
+            </a>
+
+
+
+            <a href="profile.html"
+               class="nav-item">
+
+                <i class="fas fa-user"></i>
+
+                <span>Profile</span>
+
+            </a>
+
+
+
+            <a href="logout.html"
+               class="nav-item logout-link">
+
+                <i class="fas fa-sign-out-alt"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+
+        </nav>
+
+
+    </aside>
+
+
+
+    <!-- ==================================================
+         MAIN CONTENT
+    =================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ==================================================
+             PAGE HEADER
+        =================================================== -->
+
+        <header class="page-header">
+
+
+            <div class="header-left">
+
+
+                <a href="farmer.html"
+                   class="back-button">
+
+                    <i class="fas fa-arrow-left"></i>
+
+                </a>
+
+
+                <div>
+
+                    <h1>Inventory</h1>
+
+                    <p>
+                        Monitor and manage your product stock
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- PROFILE -->
+
+            <div class="profile-area">
+
+
+                <div class="profile-avatar">
+
+                    FA
+
+                </div>
+
+
+                <div class="profile-name">
+
+                    <span>Farmer</span>
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- ==================================================
+             INVENTORY STATISTICS
+        =================================================== -->
+
+        <section class="inventory-statistics">
+
+
+            <!-- TOTAL ITEMS -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-icon total-icon">
+
+                    <i class="fas fa-boxes-stacked"></i>
+
+                </div>
+
+
+                <div class="stat-info">
+
+                    <h3 id="totalItems">
+                        540
+                    </h3>
+
+                    <p>Total Stock Units</p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- AVAILABLE -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-icon available-icon">
+
+                    <i class="fas fa-circle-check"></i>
+
+                </div>
+
+
+                <div class="stat-info">
+
+                    <h3 id="availableProducts">
+                        4
+                    </h3>
+
+                    <p>Available Products</p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- LOW STOCK -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-icon low-icon">
+
+                    <i class="fas fa-triangle-exclamation"></i>
+
+                </div>
+
+
+                <div class="stat-info">
+
+                    <h3 id="lowStock">
+                        2
+                    </h3>
+
+                    <p>Low Stock</p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- OUT OF STOCK -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-icon out-icon">
+
+                    <i class="fas fa-circle-xmark"></i>
+
+                </div>
+
+
+                <div class="stat-info">
+
+                    <h3 id="outOfStock">
+                        1
+                    </h3>
+
+                    <p>Out of Stock</p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+             INVENTORY SECTION
+        =================================================== -->
+
+        <section class="inventory-section">
+
+
+            <!-- HEADER -->
+
+            <div class="inventory-header">
+
+
+                <div>
+
+                    <h2>Stock Management</h2>
+
+                    <p>
+                        Update and monitor the available stock
+                        of your products.
+                    </p>
+
+                </div>
+
+
+                <a href="add-products.html"
+                   class="add-product-button">
+
+                    <i class="fas fa-plus"></i>
+
+                    Add Product
+
+                </a>
+
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 SEARCH & FILTERS
+            =================================================== -->
+
+            <div class="inventory-toolbar">
+
+
+                <!-- SEARCH -->
+
+                <div class="search-box">
+
+                    <i class="fas fa-search"></i>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search product..."
+                    >
+
+                </div>
+
+
+
+                <!-- CATEGORY -->
+
+                <div class="filter-box">
+
+                    <i class="fas fa-filter"></i>
+
+                    <select id="categoryFilter">
+
+                        <option value="all">
+                            All Categories
+                        </option>
+
+                        <option value="vegetables">
+                            Vegetables
+                        </option>
+
+                        <option value="fruits">
+                            Fruits
+                        </option>
+
+                        <option value="grains">
+                            Grains
+                        </option>
+
+                        <option value="pulses">
+                            Pulses
+                        </option>
+
+                        <option value="spices">
+                            Spices
+                        </option>
+
+                        <option value="dairy">
+                            Dairy
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- STOCK STATUS -->
+
+                <div class="filter-box">
+
+                    <i class="fas fa-chart-simple"></i>
+
+                    <select id="statusFilter">
+
+                        <option value="all">
+                            All Stock
+                        </option>
+
+                        <option value="available">
+                            Available
+                        </option>
+
+                        <option value="low">
+                            Low Stock
+                        </option>
+
+                        <option value="out">
+                            Out of Stock
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 INVENTORY TABLE
+            =================================================== -->
+
+            <div class="inventory-table-container">
+
+
+                <table class="inventory-table">
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Product</th>
+
+                            <th>Category</th>
+
+                            <th>Price</th>
+
+                            <th>Current Stock</th>
+
+                            <th>Stock Level</th>
+
+                            <th>Status</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+
+
+                    <tbody id="inventoryBody">
+
+
+
+                        <!-- ======================================
+                             PRODUCT 1
+                        ======================================= -->
+
+                        <tr
+                            data-name="Organic Tomatoes"
+                            data-category="vegetables"
+                            data-status="available"
+                            data-stock="120"
+                        >
+
+                            <td>
+
+                                <div class="product-info">
+
+
+                                    <div class="product-image">
+
+                                        <img
+                                            src="https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=300&q=80"
+                                            alt="Organic Tomatoes"
+                                        >
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Organic Tomatoes
+                                        </strong>
+
+                                        <span>
+                                            Fresh farm produce
+                                        </span>
+
+                                    </div>
+
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <span class="category-text">
+                                    Vegetables
+                                </span>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <strong class="price">
+                                    ₹50/kg
+                                </strong>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="stock-control">
+
+                                    <button
+                                        class="stock-btn minus"
+                                        onclick="changeStock(this, -1)"
+                                    >
+                                        −
+                                    </button>
+
+
+                                    <input
+                                        type="number"
+                                        class="stock-input"
+                                        value="120"
+                                        min="0"
+                                        onchange="updateStock(this)"
+                                    >
+
+
+                                    <button
+                                        class="stock-btn plus"
+                                        onclick="changeStock(this, 1)"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="stock-level">
+
+                                    <div class="progress-bar">
+
+                                        <div
+                                            class="progress-fill high"
+                                            style="width: 85%;"
+                                        ></div>
+
+                                    </div>
+
+                                    <span>
+                                        Good
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <span class="status-badge available">
+                                    <i class="fas fa-circle"></i>
+                                    Available
+                                </span>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="action-buttons">
+
+                                    <button
+                                        class="save-btn"
+                                        onclick="saveStock(this)"
+                                        title="Save Stock"
+                                    >
+
+                                        <i class="fas fa-check"></i>
+
+                                    </button>
+
+
+                                    <button
+                                        class="edit-btn"
+                                        onclick="editProduct('Organic Tomatoes')"
+                                        title="Edit Product"
+                                    >
+
+                                        <i class="fas fa-pen"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- ======================================
+                             PRODUCT 2
+                        ======================================= -->
+
+                        <tr
+                            data-name="Fresh Mangoes"
+                            data-category="fruits"
+                            data-status="available"
+                            data-stock="85"
+                        >
+
+                            <td>
+
+                                <div class="product-info">
+
+                                    <div class="product-image">
+
+                                        <img
+                                            src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=300&q=80"
+                                            alt="Fresh Mangoes"
+                                        >
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Fresh Mangoes
+                                        </strong>
+
+                                        <span>
+                                            Naturally ripened
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <span class="category-text">
+                                    Fruits
+                                </span>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <strong class="price">
+                                    ₹120/kg
+                                </strong>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="stock-control">
+
+                                    <button
+                                        class="stock-btn minus"
+                                        onclick="changeStock(this, -1)"
+                                    >
+                                        −
+                                    </button>
+
+
+                                    <input
+                                        type="number"
+                                        class="stock-input"
+                                        value="85"
+                                        min="0"
+                                        onchange="updateStock(this)"
+                                    >
+
+
+                                    <button
+                                        class="stock-btn plus"
+                                        onclick="changeStock(this, 1)"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="stock-level">
+
+                                    <div class="progress-bar">
+
+                                        <div
+                                            class="progress-fill high"
+                                            style="width: 72%;"
+                                        ></div>
+
+                                    </div>
+
+                                    <span>
+                                        Good
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <span class="status-badge available">
+
+                                    <i class="fas fa-circle"></i>
+
+                                    Available
+
+                                </span>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="action-buttons">
+
+                                    <button
+                                        class="save-btn"
+                                        onclick="saveStock(this)"
+                                    >
+
+                                        <i class="fas fa-check"></i>
+
+                                    </button>
+
+
+                                    <button
+                                        class="edit-btn"
+                                        onclick="editProduct('Fresh Mangoes')"
+                                    >
+
+                                        <i class="fas fa-pen"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- ======================================
+                             PRODUCT 3
+                        ======================================= -->
+
+                        <tr
+                            data-name="Fresh Spinach"
+                            data-category="vegetables"
+                            data-status="available"
+                            data-stock="65"
+                        >
+
+                            <td>
+
+                                <div class="product-info">
+
+                                    <div class="product-image">
+
+                                        <img
+                                            src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=300&q=80"
+                                            alt="Fresh Spinach"
+                                        >
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Fresh Spinach
+                                        </strong>
+
+                                        <span>
+                                            Fresh leafy greens
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <span class="category-text">
+                                    Vegetables
+                                </span>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <strong class="price">
+                                    ₹40/kg
+                                </strong>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="stock-control">
+
+                                    <button
+                                        class="stock-btn minus"
+                                        onclick="changeStock(this, -1)"
+                                    >
+                                        −
+                                    </button>
+
+
+                                    <input
+                                        type="number"
+                                        class="stock-input"
+                                        value="65"
+                                        min="0"
+                                        onchange="updateStock(this)"
+                                    >
+
+
+                                    <button
+                                        class="stock-btn plus"
+                                        onclick="changeStock(this, 1)"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="stock-level">
+
+                                    <div class="progress-bar">
+
+                                        <div
+                                            class="progress-fill medium"
+                                            style="width: 55%;"
+                                        ></div>
+
+                                    </div>
+
+                                    <span>
+                                        Good
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <span class="status-badge available">
+
+                                    <i class="fas fa-circle"></i>
+
+                                    Available
+
+                                </span>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="action-buttons">
+
+                                    <button
+                                        class="save-btn"
+                                        onclick="saveStock(this)"
+                                    >
+
+                                        <i class="fas fa-check"></i>
+
+                                    </button>
+
+
+                                    <button
+                                        class="edit-btn"
+                                        onclick="editProduct('Fresh Spinach')"
+                                    >
+
+                                        <i class="fas fa-pen"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- ======================================
+                             PRODUCT 4
+                        ======================================= -->
+
+                        <tr
+                            data-name="Organic Carrots"
+                            data-category="vegetables"
+                            data-status="low"
+                            data-stock="8"
+                        >
+
+                            <td>
+
+                                <div class="product-info">
+
+                                    <div class="product-image">
+
+                                        <img
+                                            src="https://images.unsplash.com/photo-1445282768818-728615cc910a?auto=format&fit=crop&w=300&q=80"
+                                            alt="Organic Carrots"
+                                        >
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Organic Carrots
+                                        </strong>
+
+                                        <span>
+                                            Organic vegetables
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <span class="category-text">
+                                    Vegetables
+                                </span>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <strong class="price">
+                                    ₹60/kg
+                                </strong>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="stock-control">
+
+                                    <button
+                                        class="stock-btn minus"
+                                        onclick="changeStock(this, -1)"
+                                    >
+                                        −
+                                    </button>
+
+
+                                    <input
+                                        type="number"
+                                        class="stock-input"
+                                        value="8"
+                                        min="0"
+                                        onchange="updateStock(this)"
+                                    >
+
+
+                                    <button
+                                        class="stock-btn plus"
+                                        onclick="changeStock(this, 1)"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="stock-level">
+
+                                    <div class="progress-bar">
+
+                                        <div
+                                            class="progress-fill low"
+                                            style="width: 15%;"
+                                        ></div>
+
+                                    </div>
+
+                                    <span class="low-text">
+                                        Low
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <span class="status-badge low">
+
+                                    <i class="fas fa-circle"></i>
+
+                                    Low Stock
+
+                                </span>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="action-buttons">
+
+                                    <button
+                                        class="save-btn"
+                                        onclick="saveStock(this)"
+                                    >
+
+                                        <i class="fas fa-check"></i>
+
+                                    </button>
+
+
+                                    <button
+                                        class="edit-btn"
+                                        onclick="editProduct('Organic Carrots')"
+                                    >
+
+                                        <i class="fas fa-pen"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- ======================================
+                             PRODUCT 5
+                        ======================================= -->
+
+                        <tr
+                            data-name="Basmati Rice"
+                            data-category="grains"
+                            data-status="available"
+                            data-stock="250"
+                        >
+
+                            <td>
+
+                                <div class="product-info">
+
+                                    <div class="product-image">
+
+                                        <img
+                                            src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=300&q=80"
+                                            alt="Basmati Rice"
+                                        >
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Basmati Rice
+                                        </strong>
+
+                                        <span>
+                                            Premium quality rice
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <span class="category-text">
+                                    Grains
+                                </span>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <strong class="price">
+                                    ₹90/kg
+                                </strong>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="stock-control">
+
+                                    <button
+                                        class="stock-btn minus"
+                                        onclick="changeStock(this, -1)"
+                                    >
+                                        −
+                                    </button>
+
+
+                                    <input
+                                        type="number"
+                                        class="stock-input"
+                                        value="250"
+                                        min="0"
+                                        onchange="updateStock(this)"
+                                    >
+
+
+                                    <button
+                                        class="stock-btn plus"
+                                        onclick="changeStock(this, 1)"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="stock-level">
+
+                                    <div class="progress-bar">
+
+                                        <div
+                                            class="progress-fill high"
+                                            style="width: 92%;"
+                                        ></div>
+
+                                    </div>
+
+                                    <span>
+                                        Excellent
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <span class="status-badge available">
+
+                                    <i class="fas fa-circle"></i>
+
+                                    Available
+
+                                </span>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="action-buttons">
+
+                                    <button
+                                        class="save-btn"
+                                        onclick="saveStock(this)"
+                                    >
+
+                                        <i class="fas fa-check"></i>
+
+                                    </button>
+
+
+                                    <button
+                                        class="edit-btn"
+                                        onclick="editProduct('Basmati Rice')"
+                                    >
+
+                                        <i class="fas fa-pen"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- ======================================
+                             PRODUCT 6
+                        ======================================= -->
+
+                        <tr
+                            data-name="Fresh Bananas"
+                            data-category="fruits"
+                            data-status="out"
+                            data-stock="0"
+                        >
+
+                            <td>
+
+                                <div class="product-info">
+
+                                    <div class="product-image">
+
+                                        <img
+                                            src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=300&q=80"
+                                            alt="Fresh Bananas"
+                                        >
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Fresh Bananas
+                                        </strong>
+
+                                        <span>
+                                            Naturally ripened
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <span class="category-text">
+                                    Fruits
+                                </span>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <strong class="price">
+                                    ₹45/kg
+                                </strong>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="stock-control">
+
+                                    <button
+                                        class="stock-btn minus"
+                                        onclick="changeStock(this, -1)"
+                                    >
+                                        −
+                                    </button>
+
+
+                                    <input
+                                        type="number"
+                                        class="stock-input"
+                                        value="0"
+                                        min="0"
+                                        onchange="updateStock(this)"
+                                    >
+
+
+                                    <button
+                                        class="stock-btn plus"
+                                        onclick="changeStock(this, 1)"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="stock-level">
+
+                                    <div class="progress-bar">
+
+                                        <div
+                                            class="progress-fill empty"
+                                            style="width: 0%;"
+                                        ></div>
+
+                                    </div>
+
+                                    <span class="out-text">
+                                        Empty
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <span class="status-badge out">
+
+                                    <i class="fas fa-circle"></i>
+
+                                    Out of Stock
+
+                                </span>
+
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="action-buttons">
+
+                                    <button
+                                        class="save-btn"
+                                        onclick="saveStock(this)"
+                                    >
+
+                                        <i class="fas fa-check"></i>
+
+                                    </button>
+
+
+                                    <button
+                                        class="edit-btn"
+                                        onclick="editProduct('Fresh Bananas')"
+                                    >
+
+                                        <i class="fas fa-pen"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+
+                <!-- NO RESULTS -->
+
+                <div class="no-results"
+                     id="noResults"
+                     style="display:none;">
+
+                    <div class="no-results-icon">
+
+                        <i class="fas fa-box-open"></i>
+
+                    </div>
+
+                    <h3>
+                        No Products Found
+                    </h3>
+
+                    <p>
+                        Try changing your search or filters.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script>
+
+
+/* ==================================================
+   ELEMENTS
+================================================== */
+
+const searchInput =
+    document.getElementById("searchInput");
+
+
+const categoryFilter =
+    document.getElementById("categoryFilter");
+
+
+const statusFilter =
+    document.getElementById("statusFilter");
+
+
+const inventoryRows =
+    document.querySelectorAll(
+        "#inventoryBody tr"
+    );
+
+
+const noResults =
+    document.getElementById("noResults");
+
+
+
+/* ==================================================
+   CHANGE STOCK
+================================================== */
+
+function changeStock(button, amount) {
+
+
+    const row =
+        button.closest("tr");
+
+
+    const input =
+        row.querySelector(".stock-input");
+
+
+    let currentValue =
+        parseInt(input.value) || 0;
+
+
+    currentValue += amount;
+
+
+    if (currentValue < 0) {
+
+        currentValue = 0;
+
+    }
+
+
+    input.value =
+        currentValue;
+
+
+    updateStock(input);
+
+}
+
+
+
+/* ==================================================
+   UPDATE STOCK
+================================================== */
+
+function updateStock(input) {
+
+
+    const row =
+        input.closest("tr");
+
+
+    let stock =
+        parseInt(input.value) || 0;
+
+
+    if (stock < 0) {
+
+        stock = 0;
+
+        input.value = 0;
+
+    }
+
+
+    /* ------------------------------------------
+       Update row data
+    ------------------------------------------ */
+
+    row.dataset.stock = stock;
+
+
+    /* ------------------------------------------
+       Progress bar
+    ------------------------------------------ */
+
+    const progress =
+        row.querySelector(
+            ".progress-fill"
+        );
+
+
+    const status =
+        row.querySelector(
+            ".status-badge"
+        );
+
+
+    const statusText =
+        row.querySelector(
+            ".status-badge"
+        );
+
+
+    const levelText =
+        row.querySelector(
+            ".stock-level span"
+        );
+
+
+
+    /* ------------------------------------------
+       Calculate percentage
+    ------------------------------------------ */
+
+    let percentage;
+
+
+    if (stock === 0) {
+
+        percentage = 0;
+
+    }
+
+    else if (stock <= 10) {
+
+        percentage = 15;
+
+    }
+
+    else if (stock <= 50) {
+
+        percentage = 40;
+
+    }
+
+    else if (stock <= 100) {
+
+        percentage = 65;
+
+    }
+
+    else if (stock <= 200) {
+
+        percentage = 80;
+
+    }
+
+    else {
+
+        percentage = 95;
+
+    }
+
+
+    progress.style.width =
+        percentage + "%";
+
+
+
+    /* ------------------------------------------
+       Reset classes
+    ------------------------------------------ */
+
+    progress.classList.remove(
+        "high",
+        "medium",
+        "low",
+        "empty"
+    );
+
+
+    status.classList.remove(
+        "available",
+        "low",
+        "out"
+    );
+
+
+
+    /* ------------------------------------------
+       Stock status
+    ------------------------------------------ */
+
+    if (stock === 0) {
+
+
+        row.dataset.status = "out";
+
+
+        progress.classList.add("empty");
+
+
+        levelText.textContent =
+            "Empty";
+
+
+        levelText.className =
+            "out-text";
+
+
+        status.classList.add("out");
+
+
+        status.innerHTML =
+            '<i class="fas fa-circle"></i> Out of Stock';
+
+
+    }
+
+    else if (stock <= 10) {
+
+
+        row.dataset.status = "low";
+
+
+        progress.classList.add("low");
+
+
+        levelText.textContent =
+            "Low";
+
+
+        levelText.className =
+            "low-text";
+
+
+        status.classList.add("low");
+
+
+        status.innerHTML =
+            '<i class="fas fa-circle"></i> Low Stock';
+
+
+    }
+
+    else {
+
+
+        row.dataset.status =
+            "available";
+
+
+        if (stock > 100) {
+
+            progress.classList.add("high");
+
+        }
+
+        else {
+
+            progress.classList.add("medium");
+
+        }
+
+
+        levelText.textContent =
+            stock > 100
+                ? "Excellent"
+                : "Good";
+
+
+        levelText.className =
+            "";
+
+
+        status.classList.add(
+            "available"
+        );
+
+
+        status.innerHTML =
+            '<i class="fas fa-circle"></i> Available';
+
+    }
+
+
+
+    updateStatistics();
+
+}
+
+
+
+/* ==================================================
+   SAVE STOCK
+================================================== */
+
+function saveStock(button) {
+
+
+    const row =
+        button.closest("tr");
+
+
+    const productName =
+        row.dataset.name;
+
+
+    const stock =
+        row.querySelector(
+            ".stock-input"
+        ).value;
+
+
+    alert(
+        productName +
+        " stock updated to " +
+        stock +
+        " units."
+    );
+
+
+    button.classList.add("saved");
+
+
+    setTimeout(() => {
+
+        button.classList.remove("saved");
+
+    }, 1000);
+
+}
+
+
+
+/* ==================================================
+   EDIT PRODUCT
+================================================== */
+
+function editProduct(productName) {
+
+
+    alert(
+        "Edit product: " +
+        productName
+    );
+
+
+    /*
+       Later you can redirect to:
+
+       edit-product.html?id=PRODUCT_ID
+    */
+
+}
+
+
+
+/* ==================================================
+   SEARCH + FILTER
+================================================== */
+
+function filterInventory() {
+
+
+    const searchValue =
+        searchInput.value
+        .toLowerCase()
+        .trim();
+
+
+    const categoryValue =
+        categoryFilter.value;
+
+
+    const statusValue =
+        statusFilter.value;
+
+
+    let visibleRows = 0;
+
+
+
+    inventoryRows.forEach(row => {
+
+
+        const productName =
+            row.dataset.name
+            .toLowerCase();
+
+
+        const category =
+            row.dataset.category;
+
+
+        const status =
+            row.dataset.status;
+
+
+
+        const searchMatch =
+            productName.includes(
+                searchValue
+            );
+
+
+        const categoryMatch =
+            categoryValue === "all" ||
+            category === categoryValue;
+
+
+        const statusMatch =
+            statusValue === "all" ||
+            status === statusValue;
+
+
+
+        if (
+            searchMatch &&
+            categoryMatch &&
+            statusMatch
+        ) {
+
+            row.style.display =
+                "table-row";
+
+            visibleRows++;
+
+        }
+
+        else {
+
+            row.style.display =
+                "none";
+
+        }
+
+    });
+
+
+
+    if (visibleRows === 0) {
+
+        noResults.style.display =
+            "flex";
+
+    }
+
+    else {
+
+        noResults.style.display =
+            "none";
+
+    }
+
+}
+
+
+
+searchInput.addEventListener(
+    "input",
+    filterInventory
+);
+
+
+categoryFilter.addEventListener(
+    "change",
+    filterInventory
+);
+
+
+statusFilter.addEventListener(
+    "change",
+    filterInventory
+);
+
+
+
+/* ==================================================
+   UPDATE STATISTICS
+================================================== */
+
+function updateStatistics() {
+
+
+    let totalStock = 0;
+
+    let available = 0;
+
+    let low = 0;
+
+    let out = 0;
+
+
+
+    inventoryRows.forEach(row => {
+
+
+        const stock =
+            parseInt(
+                row.querySelector(
+                    ".stock-input"
+                ).value
+            ) || 0;
+
+
+        totalStock += stock;
+
+
+
+        if (stock === 0) {
+
+            out++;
+
+        }
+
+        else if (stock <= 10) {
+
+            low++;
+
+        }
+
+        else {
+
+            available++;
+
+        }
+
+    });
+
+
+
+    document.getElementById(
+        "totalItems"
+    ).textContent =
+        totalStock;
+
+
+    document.getElementById(
+        "availableProducts"
+    ).textContent =
+        available;
+
+
+    document.getElementById(
+        "lowStock"
+    ).textContent =
+        low;
+
+
+    document.getElementById(
+        "outOfStock"
+    ).textContent =
+        out;
+
+}
+
+
+</script>
+
+
 </body>
+
 </html>

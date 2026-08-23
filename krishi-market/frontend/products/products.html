@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Products | Krishi Market
+    </title>
+
+    <!-- Products CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/products.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     HEADER
+================================= -->
+
+<header class="products-header">
+
+    <div class="header-container">
+
+
+        <!-- LOGO -->
+
+        <a
+            href="../customer/customer.html"
+            class="logo"
+        >
+
+            <div class="logo-icon">
+                🌾
+            </div>
+
+            <div class="logo-text">
+
+                <span class="logo-title">
+                    Krishi Market
+                </span>
+
+                <span class="logo-subtitle">
+                    Farm Fresh. Direct to You.
+                </span>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="main-navigation">
+
+            <a
+                href="../customer/customer.html"
+                class="nav-link"
+            >
+                Home
+            </a>
+
+
+            <a
+                href="products.html"
+                class="nav-link active"
+            >
+                Products
+            </a>
+
+
+            <a
+                href="../cart/cart.html"
+                class="nav-link cart-link"
+            >
+
+                🛒 Cart
+
+                <span
+                    id="cartCount"
+                    class="cart-count"
+                >
+                    0
+                </span>
+
+            </a>
+
+        </nav>
+
+
+
+        <!-- ACCOUNT -->
+
+        <div class="account-section">
+
+            <a
+                href="../customer/customer.html"
+                class="account-link"
+            >
+
+                👤 Account
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =================================
+     HERO SECTION
+================================= -->
+
+<section class="products-hero">
+
+    <div class="hero-content">
+
+        <span class="hero-tag">
+            🌱 Fresh From The Farm
+        </span>
+
+        <h1>
+            Fresh Products,
+            <span>
+                Direct From Farmers
+            </span>
+        </h1>
+
+        <p>
+
+            Buy fresh and quality agricultural
+            products directly from local farmers.
+
+        </p>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search vegetables, fruits, grains..."
+            >
+
+            <button
+                type="button"
+                id="searchButton"
+            >
+                🔍 Search
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================
+     PRODUCTS PAGE
+================================= -->
+
+<main class="products-page">
+
+
+    <!-- PAGE TITLE -->
+
+    <div class="page-heading">
+
+        <div>
+
+            <h2>
+                Explore Fresh Products
+            </h2>
+
+            <p>
+                Choose from fresh products supplied
+                by trusted local farmers.
+            </p>
+
+        </div>
+
+
+        <!-- VIEW CART -->
+
+        <a
+            href="../cart/cart.html"
+            class="view-cart-button"
+        >
+
+            🛒 View Cart
+
+            <span id="cartCountTop">
+                0
+            </span>
+
+        </a>
+
+    </div>
+
+
+
+    <!-- =================================
+         CATEGORY FILTER
+    ================================= -->
+
+    <div class="category-section">
+
+        <button
+            type="button"
+            class="category-btn active"
+            data-category="all"
+        >
+            All Products
+        </button>
+
+
+        <button
+            type="button"
+            class="category-btn"
+            data-category="vegetables"
+        >
+            🥕 Vegetables
+        </button>
+
+
+        <button
+            type="button"
+            class="category-btn"
+            data-category="fruits"
+        >
+            🍎 Fruits
+        </button>
+
+
+        <button
+            type="button"
+            class="category-btn"
+            data-category="grains"
+        >
+            🌾 Grains
+        </button>
+
+
+        <button
+            type="button"
+            class="category-btn"
+            data-category="pulses"
+        >
+            🫘 Pulses
+        </button>
+
+
+        <button
+            type="button"
+            class="category-btn"
+            data-category="dairy"
+        >
+            🥛 Dairy
+        </button>
+
+    </div>
+
+
+
+    <!-- =================================
+         PRODUCTS GRID
+    ================================= -->
+
+    <section
+        id="productsGrid"
+        class="products-grid"
+    >
+
+
+        <!-- PRODUCT 1 -->
+
+        <article
+            class="product-card"
+            data-category="vegetables"
+            data-name="Fresh Tomatoes"
+        >
+
+            <div class="product-image">
+
+                <span class="product-category">
+                    Vegetables
+                </span>
+
+                <div class="product-emoji">
+                    🍅
+                </div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <h3>
+                    Fresh Tomatoes
+                </h3>
+
+                <p class="product-description">
+                    Fresh and naturally grown
+                    farm tomatoes.
+                </p>
+
+
+                <div class="farmer-info">
+
+                    🌱
+
+                    <span>
+                        Local Farmer
+                    </span>
+
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <div class="price">
+
+                        ₹40
+
+                        <span>
+                            / kg
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="add-to-cart"
+                        data-name="Fresh Tomatoes"
+                        data-price="40"
+                        data-image="🍅"
+                        data-farmer="Local Farmer"
+                    >
+
+                        Add to Cart
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCT 2 -->
+
+        <article
+            class="product-card"
+            data-category="vegetables"
+            data-name="Fresh Potatoes"
+        >
+
+            <div class="product-image">
+
+                <span class="product-category">
+                    Vegetables
+                </span>
+
+                <div class="product-emoji">
+                    🥔
+                </div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <h3>
+                    Fresh Potatoes
+                </h3>
+
+                <p class="product-description">
+                    Fresh farm-grown potatoes
+                    with excellent quality.
+                </p>
+
+
+                <div class="farmer-info">
+
+                    🌱
+
+                    <span>
+                        Green Valley Farm
+                    </span>
+
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <div class="price">
+
+                        ₹35
+
+                        <span>
+                            / kg
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="add-to-cart"
+                        data-name="Fresh Potatoes"
+                        data-price="35"
+                        data-image="🥔"
+                        data-farmer="Green Valley Farm"
+                    >
+
+                        Add to Cart
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCT 3 -->
+
+        <article
+            class="product-card"
+            data-category="fruits"
+            data-name="Fresh Apples"
+        >
+
+            <div class="product-image">
+
+                <span class="product-category">
+                    Fruits
+                </span>
+
+                <div class="product-emoji">
+                    🍎
+                </div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <h3>
+                    Fresh Apples
+                </h3>
+
+                <p class="product-description">
+                    Naturally grown fresh
+                    and juicy apples.
+                </p>
+
+
+                <div class="farmer-info">
+
+                    🌱
+
+                    <span>
+                        Hill View Farm
+                    </span>
+
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <div class="price">
+
+                        ₹180
+
+                        <span>
+                            / kg
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="add-to-cart"
+                        data-name="Fresh Apples"
+                        data-price="180"
+                        data-image="🍎"
+                        data-farmer="Hill View Farm"
+                    >
+
+                        Add to Cart
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCT 4 -->
+
+        <article
+            class="product-card"
+            data-category="fruits"
+            data-name="Fresh Bananas"
+        >
+
+            <div class="product-image">
+
+                <span class="product-category">
+                    Fruits
+                </span>
+
+                <div class="product-emoji">
+                    🍌
+                </div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <h3>
+                    Fresh Bananas
+                </h3>
+
+                <p class="product-description">
+                    Naturally ripened sweet
+                    farm-fresh bananas.
+                </p>
+
+
+                <div class="farmer-info">
+
+                    🌱
+
+                    <span>
+                        Sunrise Farm
+                    </span>
+
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <div class="price">
+
+                        ₹60
+
+                        <span>
+                            / dozen
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="add-to-cart"
+                        data-name="Fresh Bananas"
+                        data-price="60"
+                        data-image="🍌"
+                        data-farmer="Sunrise Farm"
+                    >
+
+                        Add to Cart
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCT 5 -->
+
+        <article
+            class="product-card"
+            data-category="grains"
+            data-name="Organic Rice"
+        >
+
+            <div class="product-image">
+
+                <span class="product-category">
+                    Grains
+                </span>
+
+                <div class="product-emoji">
+                    🌾
+                </div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <h3>
+                    Organic Rice
+                </h3>
+
+                <p class="product-description">
+                    Premium quality organic
+                    rice directly from farmers.
+                </p>
+
+
+                <div class="farmer-info">
+
+                    🌱
+
+                    <span>
+                        Golden Fields Farm
+                    </span>
+
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <div class="price">
+
+                        ₹75
+
+                        <span>
+                            / kg
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="add-to-cart"
+                        data-name="Organic Rice"
+                        data-price="75"
+                        data-image="🌾"
+                        data-farmer="Golden Fields Farm"
+                    >
+
+                        Add to Cart
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCT 6 -->
+
+        <article
+            class="product-card"
+            data-category="pulses"
+            data-name="Organic Toor Dal"
+        >
+
+            <div class="product-image">
+
+                <span class="product-category">
+                    Pulses
+                </span>
+
+                <div class="product-emoji">
+                    🫘
+                </div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <h3>
+                    Organic Toor Dal
+                </h3>
+
+                <p class="product-description">
+                    High-quality farm-sourced
+                    organic pulses.
+                </p>
+
+
+                <div class="farmer-info">
+
+                    🌱
+
+                    <span>
+                        Organic Farm
+                    </span>
+
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <div class="price">
+
+                        ₹140
+
+                        <span>
+                            / kg
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="add-to-cart"
+                        data-name="Organic Toor Dal"
+                        data-price="140"
+                        data-image="🫘"
+                        data-farmer="Organic Farm"
+                    >
+
+                        Add to Cart
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCT 7 -->
+
+        <article
+            class="product-card"
+            data-category="dairy"
+            data-name="Fresh Milk"
+        >
+
+            <div class="product-image">
+
+                <span class="product-category">
+                    Dairy
+                </span>
+
+                <div class="product-emoji">
+                    🥛
+                </div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <h3>
+                    Fresh Farm Milk
+                </h3>
+
+                <p class="product-description">
+                    Fresh and pure milk
+                    sourced from local farms.
+                </p>
+
+
+                <div class="farmer-info">
+
+                    🌱
+
+                    <span>
+                        Happy Cows Farm
+                    </span>
+
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <div class="price">
+
+                        ₹60
+
+                        <span>
+                            / litre
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="add-to-cart"
+                        data-name="Fresh Farm Milk"
+                        data-price="60"
+                        data-image="🥛"
+                        data-farmer="Happy Cows Farm"
+                    >
+
+                        Add to Cart
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCT 8 -->
+
+        <article
+            class="product-card"
+            data-category="vegetables"
+            data-name="Fresh Carrots"
+        >
+
+            <div class="product-image">
+
+                <span class="product-category">
+                    Vegetables
+                </span>
+
+                <div class="product-emoji">
+                    🥕
+                </div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <h3>
+                    Fresh Carrots
+                </h3>
+
+                <p class="product-description">
+                    Crunchy and fresh carrots
+                    directly from the farm.
+                </p>
+
+
+                <div class="farmer-info">
+
+                    🌱
+
+                    <span>
+                        Healthy Harvest Farm
+                    </span>
+
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <div class="price">
+
+                        ₹50
+
+                        <span>
+                            / kg
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="add-to-cart"
+                        data-name="Fresh Carrots"
+                        data-price="50"
+                        data-image="🥕"
+                        data-farmer="Healthy Harvest Farm"
+                    >
+
+                        Add to Cart
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </section>
+
+
+
+    <!-- NO PRODUCTS MESSAGE -->
+
+    <div
+        id="noProducts"
+        class="no-products"
+        style="display: none;"
+    >
+
+        <div>
+            🔍
+        </div>
+
+        <h2>
+            No Products Found
+        </h2>
+
+        <p>
+            Try searching for another product.
+        </p>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =================================
+     FOOTER
+================================= -->
+
+<footer class="products-footer">
+
+    <div class="footer-container">
+
+
+        <div class="footer-brand">
+
+            <h3>
+                🌾 Krishi Market
+            </h3>
+
+            <p>
+                Connecting farmers directly
+                with customers.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="../customer/customer.html">
+                Home
+            </a>
+
+            <a href="products.html">
+                Products
+            </a>
+
+            <a href="../cart/cart.html">
+                Cart
+            </a>
+
+        </div>
+
+
+        <div class="footer-copy">
+
+            © 2026 Krishi Market.
+            All rights reserved.
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+
+<!-- =================================
+     JAVASCRIPT
+================================= -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        // =========================
+        // ELEMENTS
+        // =========================
+
+        const addButtons =
+            document.querySelectorAll(
+                ".add-to-cart"
+            );
+
+
+        const cartCount =
+            document.getElementById(
+                "cartCount"
+            );
+
+
+        const cartCountTop =
+            document.getElementById(
+                "cartCountTop"
+            );
+
+
+        const searchInput =
+            document.getElementById(
+                "searchInput"
+            );
+
+
+        const searchButton =
+            document.getElementById(
+                "searchButton"
+            );
+
+
+        const categoryButtons =
+            document.querySelectorAll(
+                ".category-btn"
+            );
+
+
+        const productCards =
+            document.querySelectorAll(
+                ".product-card"
+            );
+
+
+        const noProducts =
+            document.getElementById(
+                "noProducts"
+            );
+
+
+
+        // =========================
+        // GET CART
+        // =========================
+
+        function getCart() {
+
+            try {
+
+                return JSON.parse(
+                    localStorage.getItem(
+                        "cart"
+                    )
+                ) || [];
+
+            } catch (error) {
+
+                console.error(
+                    "Error loading cart:",
+                    error
+                );
+
+                return [];
+
+            }
+
+        }
+
+
+
+        // =========================
+        // SAVE CART
+        // =========================
+
+        function saveCart(cart) {
+
+            localStorage.setItem(
+                "cart",
+                JSON.stringify(cart)
+            );
+
+        }
+
+
+
+        // =========================
+        // UPDATE CART COUNT
+        // =========================
+
+        function updateCartCount() {
+
+
+            const cart =
+                getCart();
+
+
+            const count =
+                cart.reduce(
+                    function (
+                        total,
+                        item
+                    ) {
+
+                        return total +
+                            (
+                                Number(
+                                    item.quantity
+                                ) || 1
+                            );
+
+                    },
+                    0
+                );
+
+
+            cartCount.textContent =
+                count;
+
+
+            cartCountTop.textContent =
+                count;
+
+        }
+
+
+
+        // =========================
+        // ADD PRODUCT TO CART
+        // =========================
+
+        addButtons.forEach(
+            function (button) {
+
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+
+                        const name =
+                            button.dataset.name;
+
+
+                        const price =
+                            Number(
+                                button.dataset.price
+                            );
+
+
+                        const image =
+                            button.dataset.image;
+
+
+                        const farmer =
+                            button.dataset.farmer;
+
+
+
+                        let cart =
+                            getCart();
+
+
+
+                        // Check if product
+                        // already exists
+
+                        const existingProduct =
+                            cart.find(
+                                function (item) {
+
+                                    return item.name ===
+                                        name;
+
+                                }
+                            );
+
+
+
+                        if (
+                            existingProduct
+                        ) {
+
+                            existingProduct.quantity =
+                                (
+                                    Number(
+                                        existingProduct.quantity
+                                    ) || 1
+                                ) + 1;
+
+                        } else {
+
+
+                            cart.push({
+
+                                name:
+                                    name,
+
+                                price:
+                                    price,
+
+                                quantity:
+                                    1,
+
+                                image:
+                                    image,
+
+                                farmer:
+                                    farmer
+
+                            });
+
+
+                        }
+
+
+
+                        saveCart(cart);
+
+
+                        updateCartCount();
+
+
+
+                        // Button feedback
+
+                        const originalText =
+                            button.textContent;
+
+
+                        button.textContent =
+                            "✓ Added to Cart";
+
+
+                        button.classList.add(
+                            "added"
+                        );
+
+
+                        setTimeout(
+                            function () {
+
+                                button.textContent =
+                                    originalText;
+
+                                button.classList.remove(
+                                    "added"
+                                );
+
+                            },
+                            1500
+                        );
+
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        // =========================
+        // CATEGORY FILTER
+        // =========================
+
+        categoryButtons.forEach(
+            function (button) {
+
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+
+                        // Remove active
+                        // from all buttons
+
+                        categoryButtons.forEach(
+                            function (btn) {
+
+                                btn.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        // Add active
+                        // to clicked button
+
+                        button.classList.add(
+                            "active"
+                        );
+
+
+                        const category =
+                            button.dataset.category;
+
+
+                        filterProducts(
+                            category,
+                            searchInput.value
+                        );
+
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        // =========================
+        // SEARCH
+        // =========================
+
+        searchInput.addEventListener(
+            "input",
+            function () {
+
+                const activeCategory =
+                    document
+                        .querySelector(
+                            ".category-btn.active"
+                        )
+                        .dataset.category;
+
+
+                filterProducts(
+                    activeCategory,
+                    searchInput.value
+                );
+
+            }
+        );
+
+
+
+        searchButton.addEventListener(
+            "click",
+            function () {
+
+                const activeCategory =
+                    document
+                        .querySelector(
+                            ".category-btn.active"
+                        )
+                        .dataset.category;
+
+
+                filterProducts(
+                    activeCategory,
+                    searchInput.value
+                );
+
+            }
+        );
+
+
+
+        // =========================
+        // FILTER PRODUCTS
+        // =========================
+
+        function filterProducts(
+            category,
+            searchTerm
+        ) {
+
+
+            const search =
+                searchTerm
+                    .toLowerCase()
+                    .trim();
+
+
+            let visibleProducts =
+                0;
+
+
+
+            productCards.forEach(
+                function (card) {
+
+
+                    const productName =
+                        card.dataset.name
+                            .toLowerCase();
+
+
+                    const productCategory =
+                        card.dataset.category
+                            .toLowerCase();
+
+
+
+                    const matchesCategory =
+                        category === "all" ||
+                        productCategory ===
+                            category;
+
+
+
+                    const matchesSearch =
+                        productName.includes(
+                            search
+                        );
+
+
+
+                    if (
+                        matchesCategory &&
+                        matchesSearch
+                    ) {
+
+                        card.style.display =
+                            "block";
+
+
+                        visibleProducts++;
+
+
+                    } else {
+
+                        card.style.display =
+                            "none";
+
+                    }
+
+                }
+            );
+
+
+
+            if (
+                visibleProducts === 0
+            ) {
+
+                noProducts.style.display =
+                    "block";
+
+            } else {
+
+                noProducts.style.display =
+                    "none";
+
+            }
+
+        }
+
+
+
+        // =========================
+        // INITIALIZE
+        // =========================
+
+        updateCartCount();
+
+
+    }
+
+);
+
+</script>
+
+
+</body>
+
+</html>

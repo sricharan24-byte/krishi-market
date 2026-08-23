@@ -1,23 +1,1357 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Profile - Krishi Market</title>
-  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/customer.css"><link rel="stylesheet" href="../css/responsive.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Farmer Profile | Krishi Market</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Profile CSS -->
+
+    <link rel="stylesheet"
+          href="profile.css">
+
 </head>
+
 <body>
-  <header><nav class="navbar"><div class="container">
-    <a href="../index.html" class="logo"><i class="fas fa-leaf"></i><span>Krishi Market</span></a>
-    <div class="nav-links">
-      <a href="../index.html">Home</a><a href="dashboard.html">Dashboard</a><a href="products.html">My Products</a>
-      <a href="orders.html">Orders</a><a href="inventory.html">Inventory</a><a href="profile.html" class="active">Profile</a>
-      <a href="#" onclick="auth.logout()">Logout</a>
-    </div>
-    <div class="hamburger"><span></span><span></span><span></span></div>
-  </div></nav></header>
-  <section class="profile-section"><div class="container"><div class="profile-card" id="farmerProfileCard"></div></div></section>
-  <script src="../js/config.js"></script><script src="../js/auth.js"></script><script src="profile.js"></script>
+
+<div class="dashboard-container">
+
+    <!-- ===========================
+         SIDEBAR
+    ============================ -->
+
+    <aside class="sidebar">
+
+        <div class="brand-section">
+
+            <div class="brand-logo">
+                🌱
+            </div>
+
+            <h2>Krishi Market</h2>
+
+            <p>Farmer Panel</p>
+
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <!-- Dashboard -->
+
+            <a href="farmer.html"
+               class="nav-item">
+
+                <i class="fas fa-home"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+            <!-- Add Products -->
+
+            <a href="add-products.html"
+               class="nav-item">
+
+                <i class="fas fa-plus-circle"></i>
+
+                <span>Add Product</span>
+
+            </a>
+
+            <!-- My Products -->
+
+            <a href="my-products.html"
+               class="nav-item">
+
+                <i class="fas fa-box-open"></i>
+
+                <span>My Products</span>
+
+            </a>
+
+            <!-- Inventory -->
+
+            <a href="inventory.html"
+               class="nav-item">
+
+                <i class="fas fa-warehouse"></i>
+
+                <span>Inventory</span>
+
+            </a>
+
+            <!-- Orders -->
+
+            <a href="orders.html"
+               class="nav-item">
+
+                <i class="fas fa-shopping-cart"></i>
+
+                <span>Orders</span>
+
+            </a>
+
+            <!-- Profile -->
+
+            <a href="profile.html"
+               class="nav-item active">
+
+                <i class="fas fa-user-circle"></i>
+
+                <span>Profile</span>
+
+            </a>
+
+            <!-- Logout -->
+
+            <a href="logout.html"
+               class="nav-item logout">
+
+                <i class="fas fa-sign-out-alt"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- ===========================
+         MAIN CONTENT STARTS
+    ============================ -->
+
+    <main class="main-content">
+              <!-- ===========================
+             PAGE HEADER
+        ============================ -->
+
+        <header class="page-header">
+
+            <div class="header-left">
+
+                <h1>
+                    My Profile
+                </h1>
+
+                <p>
+                    Manage your personal details, farm information and account settings.
+                </p>
+
+            </div>
+
+            <div class="header-right">
+
+                <button class="notification-btn">
+
+                    <i class="fas fa-bell"></i>
+
+                    <span class="notification-count">
+                        3
+                    </span>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ===========================
+             PROFILE CARD
+        ============================ -->
+
+        <section class="profile-card">
+
+            <div class="profile-cover"></div>
+
+            <div class="profile-content">
+
+                <div class="profile-image-section">
+
+                    <div class="profile-image">
+
+                        <img src="https://i.pravatar.cc/200?img=12"
+                             alt="Farmer">
+
+                    </div>
+
+                    <button class="change-photo-btn">
+
+                        <i class="fas fa-camera"></i>
+
+                        Change Photo
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="profile-details">
+
+                    <h2>
+                        Rampa Venkata Mokshit
+                    </h2>
+
+                    <p class="role">
+
+                        <i class="fas fa-seedling"></i>
+
+                        Verified Farmer
+
+                    </p>
+
+                    <div class="profile-badges">
+
+                        <span class="badge">
+
+                            <i class="fas fa-check-circle"></i>
+
+                            Verified
+
+                        </span>
+
+                        <span class="badge">
+
+                            <i class="fas fa-leaf"></i>
+
+                            Organic Seller
+
+                        </span>
+
+                        <span class="badge">
+
+                            <i class="fas fa-star"></i>
+
+                            4.9 Rating
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="profile-actions">
+
+                    <button class="edit-profile-btn">
+
+                        <i class="fas fa-user-edit"></i>
+
+                        Edit Profile
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ===========================
+             PROFILE SUMMARY
+        ============================ -->
+
+        <section class="summary-cards">
+
+            <div class="summary-card">
+
+                <i class="fas fa-box-open"></i>
+
+                <h3>58</h3>
+
+                <p>Products Listed</p>
+
+            </div>
+
+            <div class="summary-card">
+
+                <i class="fas fa-shopping-cart"></i>
+
+                <h3>164</h3>
+
+                <p>Total Orders</p>
+
+            </div>
+
+            <div class="summary-card">
+
+                <i class="fas fa-rupee-sign"></i>
+
+                <h3>₹2,45,600</h3>
+
+                <p>Total Earnings</p>
+
+            </div>
+
+            <div class="summary-card">
+
+                <i class="fas fa-users"></i>
+
+                <h3>132</h3>
+
+                <p>Customers</p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ===========================
+             PERSONAL INFORMATION
+        ============================ -->
+
+        <section class="profile-form">
+
+            <div class="section-title">
+
+                <h2>
+
+                    <i class="fas fa-user"></i>
+
+                    Personal Information
+
+                </h2>
+
+            </div>
+
+            <form>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Full Name
+                        </label>
+
+                        <input type="text"
+                               value="Rampa Venkata Mokshit">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Email Address
+                        </label>
+
+                        <input type="email"
+                               value="mokshit@example.com">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Mobile Number
+                        </label>
+
+                        <input type="tel"
+                               value="+91 9876543210">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Date of Birth
+                        </label>
+
+                        <input type="date"
+                               value="2007-01-01">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Gender
+                        </label>
+
+                        <select>
+
+                            <option selected>
+                                Male
+                            </option>
+
+                            <option>
+                                Female
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Aadhaar Number
+                        </label>
+
+                        <input type="text"
+                               value="XXXX XXXX 1234">
+
+                    </div>
+
+                </div>
+                                <!-- ===========================
+                     FARM INFORMATION
+                ============================ -->
+
+                <div class="section-title">
+
+                    <h2>
+
+                        <i class="fas fa-seedling"></i>
+
+                        Farm Information
+
+                    </h2>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Farm Name
+                        </label>
+
+                        <input type="text"
+                               value="Mokshit Organic Farm">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Farmer ID
+                        </label>
+
+                        <input type="text"
+                               value="KRISHI-FRM-1025"
+                               readonly>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Farm Type
+                        </label>
+
+                        <select>
+
+                            <option selected>
+                                Organic Farming
+                            </option>
+
+                            <option>
+                                Traditional Farming
+                            </option>
+
+                            <option>
+                                Mixed Farming
+                            </option>
+
+                            <option>
+                                Hydroponic Farming
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Total Land Area
+                        </label>
+
+                        <input type="text"
+                               value="12 Acres">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Primary Crops
+                        </label>
+
+                        <input type="text"
+                               value="Tomatoes, Mangoes, Carrots, Rice">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Farming Experience
+                        </label>
+
+                        <input type="text"
+                               value="10 Years">
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ===========================
+                     ADDRESS INFORMATION
+                ============================ -->
+
+                <div class="section-title">
+
+                    <h2>
+
+                        <i class="fas fa-map-marker-alt"></i>
+
+                        Address Information
+
+                    </h2>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group full-width">
+
+                        <label>
+                            Farm Address
+                        </label>
+
+                        <input type="text"
+                               value="123 Green Valley Road">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Village
+                        </label>
+
+                        <input type="text"
+                               value="Rampur">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Mandal / Taluk
+                        </label>
+
+                        <input type="text"
+                               value="Gudiyatham">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            District
+                        </label>
+
+                        <input type="text"
+                               value="Vellore">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            State
+                        </label>
+
+                        <input type="text"
+                               value="Tamil Nadu">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            PIN Code
+                        </label>
+
+                        <input type="text"
+                               value="632014">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Country
+                        </label>
+
+                        <input type="text"
+                               value="India">
+
+                    </div>
+
+                </div>
+                                <!-- ===========================
+                     BANK DETAILS
+                ============================ -->
+
+                <div class="section-title">
+
+                    <h2>
+
+                        <i class="fas fa-university"></i>
+
+                        Bank Details
+
+                    </h2>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Account Holder Name
+                        </label>
+
+                        <input type="text"
+                               value="Rampa Venkata Mokshit">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Bank Name
+                        </label>
+
+                        <input type="text"
+                               value="State Bank of India">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Account Number
+                        </label>
+
+                        <input type="text"
+                               value="XXXXXXXX4589">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            IFSC Code
+                        </label>
+
+                        <input type="text"
+                               value="SBIN0001234">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Branch Name
+                        </label>
+
+                        <input type="text"
+                               value="Vellore Branch">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Account Type
+                        </label>
+
+                        <select>
+
+                            <option selected>
+                                Savings
+                            </option>
+
+                            <option>
+                                Current
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ===========================
+                     PAYMENT INFORMATION
+                ============================ -->
+
+                <div class="section-title">
+
+                    <h2>
+
+                        <i class="fas fa-wallet"></i>
+
+                        Payment Information
+
+                    </h2>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            UPI ID
+                        </label>
+
+                        <input type="text"
+                               value="mokshit@sbi">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Preferred Payment Method
+                        </label>
+
+                        <select>
+
+                            <option selected>
+                                Bank Transfer
+                            </option>
+
+                            <option>
+                                UPI
+                            </option>
+
+                            <option>
+                                Wallet
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group full-width">
+
+                        <label>
+                            Payment Notes
+                        </label>
+
+                        <textarea rows="4"
+                                  placeholder="Enter payment instructions for customers...">Payments are accepted through Bank Transfer and UPI. Please complete payment before order dispatch.</textarea>
+
+                    </div>
+
+                </div>
+                                <!-- ===========================
+                     ABOUT FARMER
+                ============================ -->
+
+                <div class="section-title">
+
+                    <h2>
+
+                        <i class="fas fa-user-edit"></i>
+
+                        About Farmer
+
+                    </h2>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group full-width">
+
+                        <label>
+                            Farmer Bio
+                        </label>
+
+                        <textarea rows="6"
+                                  placeholder="Tell customers about yourself...">I am a passionate farmer dedicated to producing fresh, healthy, and chemical-free agricultural products. My goal is to provide high-quality farm produce directly to customers while promoting sustainable farming practices.</textarea>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ===========================
+                     EMERGENCY CONTACT
+                ============================ -->
+
+                <div class="section-title">
+
+                    <h2>
+
+                        <i class="fas fa-phone-alt"></i>
+
+                        Emergency Contact
+
+                    </h2>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Contact Person
+                        </label>
+
+                        <input type="text"
+                               value="Rampa Family">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Mobile Number
+                        </label>
+
+                        <input type="tel"
+                               value="+91 9876543210">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Relationship
+                        </label>
+
+                        <input type="text"
+                               value="Family">
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ===========================
+                     CERTIFICATIONS
+                ============================ -->
+
+                <div class="section-title">
+
+                    <h2>
+
+                        <i class="fas fa-award"></i>
+
+                        Certifications
+
+                    </h2>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Organic Certification
+                        </label>
+
+                        <input type="text"
+                               value="Certified Organic Farmer">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Certificate Number
+                        </label>
+
+                        <input type="text"
+                               value="ORG-2026-4587">
+
+                    </div>
+
+                    <div class="form-group full-width">
+
+                        <label>
+                            Upload Certificate
+                        </label>
+
+                        <input type="file">
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ===========================
+                     SOCIAL MEDIA
+                ============================ -->
+
+                <div class="section-title">
+
+                    <h2>
+
+                        <i class="fas fa-share-alt"></i>
+
+                        Social Media
+
+                    </h2>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Facebook
+                        </label>
+
+                        <input type="url"
+                               placeholder="Facebook Profile URL">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Instagram
+                        </label>
+
+                        <input type="url"
+                               placeholder="Instagram Profile URL">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            YouTube
+                        </label>
+
+                        <input type="url"
+                               placeholder="YouTube Channel URL">
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ===========================
+                     ACTION BUTTONS
+                ============================ -->
+
+                <div class="profile-actions-bottom">
+
+                    <button type="reset"
+                            class="cancel-btn">
+
+                        <i class="fas fa-times"></i>
+
+                        Cancel
+
+                    </button>
+
+                    <button type="submit"
+                            class="save-btn">
+
+                        <i class="fas fa-save"></i>
+
+                        Save Changes
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+                <!-- ===========================
+             CHANGE PASSWORD
+        ============================ -->
+
+        <section class="profile-form">
+
+            <div class="section-title">
+
+                <h2>
+
+                    <i class="fas fa-lock"></i>
+
+                    Change Password
+
+                </h2>
+
+            </div>
+
+            <form id="passwordForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Current Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="currentPassword"
+                            placeholder="Enter current password"
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            New Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="newPassword"
+                            placeholder="Enter new password"
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Confirm Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Confirm new password"
+                        >
+
+                    </div>
+
+                </div>
+
+                <div class="profile-actions-bottom">
+
+                    <button
+                        type="button"
+                        class="save-btn"
+                        onclick="changePassword()">
+
+                        <i class="fas fa-key"></i>
+
+                        Update Password
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+
+        <!-- ===========================
+             ACCOUNT SETTINGS
+        ============================ -->
+
+        <section class="profile-form">
+
+            <div class="section-title">
+
+                <h2>
+
+                    <i class="fas fa-cog"></i>
+
+                    Account Settings
+
+                </h2>
+
+            </div>
+
+            <div class="settings-list">
+
+                <div class="setting-item">
+
+                    <div>
+
+                        <h4>Email Notifications</h4>
+
+                        <p>
+                            Receive notifications for new orders.
+                        </p>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            checked>
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+                <div class="setting-item">
+
+                    <div>
+
+                        <h4>SMS Notifications</h4>
+
+                        <p>
+                            Receive SMS updates about orders.
+                        </p>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            checked>
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+                <div class="setting-item">
+
+                    <div>
+
+                        <h4>Public Profile</h4>
+
+                        <p>
+                            Allow customers to see your profile.
+                        </p>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            checked>
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ===========================
+             FOOTER
+        ============================ -->
+
+        <footer class="profile-footer">
+
+            <p>
+
+                © 2026 Krishi Market |
+
+                Farmer Dashboard
+
+            </p>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+
+<!-- ===========================
+     JAVASCRIPT
+=========================== -->
+
+<script>
+
+function changePassword() {
+
+    const current =
+        document.getElementById("currentPassword").value;
+
+    const newPass =
+        document.getElementById("newPassword").value;
+
+    const confirm =
+        document.getElementById("confirmPassword").value;
+
+    if (
+        current === "" ||
+        newPass === "" ||
+        confirm === ""
+    ) {
+
+        alert("Please fill all password fields.");
+
+        return;
+
+    }
+
+    if (newPass !== confirm) {
+
+        alert("New password and confirm password do not match.");
+
+        return;
+
+    }
+
+    if (newPass.length < 6) {
+
+        alert("Password must contain at least 6 characters.");
+
+        return;
+
+    }
+
+    alert("Password updated successfully!");
+
+    document.getElementById("passwordForm").reset();
+
+}
+
+
+
+// Upload profile picture preview
+
+const imageInput =
+document.querySelector(
+    'input[type="file"]'
+);
+
+if(imageInput){
+
+imageInput.addEventListener(
+"change",
+function(e){
+
+const file =
+e.target.files[0];
+
+if(file){
+
+const reader =
+new FileReader();
+
+reader.onload =
+function(event){
+
+const img =
+document.querySelector(
+".profile-image img"
+);
+
+if(img){
+
+img.src =
+event.target.result;
+
+}
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+});
+
+}
+
+
+
+// Save profile
+
+const profileForm =
+document.querySelector(
+".profile-form form"
+);
+
+if(profileForm){
+
+profileForm.addEventListener(
+"submit",
+function(e){
+
+e.preventDefault();
+
+alert(
+"Profile updated successfully!"
+);
+
+});
+
+}
+
+</script>
+
 </body>
+
 </html>
