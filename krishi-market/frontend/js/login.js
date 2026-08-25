@@ -85,4 +85,24 @@ if (loginForm) {
             }
         }
     });
-}
+}
+
+// ==========================================
+// TOGGLE PASSWORD VISIBILITY
+// ==========================================
+function togglePassword() {
+    const passwordInput = document.getElementById("password");
+    const toggleBtn = document.getElementById("togglePassword");
+    if (!passwordInput) return;
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        if (toggleBtn) toggleBtn.textContent = "Hide";
+    } else {
+        passwordInput.type = "password";
+        if (toggleBtn) toggleBtn.textContent = "Show";
+    }
+}
+
+window.togglePassword = togglePassword;
+
