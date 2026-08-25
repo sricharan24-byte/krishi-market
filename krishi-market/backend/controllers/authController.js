@@ -53,6 +53,13 @@ const register = async (req, res) => {
             });
         }
 
+        if (mongoose.connection.readyState !== 1) {
+            return res.status(503).json({
+                success: false,
+                message: "MongoDB database is not connected. Please start local MongoDB or set a valid MONGO_URI in krishi-market/backend/.env"
+            });
+        }
+
         // Check existing user
         const existingUser = await User.findOne({ email: effectiveEmail });
         if (existingUser) {
@@ -137,6 +144,13 @@ const login = async (req, res) => {
             });
         }
 
+        if (mongoose.connection.readyState !== 1) {
+            return res.status(503).json({
+                success: false,
+                message: "MongoDB database is not connected. Please start local MongoDB or set a valid MONGO_URI in krishi-market/backend/.env"
+            });
+        }
+
         const cleanEmail = email.toLowerCase().trim();
         const user = await User.findOne({ email: cleanEmail });
 
@@ -173,9 +187,16 @@ const login = async (req, res) => {
         });
     } catch (error) {
         console.error("❌ LOGIN ERROR:", error);
+        
+        const isDbError = error.message.includes("buffering timed out") || 
+                          error.message.includes("ECONNREFUSED") || 
+                          error.name === "MongooseError";
+
         return res.status(500).json({
             success: false,
-            message: "Server error during login",
+            message: isDbError
+                ? "Database connection failed. Please ensure MongoDB is running or configure MONGO_URI in .env"
+                : "Server error during login: " + error.message,
             error: error.message
         });
     }
