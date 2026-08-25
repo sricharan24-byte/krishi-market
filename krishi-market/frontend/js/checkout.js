@@ -102,7 +102,7 @@ async function placeOrder(e) {
       });
       
       alert('Order placed successfully!');
-      window.location.href = 'customer/orders.html';
+      window.location.href = 'customer/myorders.html';
     } else {
       const data = await orderResponse.json();
       alert(data.message || 'Failed to place order');

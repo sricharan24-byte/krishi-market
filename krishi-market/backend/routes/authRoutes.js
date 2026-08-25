@@ -1,49 +1,28 @@
 const express = require("express");
-
 const router = express.Router();
 
 const {
     register,
-    login
+    login,
+    getProfile
 } = require("../controllers/authController");
+const { protect } = require("../middleware/authMiddleware");
 
-
-// ==========================================
-// TEST ROUTE
-// ==========================================
-
+// Test Route
 router.get("/test", (req, res) => {
-
     res.status(200).json({
-
         success: true,
-
-        message:
-            "Auth API is working!"
-
+        message: "Auth API is working!"
     });
-
 });
 
+// Register
+router.post("/register", register);
 
-// ==========================================
-// REGISTER
-// ==========================================
+// Login
+router.post("/login", login);
 
-router.post(
-    "/register",
-    register
-);
+// Profile
+router.get("/profile", protect, getProfile);
 
-
-// ==========================================
-// LOGIN
-// ==========================================
-
-router.post(
-    "/login",
-    login
-);
-
-
-module.exports = router;
+module.exports = router;

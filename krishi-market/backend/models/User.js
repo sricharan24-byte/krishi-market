@@ -32,11 +32,27 @@ const userSchema = new mongoose.Schema(
             required: [true, "Role is required"],
             enum: ["customer", "farmer", "admin"],
             default: "customer"
+        },
+
+        address: {
+            street: { type: String, default: "" },
+            city: { type: String, default: "" },
+            state: { type: String, default: "" },
+            zipCode: { type: String, default: "" },
+            country: { type: String, default: "India" }
         }
     },
     {
-        timestamps: true
+        timestamps: true,
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true }
     }
 );
 
-module.exports = mongoose.model("User", userSchema);
+userSchema.virtual("name").get(function () {
+    return this.fullName;
+}).set(function (val) {
+    this.fullName = val;
+});
+
+module.exports = mongoose.model("User", userSchema);

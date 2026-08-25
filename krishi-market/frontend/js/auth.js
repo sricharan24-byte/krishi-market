@@ -4,23 +4,47 @@ const USER_KEY = 'krishi_market_user';
 
 const auth = {
   getToken() {
-    return localStorage.getItem(TOKEN_KEY);
+    return localStorage.getItem(TOKEN_KEY) || localStorage.getItem('token') || '';
   },
 
   getUser() {
-    const user = localStorage.getItem(USER_KEY);
-    return user ? JSON.parse(user) : null;
+    const raw = localStorage.getItem(USER_KEY) || localStorage.getItem('user');
+    if (!raw) return null;
+    try {
+      return JSON.parse(raw);
+    } catch (e) {
+      return null;
+    }
   },
 
   setAuth(token, user) {
-    localStorage.setItem(TOKEN_KEY, token);
-    localStorage.setItem(USER_KEY, JSON.stringify(user));
+    if (token) {
+      localStorage.setItem(TOKEN_KEY, token);
+      localStorage.setItem('token', token);
+    }
+    if (user) {
+      localStorage.setItem(USER_KEY, JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
+      if (user.role) localStorage.setItem('userRole', user.role);
+      if (user._id || user.id) localStorage.setItem('userId', user._id || user.id);
+      if (user.email) localStorage.setItem('userEmail', user.email);
+    }
   },
 
   logout() {
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(USER_KEY);
-    window.location.href = 'login.html';
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('userEmail');
+
+    // Detect if inside a subfolder
+    const isSubfolder = window.location.pathname.includes('/customer/') ||
+                        window.location.pathname.includes('/farmer/') ||
+                        window.location.pathname.includes('/admin/');
+    window.location.href = isSubfolder ? '../login.html' : 'login.html';
   },
 
   isAuthenticated() {
@@ -52,13 +76,13 @@ const auth = {
 
   updateNavbar() {
     const authLinks = document.getElementById('authLinks');
-    const cartCount = document.getElementById('cartCount');
     
     if (this.isAuthenticated()) {
       const user = this.getUser();
+      const role = (user && user.role) ? user.role : 'customer';
       if (authLinks) {
         authLinks.innerHTML = `
-          <a href="${user.role}/dashboard.html">Dashboard</a>
+          <a href="${role}/dashboard.html">Dashboard</a>
           <a href="#" onclick="auth.logout()">Logout</a>
         `;
       }
@@ -73,7 +97,7 @@ const auth = {
         if (!document.getElementById('navDashboard')) {
           const dashLink = document.createElement('a');
           dashLink.id = 'navDashboard';
-          dashLink.href = `${user.role}/dashboard.html`;
+          dashLink.href = `${role}/dashboard.html`;
           dashLink.textContent = 'Dashboard';
           navLinks.insertBefore(dashLink, navLinks.firstChild);
           const logoutLink = document.createElement('a');

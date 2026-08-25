@@ -26,10 +26,12 @@ const updateUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     if (user) {
-      user.name = req.body.name || user.name;
+      user.fullName = req.body.fullName || req.body.name || user.fullName;
       user.email = req.body.email || user.email;
       user.phone = req.body.phone || user.phone;
-      user.address = req.body.address || user.address;
+      if (req.body.address) {
+        user.address = typeof req.body.address === 'object' ? req.body.address : user.address;
+      }
       
       const updatedUser = await user.save();
       res.json(updatedUser);

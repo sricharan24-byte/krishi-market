@@ -27,29 +27,25 @@ document.addEventListener("DOMContentLoaded", () => {
 // =======================================================
 
 function checkLogin() {
-
-    const user = JSON.parse(localStorage.getItem("user"));
+    const rawUser = localStorage.getItem("krishi_market_user") || localStorage.getItem("user");
+    let user = null;
+    try {
+        user = rawUser ? JSON.parse(rawUser) : null;
+    } catch (e) {
+        user = null;
+    }
 
     if (!user) {
-
         alert("Please login first.");
-
-        window.location.href = "../login/login.html";
-
+        window.location.href = "../login.html";
         return;
-
     }
 
-    if (user.role !== "farmer") {
-
-        alert("Access Denied!");
-
-        window.location.href = "../login/login.html";
-
+    if (user.role !== "farmer" && user.role !== "admin") {
+        alert("Access Denied! Farmer role required.");
+        window.location.href = "../login.html";
         return;
-
     }
-
 }
 
 // =======================================================
@@ -57,20 +53,20 @@ function checkLogin() {
 // =======================================================
 
 function loadFarmerDetails() {
-
-    const user = JSON.parse(localStorage.getItem("user"));
+    const rawUser = localStorage.getItem("krishi_market_user") || localStorage.getItem("user");
+    let user = null;
+    try {
+        user = rawUser ? JSON.parse(rawUser) : null;
+    } catch (e) {}
 
     if (!user) return;
 
     const farmerName = document.getElementById("farmerName");
 
     if (farmerName) {
-
         farmerName.innerText =
             user.fullName || user.name || "Farmer";
-
     }
-
 }
 
 // =======================================================
@@ -78,28 +74,23 @@ function loadFarmerDetails() {
 // =======================================================
 
 async function loadDashboardData() {
-
     try {
+        // Try fetching real farmer products if available
+        const token = localStorage.getItem("krishi_market_token") || localStorage.getItem("token");
+        if (token) {
+            const res = await fetch(`${API_URL}/products/my-products`, {
+                headers: { "Authorization": `Bearer ${token}` }
+            }).catch(() => null);
 
-        // Demo Data
-        // Later replace with MongoDB API
-
-        document.getElementById("productCount").innerText = 12;
-
-        document.getElementById("orderCount").innerText = 26;
-
-        document.getElementById("revenue").innerText = "₹18,450";
-
-        document.getElementById("customerCount").innerText = 16;
-
-    }
-
-    catch (error) {
-
+            if (res && res.ok) {
+                const prods = await res.json();
+                const productCountEl = document.getElementById("productCount");
+                if (productCountEl) productCountEl.innerText = prods.length;
+            }
+        }
+    } catch (error) {
         console.error(error);
-
     }
-
 }
 
 // =======================================================
@@ -107,32 +98,24 @@ async function loadDashboardData() {
 // =======================================================
 
 function setupLogout() {
-
-    const logoutBtn =
-        document.getElementById("logoutBtn");
-
+    const logoutBtn = document.getElementById("logoutBtn");
     if (!logoutBtn) return;
 
     logoutBtn.addEventListener("click", function (e) {
-
         e.preventDefault();
-
-        const confirmLogout =
-            confirm("Are you sure you want to logout?");
-
+        const confirmLogout = confirm("Are you sure you want to logout?");
         if (!confirmLogout) return;
 
+        localStorage.removeItem("krishi_market_user");
+        localStorage.removeItem("krishi_market_token");
         localStorage.removeItem("user");
-
         localStorage.removeItem("token");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("userRole");
 
         alert("Logged out successfully.");
-
-        window.location.href =
-            "../login/login.html";
-
+        window.location.href = "../login.html";
     });
-
 }
 
 // =======================================================

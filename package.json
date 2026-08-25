@@ -1,0 +1,28 @@
+{
+  "name": "krishi-market-app",
+  "version": "1.0.0",
+  "description": "Krishi Market - Full Stack Agricultural Marketplace",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node krishi-market/backend/server.js",
+    "dev": "nodemon krishi-market/backend/server.js",
+    "build": "echo 'Build complete'"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.2",
+    "express-validator": "^7.0.1",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.5.0",
+    "mongoose": "^7.8.11",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^9.0.3",
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

@@ -114,9 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 <div class="cart-item-price">
-
-                    $${price.toFixed(2)}
-
+                    ₹${price.toFixed(2)}
                 </div>
 
 

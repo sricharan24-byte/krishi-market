@@ -508,94 +508,46 @@ registerForm.addEventListener(
 
 
         try {
+            const apiUrl = window.location.protocol.startsWith("http")
+                ? `${window.location.origin}/api/auth/register`
+                : "http://localhost:5000/api/auth/register";
 
+            const response = await fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    fullName: fullName,
+                    name: fullName,
+                    email: email,
+                    phone: phone,
+                    password: password,
+                    confirmPassword: confirmPassword,
+                    role: role
+                })
+            });
 
-            /*
-                Send registration request
-                to Node.js backend
-            */
+            const data = await response.json().catch(() => ({}));
 
-            const response =
-                await fetch(
-                    "http://127.0.0.1:5000/api/auth/register",
-                    {
-
-                        method: "POST",
-
-                        headers: {
-
-                            "Content-Type":
-                                "application/json"
-
-                        },
-
-                        body:
-                            JSON.stringify({
-
-                                fullName:
-                                    fullName,
-
-                                email:
-                                    email,
-
-                                phone:
-                                    phone,
-
-                                password:
-                                    password,
-
-                                confirmPassword:
-                                    confirmPassword,
-
-                                role:
-                                    role
-
-                            })
-
-                    }
-                );
-
-
-            /*
-                Convert response to JSON
-            */
-
-            const data =
-                await response.json();
-
-
-            /*
-                Registration successful
-            */
-
-            if (
-                response.ok &&
-                data.success
-            ) {
-
+            if (response.ok && data.success) {
+                if (data.token) {
+                    localStorage.setItem("krishi_market_token", data.token);
+                    localStorage.setItem("token", data.token);
+                }
+                if (data.user) {
+                    localStorage.setItem("krishi_market_user", JSON.stringify(data.user));
+                    localStorage.setItem("user", JSON.stringify(data.user));
+                }
 
                 showMessage(
                     "Account created successfully! Redirecting to login...",
                     "success"
                 );
 
-
-                /*
-                    Redirect to login page
-                    after 1.5 seconds
-                */
-
-                setTimeout(
-                    function() {
-
-                        window.location.href =
-                            "login.html";
-
-                    },
-                    1500
-                );
-
-
+                setTimeout(function() {
+                    window.location.href = "login.html";
+                }, 1500);
             }
 
             else {
