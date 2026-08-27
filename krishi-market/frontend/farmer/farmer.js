@@ -3,8 +3,14 @@
 // farmer.js
 // =======================================================
 
-// API URL
-const API_URL = "http://localhost:5000/api";
+// API URL (Dynamic for multi-device/network access)
+const API_URL = (typeof config !== "undefined" && config.API_URL)
+    ? config.API_URL
+    : (typeof window !== "undefined" && window.location && window.location.protocol.startsWith("http"))
+        ? (!window.location.port || window.location.port === "5000" || window.location.port === "80" || window.location.port === "443")
+            ? `${window.location.origin}/api`
+            : `${window.location.protocol}//${window.location.hostname}:5000/api`
+        : "http://localhost:5000/api";
 
 // =======================================================
 // CHECK LOGIN

@@ -718,7 +718,8 @@
 
 </footer>
 
-
+<script src="../js/config.js"></script>
+<script src="../js/auth.js"></script>
 <script>
 
     /*
@@ -1127,9 +1128,17 @@
                     another port or endpoint.
                     */
 
+                    const ordersUrl = (typeof config !== "undefined" && config.endpoints && config.endpoints.orders && config.endpoints.orders.all)
+                        ? config.endpoints.orders.all
+                        : (typeof window !== "undefined" && window.location && window.location.protocol.startsWith("http"))
+                            ? (!window.location.port || window.location.port === "5000" || window.location.port === "80" || window.location.port === "443")
+                                ? `${window.location.origin}/api/orders`
+                                : `${window.location.protocol}//${window.location.hostname}:5000/api/orders`
+                            : "http://localhost:5000/api/orders";
+
                     const response =
                         await fetch(
-                            "http://localhost:5000/api/orders",
+                            ordersUrl,
                             {
 
                                 method: "POST",

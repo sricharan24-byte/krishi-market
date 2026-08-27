@@ -348,6 +348,8 @@
 <!-- REGISTER JAVASCRIPT -->
 <!-- ================================= -->
 
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
 <script>
 
 const registerForm =
@@ -508,9 +510,13 @@ registerForm.addEventListener(
 
 
         try {
-            const apiUrl = window.location.protocol.startsWith("http")
-                ? `${window.location.origin}/api/auth/register`
-                : "http://localhost:5000/api/auth/register";
+            const apiUrl = (typeof config !== "undefined" && config.endpoints && config.endpoints.auth.register)
+                ? config.endpoints.auth.register
+                : (typeof window !== "undefined" && window.location && window.location.protocol.startsWith("http"))
+                    ? (!window.location.port || window.location.port === "5000" || window.location.port === "80" || window.location.port === "443")
+                        ? `${window.location.origin}/api/auth/register`
+                        : `${window.location.protocol}//${window.location.hostname}:5000/api/auth/register`
+                    : "http://localhost:5000/api/auth/register";
 
             const response = await fetch(apiUrl, {
                 method: "POST",

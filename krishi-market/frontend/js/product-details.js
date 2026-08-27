@@ -22,9 +22,10 @@ async function loadProduct(productId) {
 function displayProduct(product) {
   document.getElementById('productNameBreadcrumb').textContent = product.name;
   
-  const imageUrl = product.images && product.images.length > 0 
-    ? `http://localhost:5000/uploads/${product.images[0]}` 
-    : 'https://via.placeholder.com/500x400?text=No+Image';
+  const firstImage = product.images && product.images.length > 0 ? product.images[0] : null;
+  const imageUrl = (typeof config !== 'undefined' && config.getImageUrl)
+    ? config.getImageUrl(firstImage, 'https://via.placeholder.com/500x400?text=No+Image')
+    : (firstImage ? `/uploads/${firstImage}` : 'https://via.placeholder.com/500x400?text=No+Image');
   
   const stars = Math.round(product.ratings || 0);
   

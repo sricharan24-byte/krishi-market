@@ -100,8 +100,27 @@ krishi-market/
 5. Start the server:
    ```bash
    npm run dev
+   # or
+   npm start
    ```
-6. Open `frontend/index.html` in your browser or serve it via a live server.
+
+### 📱 Running on All Devices (Mobile, Tablet, Other PCs)
+
+1. **Start the backend server** using the command above (`npm run dev` or `npm start`).
+2. When the server starts, you will see output like:
+   ```
+   =================================================
+   🌾 Krishi Market Server running (Live DB)
+   🏠 Local:   http://localhost:5000
+   📱 Network: http://192.168.1.15:5000  <-- Open this on phone/tablet/other PCs
+   =================================================
+   ```
+3. **Open that `Network` link (`http://<YOUR_IP>:5000`) on any device** (phone, tablet, laptop) connected to the same Wi-Fi / Local Area Network.
+4. The Express backend automatically serves the full frontend website and handles all API and image uploads simultaneously!
+
+> 💡 **Tip**: If a mobile device cannot connect, ensure:
+> - Both your computer and mobile device are connected to the same Wi-Fi network.
+> - Windows Firewall allows Node.js on Private Networks.
 
 ### API Endpoints
 

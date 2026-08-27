@@ -2,8 +2,14 @@
 // KRISHI MARKET - REGISTER JS
 // ==========================================
 
-// Backend API URL
-const API_URL = "http://localhost:5000/api/auth";
+// Backend API URL (Dynamic for multi-device/network access)
+const API_URL = (typeof config !== "undefined" && config.API_URL)
+    ? `${config.API_URL}/auth`
+    : (typeof window !== "undefined" && window.location && window.location.protocol.startsWith("http"))
+        ? (!window.location.port || window.location.port === "5000" || window.location.port === "80" || window.location.port === "443")
+            ? `${window.location.origin}/api/auth`
+            : `${window.location.protocol}//${window.location.hostname}:5000/api/auth`
+        : "http://localhost:5000/api/auth";
 
 
 // ==========================================
@@ -30,10 +36,14 @@ if (registerForm) {
         // ==========================================
 
         const nameInput =
+            document.getElementById("fullName") ||
             document.getElementById("name");
 
         const emailInput =
             document.getElementById("email");
+
+        const phoneInput =
+            document.getElementById("phone");
 
         const passwordInput =
             document.getElementById("password");
@@ -56,6 +66,11 @@ if (registerForm) {
         const email =
             emailInput
                 ? emailInput.value.trim().toLowerCase()
+                : "";
+
+        const phone =
+            phoneInput
+                ? phoneInput.value.trim()
                 : "";
 
         const password =
@@ -232,15 +247,13 @@ if (registerForm) {
                     },
 
                     body: JSON.stringify({
-
+                        fullName: name,
                         name: name,
-
                         email: email,
-
+                        phone: phone || "N/A",
                         password: password,
-
+                        confirmPassword: confirmPassword,
                         role: role
-
                     })
                 }
             );

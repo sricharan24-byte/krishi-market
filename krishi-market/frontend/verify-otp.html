@@ -48,6 +48,7 @@
 </form>
 
 
+<script src="js/config.js"></script>
 <script>
 
 const email =
@@ -81,10 +82,17 @@ document
 
 
             try {
+                const verifyUrl = (typeof config !== "undefined" && config.endpoints && config.endpoints.auth.verifyOtp)
+                    ? config.endpoints.auth.verifyOtp
+                    : (typeof window !== "undefined" && window.location && window.location.protocol.startsWith("http"))
+                        ? (!window.location.port || window.location.port === "5000" || window.location.port === "80" || window.location.port === "443")
+                            ? `${window.location.origin}/api/auth/verify-otp`
+                            : `${window.location.protocol}//${window.location.hostname}:5000/api/auth/verify-otp`
+                        : "http://localhost:5000/api/auth/verify-otp";
 
                 const response =
                     await fetch(
-                        "http://localhost:5000/api/auth/verify-otp",
+                        verifyUrl,
                         {
 
                             method: "POST",

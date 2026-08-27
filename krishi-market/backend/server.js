@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const path = require("path");
 const fs = require("fs");
+const os = require("os");
 require("dotenv").config();
 
 // Safely configure DNS if in local environment
@@ -13,6 +14,20 @@ try {
     }
 } catch (e) {
     // Ignore DNS override errors in restricted environments
+}
+
+// Helper to get local network IP addresses
+function getNetworkIPs() {
+    const interfaces = os.networkInterfaces();
+    const ips = [];
+    for (const name of Object.keys(interfaces)) {
+        for (const iface of interfaces[name]) {
+            if (iface.family === "IPv4" && !iface.internal) {
+                ips.push(iface.address);
+            }
+        }
+    }
+    return ips;
 }
 
 // Ensure uploads folder exists
@@ -35,11 +50,14 @@ const errorMiddleware = require("./middleware/errorMiddleware");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const HOST = process.env.HOST || "0.0.0.0";
 
 // Middleware
 app.use(cors({
     origin: true,
-    credentials: true
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"]
 }));
 
 app.use(express.json());
@@ -70,7 +88,20 @@ app.get("/api/health", (req, res) => {
     res.json({
         success: true,
         message: "Krishi Market API is running smoothly!",
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        ips: getNetworkIPs()
+    });
+});
+
+// Dynamic config endpoint for frontends
+app.get("/api/config", (req, res) => {
+    const networkIPs = getNetworkIPs();
+    res.json({
+        success: true,
+        port: PORT,
+        networkIPs: networkIPs,
+        localUrl: `http://localhost:${PORT}`,
+        networkUrls: networkIPs.map(ip => `http://${ip}:${PORT}`)
     });
 });
 
@@ -85,32 +116,58 @@ app.get("/api", (req, res) => {
 // Error handling middleware
 app.use(errorMiddleware);
 
+function printServerBanner(mode = "Live DB") {
+    const networkIPs = getNetworkIPs();
+    console.log("=================================================");
+    console.log(`🌾 Krishi Market Server running (${mode})`);
+    console.log(`🏠 Local:   http://localhost:${PORT}`);
+    if (networkIPs.length > 0) {
+        networkIPs.forEach(ip => {
+            console.log(`📱 Network: http://${ip}:${PORT}  <-- Use this on phone/tablet/other PCs`);
+        });
+    } else {
+        console.log(`📱 Network: http://0.0.0.0:${PORT}`);
+    }
+    console.log("=================================================");
+}
+
 // MongoDB Connection & Server Start (when executed directly)
 if (require.main === module) {
     const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/krishi_market";
 
+    if (MONGO_URI.includes("<db_password>") || MONGO_URI.includes("<password>")) {
+        console.warn("⚠️ [MongoDB Warning] backend/.env contains placeholder '<db_password>'.");
+        console.warn("👉 Replace '<db_password>' in backend/.env with your real MongoDB Atlas password.");
+    }
+
+    function startListening(mode) {
+        const server = app.listen(PORT, HOST, () => {
+            printServerBanner(mode);
+        });
+
+        server.on("error", (err) => {
+            if (err.code === "EADDRINUSE") {
+                console.error(`\n❌ ERROR: Port ${PORT} is already in use by another application or server instance.`);
+                console.log(`💡 Tip: Close the existing terminal running the server, or change PORT in backend/.env\n`);
+            } else {
+                console.error("❌ Server listen error:", err.message);
+            }
+            process.exit(1);
+        });
+    }
+
     mongoose
         .connect(MONGO_URI, {
-            serverSelectionTimeoutMS: 10000
+            serverSelectionTimeoutMS: 8000
         })
-        .then(() => {
-            console.log("✅ MongoDB Connected Successfully!");
-            app.listen(PORT, () => {
-                console.log("=================================");
-                console.log(`✅ Krishi Market Server running on port ${PORT}`);
-                console.log(`🌐 Local: http://localhost:${PORT}`);
-                console.log("=================================");
-            });
+        .then((conn) => {
+            console.log(`✅ MongoDB Connected Successfully to: ${conn.connection.name || "krishi_market"}`);
+            startListening("Live DB");
         })
         .catch((error) => {
             console.error("❌ MongoDB Connection Warning:", error.message);
-            console.log("⚠️ Starting server in standalone mode (database queries will retry)...");
-            app.listen(PORT, () => {
-                console.log("=================================");
-                console.log(`✅ Server running on port ${PORT} (Offline DB mode)`);
-                console.log(`🌐 Local: http://localhost:${PORT}`);
-                console.log("=================================");
-            });
+            console.log("⚠️ Starting server in standalone mode (run 'npm run test-db' to diagnose)...");
+            startListening("Offline DB mode");
         });
 }
 

@@ -21,7 +21,7 @@ function displayWishlist(products) {
   container.innerHTML = products.map(product => `
     <div class="product-card">
       <a href="../product-details.html?id=${product._id}">
-        <div class="product-image"><img src="${product.images?.[0] ? 'http://localhost:5000/uploads/'+product.images[0] : 'https://via.placeholder.com/300?text=No+Image'}" alt="${product.name}"></div>
+        <div class="product-image"><img src="${(typeof config !== 'undefined' && config.getImageUrl) ? config.getImageUrl(product.images?.[0]) : (product.images?.[0] ? '/uploads/'+product.images[0] : 'https://via.placeholder.com/300?text=No+Image')}" alt="${product.name}"></div>
         <div class="product-info">
           <h3>${product.name}</h3>
           <p class="price">₹${product.price} <span class="unit">/ ${product.unit}</span></p>
