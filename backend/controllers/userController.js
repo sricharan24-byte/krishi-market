@@ -1,8 +1,9 @@
-const User = require('../models/User');
+const { supabase } = require('../config/database.js');
 
 const getUsers = async (req, res) => {
   try {
-    const users = await User.find({});
+    const { data: users, error } = await supabase.from('users').select('id, full_name, email, role, phone, created_at');
+    if (error) throw error;
     res.json(users);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -11,7 +12,7 @@ const getUsers = async (req, res) => {
 
 const getUserById = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const { data: user, error } = await supabase.from('users').select('id, full_name, email, role, phone, address_street, address_city, address_state, address_zip_code, address_country').eq('id', req.params.id).maybeSingle();
     if (user) {
       res.json(user);
     } else {
@@ -22,39 +23,15 @@ const getUserById = async (req, res) => {
   }
 };
 
-const updateUser = async (req, res) => {
+const updateUserRole = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
-    if (user) {
-      user.fullName = req.body.fullName || req.body.name || user.fullName;
-      user.email = req.body.email || user.email;
-      user.phone = req.body.phone || user.phone;
-      if (req.body.address) {
-        user.address = typeof req.body.address === 'object' ? req.body.address : user.address;
-      }
-      
-      const updatedUser = await user.save();
-      res.json(updatedUser);
-    } else {
-      res.status(404).json({ message: 'User not found' });
-    }
+    const { role } = req.body;
+    const { data: user, error } = await supabase.from('users').update({ role }).eq('id', req.params.id).select('id, full_name, role').single();
+    if (error) throw error;
+    res.json(user);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-const deleteUser = async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id);
-    if (user) {
-      await user.deleteOne();
-      res.json({ message: 'User removed' });
-    } else {
-      res.status(404).json({ message: 'User not found' });
-    }
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
-module.exports = { getUsers, getUserById, updateUser, deleteUser };
+module.exports = { getUsers, getUserById, updateUserRole };

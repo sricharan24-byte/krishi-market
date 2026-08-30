@@ -1,8 +1,9 @@
-const Notification = require('../models/Notification');
+const { supabase } = require('../config/database.js');
 
 const getNotifications = async (req, res) => {
   try {
-    const notifications = await Notification.find({ user: req.user._id }).sort({ createdAt: -1 });
+    const { data: notifications, error } = await supabase.from('notifications').select('*').eq('user_id', req.user._id || req.user.id).order('created_at', { ascending: false });
+    if (error) throw error;
     res.json(notifications);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -11,31 +12,22 @@ const getNotifications = async (req, res) => {
 
 const markAsRead = async (req, res) => {
   try {
-    const notification = await Notification.findById(req.params.id);
-    if (notification) {
-      notification.isRead = true;
-      await notification.save();
-      res.json(notification);
-    } else {
-      res.status(404).json({ message: 'Notification not found' });
-    }
+    const { data: notification, error } = await supabase.from('notifications').update({ is_read: true }).eq('id', req.params.id).eq('user_id', req.user._id || req.user.id).select().single();
+    if (error) throw error;
+    res.json(notification);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-const deleteNotification = async (req, res) => {
+const clearNotifications = async (req, res) => {
   try {
-    const notification = await Notification.findById(req.params.id);
-    if (notification) {
-      await notification.deleteOne();
-      res.json({ message: 'Notification removed' });
-    } else {
-      res.status(404).json({ message: 'Notification not found' });
-    }
+    const { error } = await supabase.from('notifications').delete().eq('user_id', req.user._id || req.user.id);
+    if (error) throw error;
+    res.json({ message: 'Notifications cleared' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-module.exports = { getNotifications, markAsRead, deleteNotification };
+module.exports = { getNotifications, markAsRead, clearNotifications };

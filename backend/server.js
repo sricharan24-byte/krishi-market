@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
+
 const path = require("path");
 const fs = require("fs");
 const os = require("os");
@@ -131,15 +131,7 @@ function printServerBanner(mode = "Live DB") {
     console.log("=================================================");
 }
 
-// MongoDB Connection & Server Start (when executed directly)
 if (require.main === module) {
-    const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/krishi_market";
-
-    if (MONGO_URI.includes("<db_password>") || MONGO_URI.includes("<password>")) {
-        console.warn("⚠️ [MongoDB Warning] backend/.env contains placeholder '<db_password>'.");
-        console.warn("👉 Replace '<db_password>' in backend/.env with your real MongoDB Atlas password.");
-    }
-
     function startListening(mode) {
         const server = app.listen(PORT, HOST, () => {
             printServerBanner(mode);
@@ -147,28 +139,16 @@ if (require.main === module) {
 
         server.on("error", (err) => {
             if (err.code === "EADDRINUSE") {
-                console.error(`\n❌ ERROR: Port ${PORT} is already in use by another application or server instance.`);
-                console.log(`💡 Tip: Close the existing terminal running the server, or change PORT in backend/.env\n`);
+                console.error(`\n?O ERROR: Port ${PORT} is already in use by another application or server instance.`);
             } else {
-                console.error("❌ Server listen error:", err.message);
+                console.error("?O Server listen error:", err.message);
             }
             process.exit(1);
         });
     }
 
-    mongoose
-        .connect(MONGO_URI, {
-            serverSelectionTimeoutMS: 8000
-        })
-        .then((conn) => {
-            console.log(`✅ MongoDB Connected Successfully to: ${conn.connection.name || "krishi_market"}`);
-            startListening("Live DB");
-        })
-        .catch((error) => {
-            console.error("❌ MongoDB Connection Warning:", error.message);
-            console.log("⚠️ Starting server in standalone mode (run 'npm run test-db' to diagnose)...");
-            startListening("Offline DB mode");
-        });
+    console.log("o. Supabase Client Initialized");
+    startListening("Supabase DB");
 }
 
 module.exports = app;

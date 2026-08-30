@@ -35,7 +35,7 @@
     }
 
     // 3. Fallback for file:/// or isolated environments
-    return 'http://localhost:5000';
+    return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000' : 'https://krishi-market-backend.onrender.com';
   }
 
   const BASE_URL = getBackendBaseUrl();

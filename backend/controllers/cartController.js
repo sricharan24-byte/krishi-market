@@ -1,13 +1,10 @@
-const Cart = require('../models/Cart');
-const Product = require('../models/Product');
+const { supabase } = require('../config/database.js');
 
 const getCart = async (req, res) => {
   try {
-    let cart = await Cart.findOne({ user: req.user._id }).populate('items.product', 'name price images unit quantity');
-    if (!cart) {
-      cart = await Cart.create({ user: req.user._id, items: [], totalPrice: 0 });
-    }
-    res.json(cart);
+    const { data: cart, error } = await supabase.from('carts').select('*, cart_items(*, product:products(*))').eq('user_id', req.user._id || req.user.id).maybeSingle();
+    if (error) throw error;
+    res.json(cart || { items: [] });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -16,24 +13,23 @@ const getCart = async (req, res) => {
 const addToCart = async (req, res) => {
   try {
     const { productId, quantity } = req.body;
-    const product = await Product.findById(productId);
-    if (!product) return res.status(404).json({ message: 'Product not found' });
-
-    let cart = await Cart.findOne({ user: req.user._id });
+    let { data: cart } = await supabase.from('carts').select('*').eq('user_id', req.user._id || req.user.id).maybeSingle();
+    
     if (!cart) {
-      cart = await Cart.create({ user: req.user._id, items: [], totalPrice: 0 });
+      const { data: newCart, error } = await supabase.from('carts').insert([{ user_id: req.user._id || req.user.id }]).select().single();
+      if (error) throw error;
+      cart = newCart;
     }
 
-    const existingItem = cart.items.find(item => item.product.toString() === productId);
+    const { data: existingItem } = await supabase.from('cart_items').select('*').eq('cart_id', cart.id).eq('product_id', productId).maybeSingle();
+    
     if (existingItem) {
-      existingItem.quantity += quantity;
+      await supabase.from('cart_items').update({ quantity: existingItem.quantity + quantity }).eq('id', existingItem.id);
     } else {
-      cart.items.push({ product: productId, quantity, price: product.price });
+      await supabase.from('cart_items').insert([{ cart_id: cart.id, product_id: productId, quantity }]);
     }
-
-    cart.totalPrice = cart.items.reduce((acc, item) => acc + (item.price || product.price) * item.quantity, 0);
-    await cart.save();
-    res.json(cart);
+    
+    res.json({ message: 'Added to cart' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -41,37 +37,12 @@ const addToCart = async (req, res) => {
 
 const removeFromCart = async (req, res) => {
   try {
-    const cart = await Cart.findOne({ user: req.user._id });
+    const { productId } = req.params;
+    const { data: cart } = await supabase.from('carts').select('*').eq('user_id', req.user._id || req.user.id).maybeSingle();
     if (cart) {
-      cart.items = cart.items.filter(item => item.product.toString() !== req.params.id);
-      cart.totalPrice = cart.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
-      await cart.save();
-      res.json(cart);
-    } else {
-      res.status(404).json({ message: 'Cart not found' });
+      await supabase.from('cart_items').delete().eq('cart_id', cart.id).eq('product_id', productId);
     }
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
-const updateCartItem = async (req, res) => {
-  try {
-    const { quantity } = req.body;
-    const cart = await Cart.findOne({ user: req.user._id });
-    if (cart) {
-      const item = cart.items.find(item => item.product.toString() === req.params.id);
-      if (item) {
-        item.quantity = quantity;
-        cart.totalPrice = cart.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
-        await cart.save();
-        res.json(cart);
-      } else {
-        res.status(404).json({ message: 'Item not found in cart' });
-      }
-    } else {
-      res.status(404).json({ message: 'Cart not found' });
-    }
+    res.json({ message: 'Removed from cart' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -79,16 +50,14 @@ const updateCartItem = async (req, res) => {
 
 const clearCart = async (req, res) => {
   try {
-    const cart = await Cart.findOne({ user: req.user._id });
+    const { data: cart } = await supabase.from('carts').select('*').eq('user_id', req.user._id || req.user.id).maybeSingle();
     if (cart) {
-      cart.items = [];
-      cart.totalPrice = 0;
-      await cart.save();
-      res.json(cart);
+      await supabase.from('cart_items').delete().eq('cart_id', cart.id);
     }
+    res.json({ message: 'Cart cleared' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-module.exports = { getCart, addToCart, removeFromCart, updateCartItem, clearCart };
+module.exports = { getCart, addToCart, removeFromCart, clearCart };

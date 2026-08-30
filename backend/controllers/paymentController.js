@@ -1,28 +1,21 @@
-const Payment = require('../models/Payment');
-const Order = require('../models/Order');
+const { supabase } = require('../config/database.js');
 
-const createPayment = async (req, res) => {
+const processPayment = async (req, res) => {
   try {
-    const { orderId, paymentMethod, amount } = req.body;
-    const order = await Order.findById(orderId);
-    if (!order) return res.status(404).json({ message: 'Order not found' });
-
-    const payment = await Payment.create({
-      order: orderId,
-      user: req.user._id,
-      paymentMethod,
+    const { orderId, paymentMethod, amount, transactionId, paymentDetails } = req.body;
+    
+    const { data: payment, error } = await supabase.from('payments').insert([{
+      order_id: orderId,
+      user_id: req.user._id || req.user.id,
+      payment_method: paymentMethod,
       amount,
-      paymentStatus: 'completed',
-      transactionId: 'TXN' + Date.now()
-    });
+      transaction_id: transactionId,
+      payment_status: 'completed',
+      payment_details: paymentDetails
+    }]).select().single();
+    if (error) throw error;
 
-    order.isPaid = true;
-    order.paidAt = Date.now();
-    order.paymentResult = {
-      id: payment.transactionId,
-      status: 'completed'
-    };
-    await order.save();
+    await supabase.from('orders').update({ is_paid: true, paid_at: new Date().toISOString(), status: 'processing' }).eq('id', orderId);
 
     res.status(201).json(payment);
   } catch (error) {
@@ -30,13 +23,17 @@ const createPayment = async (req, res) => {
   }
 };
 
-const getPayments = async (req, res) => {
+const getOrderPayment = async (req, res) => {
   try {
-    const payments = await Payment.find({ user: req.user._id }).populate('order');
-    res.json(payments);
+    const { data: payment, error } = await supabase.from('payments').select('*').eq('order_id', req.params.orderId).maybeSingle();
+    if (payment) {
+      res.json(payment);
+    } else {
+      res.status(404).json({ message: 'Payment not found' });
+    }
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-module.exports = { createPayment, getPayments };
+module.exports = { processPayment, getOrderPayment };

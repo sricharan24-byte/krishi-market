@@ -1,13 +1,10 @@
-const Wishlist = require('../models/Wishlist');
-const Product = require('../models/Product');
+const { supabase } = require('../config/database.js');
 
 const getWishlist = async (req, res) => {
   try {
-    let wishlist = await Wishlist.findOne({ user: req.user._id }).populate('products');
-    if (!wishlist) {
-      wishlist = await Wishlist.create({ user: req.user._id, products: [] });
-    }
-    res.json(wishlist);
+    const { data: wishlist, error } = await supabase.from('wishlists').select('*, wishlist_items(product:products(*))').eq('user_id', req.user._id || req.user.id).maybeSingle();
+    if (error) throw error;
+    res.json(wishlist || { products: [] });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -16,19 +13,16 @@ const getWishlist = async (req, res) => {
 const addToWishlist = async (req, res) => {
   try {
     const { productId } = req.body;
-    const product = await Product.findById(productId);
-    if (!product) return res.status(404).json({ message: 'Product not found' });
-
-    let wishlist = await Wishlist.findOne({ user: req.user._id });
+    let { data: wishlist } = await supabase.from('wishlists').select('*').eq('user_id', req.user._id || req.user.id).maybeSingle();
+    
     if (!wishlist) {
-      wishlist = await Wishlist.create({ user: req.user._id, products: [productId] });
-    } else {
-      if (!wishlist.products.includes(productId)) {
-        wishlist.products.push(productId);
-      }
-      await wishlist.save();
+      const { data: newWishlist, error } = await supabase.from('wishlists').insert([{ user_id: req.user._id || req.user.id }]).select().single();
+      if (error) throw error;
+      wishlist = newWishlist;
     }
-    res.json(wishlist);
+
+    await supabase.from('wishlist_items').upsert({ wishlist_id: wishlist.id, product_id: productId });
+    res.json({ message: 'Added to wishlist' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -36,14 +30,12 @@ const addToWishlist = async (req, res) => {
 
 const removeFromWishlist = async (req, res) => {
   try {
-    const wishlist = await Wishlist.findOne({ user: req.user._id });
+    const { productId } = req.params;
+    const { data: wishlist } = await supabase.from('wishlists').select('*').eq('user_id', req.user._id || req.user.id).maybeSingle();
     if (wishlist) {
-      wishlist.products = wishlist.products.filter(p => p.toString() !== req.params.id);
-      await wishlist.save();
-      res.json(wishlist);
-    } else {
-      res.status(404).json({ message: 'Wishlist not found' });
+      await supabase.from('wishlist_items').delete().eq('wishlist_id', wishlist.id).eq('product_id', productId);
     }
+    res.json({ message: 'Removed from wishlist' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

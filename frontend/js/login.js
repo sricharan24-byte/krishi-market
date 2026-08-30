@@ -8,7 +8,7 @@ const API_BASE = (typeof config !== "undefined" && config.API_URL)
         ? (!window.location.port || window.location.port === "5000" || window.location.port === "80" || window.location.port === "443")
             ? `${window.location.origin}/api`
             : `${window.location.protocol}//${window.location.hostname}:5000/api`
-        : "http://localhost:5000/api";
+        : window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000/api' : 'https://krishi-market-backend.onrender.com/api';
 
 const loginForm = document.getElementById("loginForm");
 

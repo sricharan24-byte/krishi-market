@@ -9,7 +9,7 @@ const API_URL = (typeof config !== "undefined" && config.API_URL)
         ? (!window.location.port || window.location.port === "5000" || window.location.port === "80" || window.location.port === "443")
             ? `${window.location.origin}/api/auth`
             : `${window.location.protocol}//${window.location.hostname}:5000/api/auth`
-        : "http://localhost:5000/api/auth";
+        : window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000/api/auth' : 'https://krishi-market-backend.onrender.com/api/auth';
 
 
 // ==========================================
