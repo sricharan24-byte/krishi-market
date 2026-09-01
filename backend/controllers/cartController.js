@@ -35,6 +35,20 @@ const addToCart = async (req, res) => {
   }
 };
 
+const updateCartItem = async (req, res) => {
+  try {
+    const { quantity } = req.body;
+    const productId = req.params.id;
+    const { data: cart } = await supabase.from('carts').select('*').eq('user_id', req.user._id || req.user.id).maybeSingle();
+    if (cart) {
+      await supabase.from('cart_items').update({ quantity: Number(quantity) }).eq('cart_id', cart.id).eq('product_id', productId);
+    }
+    res.json({ message: 'Cart item updated' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 const removeFromCart = async (req, res) => {
   try {
     const { productId } = req.params;
@@ -60,4 +74,4 @@ const clearCart = async (req, res) => {
   }
 };
 
-module.exports = { getCart, addToCart, removeFromCart, clearCart };
+module.exports = { getCart, addToCart, updateCartItem, removeFromCart, clearCart };

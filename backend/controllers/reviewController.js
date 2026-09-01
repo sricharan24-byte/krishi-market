@@ -12,7 +12,8 @@ const getProductReviews = async (req, res) => {
 
 const addReview = async (req, res) => {
   try {
-    const { productId, rating, comment } = req.body;
+    const productId = req.params.productId || req.body.productId;
+    const { rating, comment } = req.body;
     
     const { data: existingReview } = await supabase.from('reviews').select('*').eq('product_id', productId).eq('user_id', req.user._id || req.user.id).maybeSingle();
     if (existingReview) {
@@ -27,11 +28,25 @@ const addReview = async (req, res) => {
     }]).select().single();
     if (error) throw error;
 
-    // Optional: Update product ratings/num_reviews here via SQL function/RPC or separate query
     res.status(201).json(review);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-module.exports = { getProductReviews, addReview };
+const deleteReview = async (req, res) => {
+  try {
+    const { error } = await supabase.from('reviews').delete().eq('id', req.params.id);
+    if (error) throw error;
+    res.json({ message: 'Review removed' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = {
+  getProductReviews,
+  addReview,
+  createReview: addReview,
+  deleteReview
+};

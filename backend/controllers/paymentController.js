@@ -15,7 +15,9 @@ const processPayment = async (req, res) => {
     }]).select().single();
     if (error) throw error;
 
-    await supabase.from('orders').update({ is_paid: true, paid_at: new Date().toISOString(), status: 'processing' }).eq('id', orderId);
+    if (orderId) {
+      await supabase.from('orders').update({ is_paid: true, paid_at: new Date().toISOString(), status: 'processing' }).eq('id', orderId);
+    }
 
     res.status(201).json(payment);
   } catch (error) {
@@ -36,4 +38,19 @@ const getOrderPayment = async (req, res) => {
   }
 };
 
-module.exports = { processPayment, getOrderPayment };
+const getPayments = async (req, res) => {
+  try {
+    const { data: payments, error } = await supabase.from('payments').select('*').eq('user_id', req.user._id || req.user.id);
+    if (error) throw error;
+    res.json(payments);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = {
+  processPayment,
+  createPayment: processPayment,
+  getOrderPayment,
+  getPayments
+};

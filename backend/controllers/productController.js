@@ -10,7 +10,7 @@ const getProducts = async (req, res) => {
     if (isOrganic) query = query.eq('is_organic', isOrganic === 'true');
     if (minPrice) query = query.gte('price', Number(minPrice));
     if (maxPrice) query = query.lte('price', Number(maxPrice));
-    if (search) query = query.ilike('name', %%);
+    if (search) query = query.ilike('name', `%${search}%`);
 
     const { data: products, error } = await query;
     if (error) throw error;

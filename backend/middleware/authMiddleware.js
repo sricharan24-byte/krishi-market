@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/User");
+const { supabase } = require("../config/database.js");
 
 const authMiddleware = async (req, res, next) => {
     try {
@@ -19,9 +19,17 @@ const authMiddleware = async (req, res, next) => {
         const userId = decoded.id || decoded._id;
 
         try {
-            const user = await User.findById(userId).select("-password");
+            const { data: user } = await supabase.from("users").select("*").eq("id", userId).maybeSingle();
             if (user) {
-                req.user = user;
+                req.user = {
+                    _id: user.id,
+                    id: user.id,
+                    fullName: user.full_name,
+                    name: user.full_name,
+                    email: user.email,
+                    phone: user.phone,
+                    role: user.role
+                };
             } else {
                 req.user = {
                     _id: userId,

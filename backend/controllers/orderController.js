@@ -7,34 +7,43 @@ const addOrderItems = async (req, res) => {
       return res.status(400).json({ message: 'No order items' });
     }
 
+    const street = shippingAddress ? shippingAddress.street || '' : '';
+    const city = shippingAddress ? shippingAddress.city || '' : '';
+    const state = shippingAddress ? shippingAddress.state || '' : '';
+    const zipCode = shippingAddress ? shippingAddress.zipCode || '' : '';
+    const country = shippingAddress ? shippingAddress.country || 'India' : 'India';
+
     const { data: order, error } = await supabase.from('orders').insert([{
       user_id: req.user._id || req.user.id,
-      shipping_street: shippingAddress.street,
-      shipping_city: shippingAddress.city,
-      shipping_state: shippingAddress.state,
-      shipping_zip_code: shippingAddress.zipCode,
-      shipping_country: shippingAddress.country || 'India',
+      shipping_street: street,
+      shipping_city: city,
+      shipping_state: state,
+      shipping_zip_code: zipCode,
+      shipping_country: country,
       payment_method: paymentMethod,
       items_price: itemsPrice,
       tax_price: taxPrice,
       shipping_price: shippingPrice,
-      total_price: totalPrice
+      total_price: totalPrice,
+      status: 'pending'
     }]).select().single();
 
     if (error) throw error;
 
-    const itemsToInsert = orderItems.map(item => ({
-      order_id: order.id,
-      product_id: item.product,
-      name: item.name,
-      price: item.price,
-      quantity: item.quantity,
-      unit: item.unit,
-      image: item.image
-    }));
+    if (orderItems && orderItems.length > 0) {
+      const itemsToInsert = orderItems.map(item => ({
+        order_id: order.id,
+        product_id: item.product || item.productId,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        unit: item.unit || 'kg',
+        image: item.image || ''
+      }));
 
-    const { error: itemsError } = await supabase.from('order_items').insert(itemsToInsert);
-    if (itemsError) throw itemsError;
+      const { error: itemsError } = await supabase.from('order_items').insert(itemsToInsert);
+      if (itemsError) throw itemsError;
+    }
 
     res.status(201).json(order);
   } catch (error) {
@@ -75,4 +84,33 @@ const getOrders = async (req, res) => {
   }
 };
 
-module.exports = { addOrderItems, getOrderById, getMyOrders, getOrders };
+const updateOrderToPaid = async (req, res) => {
+  try {
+    const { data: order, error } = await supabase.from('orders').update({ is_paid: true, paid_at: new Date().toISOString(), status: 'processing' }).eq('id', req.params.id).select().single();
+    if (error) throw error;
+    res.json(order);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const updateOrderToDelivered = async (req, res) => {
+  try {
+    const { data: order, error } = await supabase.from('orders').update({ is_delivered: true, delivered_at: new Date().toISOString(), status: 'delivered' }).eq('id', req.params.id).select().single();
+    if (error) throw error;
+    res.json(order);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = {
+  addOrderItems,
+  createOrder: addOrderItems,
+  getOrderById,
+  getMyOrders,
+  getOrders,
+  getAllOrders: getOrders,
+  updateOrderToPaid,
+  updateOrderToDelivered
+};
